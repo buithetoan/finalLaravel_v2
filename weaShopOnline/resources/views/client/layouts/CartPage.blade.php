@@ -105,7 +105,7 @@
                 </div>
                 <div class="col-lg-6 col-sm-6">
                     <div class="update-box">
-                    	<a href="{{ url('/Payment') }}"><input value="Check Out" type="submit"></a>
+                    	<a href="{{ url('/payment') }}"><input value="Check Out" type="submit"></a>
                     </div>
                     <div class="update-box">
                         <input value="Update Cart" type="submit">

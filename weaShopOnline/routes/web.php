@@ -16,8 +16,8 @@ use Illuminate\Support\Facades\Route;
 Route::group(['namespace'=>'Client','prefix'=>'/'],function (){
     Route::get('/home', 'HomeController@index');
     Route::get('/product-all','ProductController@index');
-    Route::get('/Cart-Page','CartController@CartPage');
-    Route::get('/Payment','CartController@Payment');
+    Route::get('/cart-page','CartController@cartpage');
+    Route::get('/payment','CartController@payment');
 });
 //Admin
 Route::group(['namespace'=>'Admin','prefix'=>'/'],function (){
