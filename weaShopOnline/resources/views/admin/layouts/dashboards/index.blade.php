@@ -1,4 +1,4 @@
 @extends('admin.shared.main')
 @section('title')
-	Brands
+	Dashboard
 @endsection
