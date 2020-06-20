@@ -1,22 +1,5 @@
-/*------------------------------------------------------------------
-    IMPORT FONTS
--------------------------------------------------------------------*/
-
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,600,600i,700,700i,800,800i');
 @import url('https://fonts.googleapis.com/css?family=Quattrocento+Sans:400,400i,700,700i');
-
-
-/*
-
-    font-family: 'Montserrat', sans-serif;
-
-    font-family: 'Quattrocento Sans', sans-serif;
-
-*/
-
-/*------------------------------------------------------------------
-    IMPORT FILES
--------------------------------------------------------------------*/
 
 @import url(all.css);
 @import url(superslides.css);
@@ -29,9 +12,7 @@
 @import url(nice-select.css);
 @import url(baguetteBox.min.css);
 
-/*------------------------------------------------------------------
-    SKELETON
--------------------------------------------------------------------*/
+/*main*/
  body {
      color: #666666;
      font-size: 15px;
@@ -141,7 +122,7 @@
  .bootstrap-select .dropdown-toggle:focus{
      box-shadow: none !important 
 }
-/*------------------------------------------------------------------ LOADER -------------------------------------------------------------------*/
+/*load back to top*/
  #back-to-top {
      position: fixed;
      bottom: 40px;
@@ -151,7 +132,7 @@
      height: 32px;
      text-align: center;
      line-height: 30px;
-     background: #d33b33;
+     background: #f18d12;
      color: #ffffff;
      cursor: pointer;
      border: 0;
@@ -160,9 +141,9 @@
      transition: opacity 0.2s ease-out;
      font-size: 30px;
 }
-/*------------------------------------------------------------------ HEADER -------------------------------------------------------------------*/
+/*header*/
  .main-top{
-     background: #010101;
+     background: #3993d4;
      padding: 10px 0px;
 }
  .custom-select-box{
@@ -177,7 +158,7 @@
  .custom-select-box .bootstrap-select .btn-light{
      padding: 4px;
      font-size: 14px;
-     background: #d33b33;
+     background: #33aed3;
      color: #fff;
      border: none;
      border-radius: 0px;
@@ -277,8 +258,7 @@
  nav.navbar.bootsnav ul.nav > li > a{
      margin: 0px;
 }
-/* Navbar Adjusment =========================== */
-/* Navbar Atribute ------*/
+/* Navbar Adjusment and Atribute*/
  .attr-nav > ul > li > a{
      padding: 28px 15px;
 }
@@ -668,7 +648,7 @@
  .top-search input.form-control{
      color: #ffffff;
 }
-/*------------------------------------------------------------------ Slider -------------------------------------------------------------------*/
+/* Slider*/
  .cover-slides{
      height: 100vh;
 }
@@ -738,7 +718,7 @@
      text-transform: uppercase;
      padding: 10px 20px;
 }
-/*------------------------------------------------------------------ Categories Shop -------------------------------------------------------------------*/
+/* Categories Shop */
  .categories-shop{
      padding: 70px 0px;
 }
@@ -783,7 +763,7 @@
      font-weight: 700;
      padding: 8px 0px;
 }
-/*------------------------------------------------------------------ Products -------------------------------------------------------------------*/
+/*Products */
  .title-all{
      margin-bottom: 30px;
 }
@@ -814,7 +794,7 @@
      font-size: 18px;
 }
  .filter-button-group button.active{
-     background: #010101;
+     background: #60d6e8e6;
 }
  .filter-button-group button{
 }
@@ -839,14 +819,14 @@
      z-index:8;
 }
  .type-lb .sale{
-     background: red;
+     background: #ff0000ab;
      color: #ffffff;
      padding: 2px 10px;
      font-weight: 700;
      text-transform: uppercase;
 }
  .type-lb .new{
-     background: #010101;
+     background: #6feabd;
      color: #ffffff;
      padding: 2px 10px;
      font-weight: 700;
@@ -990,7 +970,7 @@
          -webkit-transform: translateY(0px);
     }
 }
-/*------------------------------------------------------------------ Blog -------------------------------------------------------------------*/
+/*Blog*/
  .latest-blog{
      padding: 70px 0px;
      background: #f5f5f5;
@@ -1023,7 +1003,7 @@
      transform: translate(0%,-50%);
 }
  .option-blog li a{
-     background: #010101;
+     background: #48d8e6;
      display: inline-block;
      font-size: 18px;
      color: #ffffff;
@@ -1154,7 +1134,7 @@
      bottom: 0;
      opacity: 1;
 }
-/*------------------------------------------------------------------ Footer Main -------------------------------------------------------------------*/
+/* Footer Main */
  .footer-main{
      padding: 70px 0px;
      background: #202020;
@@ -1833,7 +1813,7 @@
      padding: 70px 0px;
 }
  .table-main table thead{
-     background: #d33b33;
+     background: #268837e6;
      color: #ffffff;
 }
  .table-main .table thead th{
@@ -1873,7 +1853,7 @@
      color: #010101;
 }
  .coupon-box .input-group .input-group-append .btn-theme {
-     background: #010101;
+     background: #268837e6;
      color: #ffffff;
      border: none;
      border-radius: 0px;
@@ -1884,7 +1864,7 @@
      background: #d33b33;
 }
  .update-box input[type="submit"]{
-     background: #010101;
+     background: #f7aa1fd9;
      border: medium none;
      border-radius: 0;
      -webkit-box-shadow: none;
@@ -2382,6 +2362,12 @@
  .table-responsive .table td, .table-responsive .table th {
      vertical-align: middle;
      white-space: nowrap;
+}
+/*check out payment*/
+.col-md-12.wuc-p {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    background: oldlace;
 }
 
 
