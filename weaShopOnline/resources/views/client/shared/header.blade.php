@@ -42,8 +42,8 @@
                     <div class="our-link">
                         <ul>
                             <li><a href="#">My Account</a></li>
-                            <li><a href="#">Login</a></li>
-                            <li><a href="#">Register</a></li>
+                            <li><a href="#myModal_lg" class="trigger-btn" data-toggle="modal">Login</a></li>
+                            <li><a href="#myModal_rg" class="trigger-btn" data-toggle="modal">Register</a></li>
                         </ul>
                     </div>
                 </div>

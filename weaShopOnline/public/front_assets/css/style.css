@@ -9,7 +9,6 @@
 @import url(bootsnav.css);
 @import url(owl.carousel.min.css);
 @import url(jquery-ui.css);
-@import url(nice-select.css);
 @import url(baguetteBox.min.css);
 
 /*main*/
@@ -448,7 +447,7 @@
      padding-right: 30px;
 }
  nav.navbar.bootsnav ul.nav li.active > a{
-     color: #d33b33;
+     color: #ec0e239e;
 }
  nav.navbar.bootsnav ul.nav li.active > a:hover{
      color: #d33b33;
@@ -557,7 +556,7 @@
      transform: perspective(1px) translateZ(0);
      box-shadow: 0 0 1px rgba(0, 0, 0, 0);
      position: relative;
-     background: #d33b33;
+     background: #33d3d399;
      -webkit-transition-property: color;
      transition-property: color;
      -webkit-transition-duration: 0.3s;
@@ -657,10 +656,11 @@
      position: absolute;
      height: 70px;
      width: 70px;
+     border-radius: 37px;
      top: 50%;
      font-size: 20px;
      display: block;
-     color: #fff;
+     color: #eee4efe0;
      line-height: 90px;
      text-align: center;
      transition: all .3s ease-in-out;
@@ -708,7 +708,8 @@
      border: 2px solid #ffffff;
 }
  .slides-pagination a.current{
-     background: #d33b33;
+     background: #ffffff1f;
+     border-radius: 15px;
      border: 2px solid #d33b33;
 }
  .cover-slides p a{
@@ -734,8 +735,8 @@
  .shop-cat-box img{
      margin: -10px 0 0 -10px;
      max-width: none;
-     width: -webkit-calc(100% + 10px);
-     width: calc(100% + 10px);
+     /*width: -webkit-calc(100% + 10px);*/
+     /*width: calc(100% + 10px);*/
      opacity: 0.9;
      -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
      transition: opacity 0.35s, transform 0.35s;
@@ -1137,7 +1138,7 @@
 /* Footer Main */
  .footer-main{
      padding: 70px 0px;
-     background: #202020;
+     background: #5496a0e0;
 }
  .footer-widget h4 {
      color: #ffffff;
@@ -1158,7 +1159,7 @@
      left: 0px;
 }
  .footer-widget p {
-     color: #cccccc;
+     color: #ffffff;
      font-weight: 400;
      font-size: 14px;
      padding-bottom: 20px;
@@ -1269,18 +1270,18 @@
 }
  .footer-link-contact ul li p{
      padding-left: 25px;
-     color: #cccccc;
+     color: #ffff;
      position: relative;
 }
  .footer-link-contact ul li p{
      font-size: 16px;
-     color: #cccccc;
+     color: #ffff;
      font-weight: 300;
      padding-right: 16px;
      line-height: 24px;
 }
  .footer-link-contact ul li p a{
-     color: #cccccc;
+     color: #ffff;
 }
  .footer-link-contact ul li p a:hover{
      color: #d33b33;
@@ -2368,6 +2369,81 @@
     padding-top: 30px;
     padding-bottom: 30px;
     background: oldlace;
+}
+
+
+/*login*/
+.modal-login {      
+    color: #636363;
+    width: 350px;
+}
+.modal-login .modal-content {
+    padding: 20px;
+    border-radius: 5px;
+    border: none;
+}
+.modal-login .modal-header {
+    border-bottom: none;   
+    position: relative;
+    justify-content: center;
+}
+.modal-login h4 {
+    text-align: center;
+    font-size: 26px;
+    margin: 30px 0 -15px;
+}
+.modal-login .form-control:focus {
+    border-color: #70c5c0;
+}
+.modal-login .form-control, .modal-login .btn {
+    min-height: 40px;
+    border-radius: 3px; 
+}
+.modal-login .close {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+}   
+.modal-login .modal-footer {
+    background: #ecf0f1;
+    border-color: #dee4e7;
+    text-align: center;
+    justify-content: center;
+    margin: 0 -20px -20px;
+    border-radius: 5px;
+    font-size: 13px;
+}
+.modal-login .modal-footer a {
+    color: #999;
+}       
+.modal-login .avatar {
+    position: absolute;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    top: -70px;
+    width: 95px;
+    height: 95px;
+    border-radius: 50%;
+    z-index: 9;
+    background: #60c7c1;
+    padding: 15px;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
+}
+.modal-login .avatar img {
+    width: 100%;
+}
+.modal-login.modal-dialog {
+    margin-top: 80px;
+}
+.modal-login .btn, .modal-login .btn:active {
+    color: #fff;
+    border-radius: 4px;
+    background: #60c7c1 !important;
+    text-decoration: none;
+    transition: all 0.4s;
+    line-height: normal;
+    border: none;
 }
 
 

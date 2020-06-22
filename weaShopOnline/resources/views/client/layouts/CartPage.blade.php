@@ -1,5 +1,7 @@
 @extends('client.shared.master')
 @section('content')
+@include('client.layouts.login')
+@include('client.layouts.register')
 <body>
     <!-- Start Cart  -->
     <div class="cart-box-main">

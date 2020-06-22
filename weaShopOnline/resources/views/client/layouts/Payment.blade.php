@@ -1,5 +1,7 @@
 @extends('client.shared.master')
 @section('content')
+@include('client.layouts.login')
+@include('client.layouts.register')
 <div class="col-md-12 wuc-p">
 	<div class="row">
 		<div class="col-md-6">

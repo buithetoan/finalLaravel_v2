@@ -16,6 +16,14 @@ class HomeController extends Controller
     {
         return view('client.layouts.home');
     }
+    public function login()
+    {
+        return view('client.layouts.login');
+    }
+    public function register()
+    {
+        return view('client.layouts.register');
+    }
     /**
      * Show the form for creating a new resource.
      *
