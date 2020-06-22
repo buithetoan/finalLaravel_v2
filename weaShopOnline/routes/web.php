@@ -20,7 +20,9 @@ Route::group(['namespace'=>'Client','prefix'=>'/'],function (){
 //Admin
 Route::group(['namespace'=>'Admin','prefix'=>'/'],function (){
     Route::get('/admin/dashboard', 'DashboardController@index');
-    Route::get('/admin/', 'DashboardController@index');    
+    Route::get('/admin/', 'DashboardController@index');
     Route::resource('/admin/brand','BrandController');
     Route::delete('brand_delete', 'BrandController@destroy')->name('brand_delete');
+    Route::resource('/admin/slide','SlideController');
+    Route::delete('slide_delete', 'SlideController@destroy')->name('slide_delete');
 });
