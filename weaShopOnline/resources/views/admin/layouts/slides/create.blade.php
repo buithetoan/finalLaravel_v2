@@ -10,7 +10,7 @@
             <div class="col-lg-10 col-md-12 col-sm-12 row">
                 <div class="form-group">
                     {{ Form::label('Content: ','',['class' => 'font-weight-bold']) }}
-                    {!! Form::text('txt_content', null, [
+                    {!! Form::text('content', null, [
                         'class' => 'form-control',
                         'placeholder'=>"Content"
                     ])

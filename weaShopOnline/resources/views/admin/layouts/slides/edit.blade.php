@@ -10,12 +10,12 @@
             <div class="col-lg-10 col-md-12 col-sm-12 row">
                 <div class="form-group">
                     {{ Form::label('Content: ','',['class' => 'font-weight-bold']) }}
-                    {!! Form::text('txt_content', $slide->content, [
+                    {!! Form::text('content', $slide->content, [
                         'class' => 'form-control',
                         'placeholder'=>"Content"
                     ])
                     !!}
-                    <span class="text-danger">{{ $errors->first('txt_content')}}</span>
+                    <span class="text-danger">{{ $errors->first('content')}}</span>
                 </div>
                 <div class="form-group">
                     {{ Form::label('Description: ','',['class' => 'font-weight-bold']) }}
@@ -47,7 +47,7 @@
                 <div class="form-group">
                     {{ Form::label('Image: ','',['class' => 'font-weight-bold']) }}
                     {{ Form::file('image', ['class' => 'form-control' ]) }}
-                    <input type="hidden" value="{{$slide->image}}" name="image"><br>
+                    <input type="hidden" value="{{$slide->image}}" name="old_image"><br>
                     <span class="text-danger">{{ $errors->first('image')}}</span>
                 </div>
                 <div class="form-group text-right">

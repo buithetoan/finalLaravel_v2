@@ -28,7 +28,7 @@ class SlideRequest extends FormRequest
                 'content' => 'required|max:255|min:5|string',
                 'description' => 'required|max:255|min:10',
                 'display_order' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/',
-//                'image' => 'mimes:jpeg,jpg,png',
+                'image' => 'mimes:jpeg,jpg,png',
                 'url' => 'required|max:255|min:1|string',
             ];
         }else{

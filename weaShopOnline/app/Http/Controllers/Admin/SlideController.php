@@ -51,7 +51,7 @@ class SlideController extends Controller
         $nameimage=$request->image->getClientOriginalName();
         $request->image->move('images', $nameimage);
         $data = new Slide([
-            'content' => $request->txt_content,
+            'content' => $request->content,
             'display_order' => $request->display_order,
             'image' => $nameimage,
             'url' => $request->url,
@@ -105,10 +105,12 @@ class SlideController extends Controller
         {
             $imagename=$request->image->getClientOriginalName();
             $request->image->move('images', $imagename);
-        } else $imagename = $request->image;
+        } else {
+            $imagename = $request->old_image;
+        }
 
         $slide = $this->slideRepository->find($id);
-        $slide->content = $request->txt_content;
+        $slide->content = $request->content;
         $slide->description = $request->description;
         $slide->image = $imagename;
         $slide->url = $request->url;
@@ -133,6 +135,6 @@ class SlideController extends Controller
         if ($slides) {
             $slides->update();
             return back()->with('message','Delete success!');
-        } else return back()->with('err','Delete failse!');
+        } else return back()->with('err','Delete fail!');
     }
 }
