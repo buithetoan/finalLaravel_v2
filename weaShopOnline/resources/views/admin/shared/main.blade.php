@@ -9,6 +9,12 @@
 	<script type="text/javascript" src="{{asset('js/jquery-3.5.1.min.js')}}"></script>
 	<!-- Boostrap Js -->
 	<script type="text/javascript" src="{{asset('js/bootstrap.min.js')}}"></script>
+	<!-- HighChart Js -->
+	<script src="https://code.highcharts.com/highcharts.js"></script>
+	<script src="https://code.highcharts.com/highcharts-3d.js"></script>
+	<script src="https://code.highcharts.com/modules/exporting.js"></script>
+	<script src="https://code.highcharts.com/modules/export-data.js"></script>
+	<script src="https://code.highcharts.com/modules/accessibility.js"></script>
 	<!-- Custom Js -->
 	<script type="text/javascript" src="{{asset('js/custom.js')}}"></script>
 	<!-- Bootstrap Css -->
@@ -44,5 +50,7 @@
 		</div>
 		<!-- End Content -->
 	</div>
+	<!-- Script -->
+	@include('admin.shared.script')
 </body>
 </html>
