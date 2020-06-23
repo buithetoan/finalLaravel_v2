@@ -10,9 +10,18 @@
 	</form>
 	<!-- Admin Icon -->
 	<div class="admin_profile">
-		<a class="nav-link dropdown-toggle" href="/admin">Admin Name</a>
+		@if(Route::has('login'))
+		<a class="nav-link dropdown-toggle" href="#">{{ Auth::user()->name }}</a>
 		<div class="logout_button">
-			<a href="#">Logout</a>
-		</div>
+			<a class="dropdown-item" href="{{ route('logout') }}"
+			onclick="event.preventDefault();
+			document.getElementById('logout-form').submit();">
+			{{ __('Logout') }}
+		</a>
+		<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+			@csrf
+		</form>
 	</div>
+	@endif
+</div>
 </nav>
