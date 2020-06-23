@@ -17,15 +17,15 @@ class CreateProductsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name',255);
             $table->string('code',50);
-            $table->string('description',255);
-            $table->string('detail',255);
-            $table->string('url_image',255);
+            $table->string('description',255)->nullable();
+            $table->string('detail',255)->nullable();
+            $table->string('url_image',255)->nullable();
             $table->decimal('price', 16, 2);
-            $table->decimal('promotion_price', 16, 2);
-            $table->integer('quantity');
+            $table->decimal('promotion_price', 16, 2)->nullable();
+            $table->integer('quantity')->default(0);
             $table->string('slug',255);
-            $table->boolean('is_hot');
-            $table->boolean('is_new');
+            $table->boolean('is_hot')->nullable();
+            $table->boolean('is_new')->nullable();
             $table->bigInteger('brand_id')->unsigned();
             $table->foreign('brand_id')->references('id')->on('brands')
             ->onUpdate('cascade')
