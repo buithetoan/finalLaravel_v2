@@ -19,6 +19,7 @@
 					</div>        
 					<div class="form-group">
 						<button type="submit" class="btn btn-primary btn-lg btn-block login-btn">Login</button>
+						<button  href="#myModal_lg" type="submit" class="btn btn-primary btn-lg btn-block login-btn">Register</button>
 					</div>
 				</form>
 			</div>
