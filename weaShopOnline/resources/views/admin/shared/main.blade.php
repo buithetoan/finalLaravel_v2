@@ -7,7 +7,7 @@
 	<title>@yield('title')</title>
 	<!-- jQuery -->	
 	<script type="text/javascript" src="{{asset('js/jquery-3.5.1.min.js')}}"></script>
-	<!-- Boostrap Js -->
+	
 	<script type="text/javascript" src="{{asset('js/bootstrap.min.js')}}"></script>
 	<!-- Custom Js -->
 	<script type="text/javascript" src="{{asset('js/custom.js')}}"></script>

@@ -12,15 +12,17 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Auth::routes(['verify' => true]);
+//Admin
+Route::group(['namespace'=>'Admin','prefix'=>'/admin'],function (){
+	// Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/dashboard', 'DashboardController@index');
+    Route::get('', 'DashboardController@index');   
+    Route::resource('/brand','BrandController');
+    Route::delete('brand_delete', 'BrandController@destroy')->name('brand_delete');
+});
 //Client
 Route::group(['namespace'=>'Client','prefix'=>'/'],function (){
-    Route::get('/home', 'HomeController@index');
+    Route::get('/home', 'HomeController@index');    
     Route::get('/product-all','ProductController@index');
-});
-//Admin
-Route::group(['namespace'=>'Admin','prefix'=>'/'],function (){
-    Route::get('/admin/dashboard', 'DashboardController@index');
-    Route::get('/admin/', 'DashboardController@index');    
-    Route::resource('/admin/brand','BrandController');
-    Route::delete('brand_delete', 'BrandController@destroy')->name('brand_delete');
 });

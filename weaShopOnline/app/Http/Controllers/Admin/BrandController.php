@@ -15,6 +15,7 @@ class BrandController extends Controller
     public function __construct(BrandInterface $brandRepos)
     {
         $this->brandRepository = $brandRepos;
+        $this->middleware('auth');
     }
     /**
      * Display a listing of the resource.
