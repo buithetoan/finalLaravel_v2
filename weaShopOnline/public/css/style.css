@@ -229,3 +229,67 @@ a {
 	color: white;
 	font-weight: bold; 
 }
+/* Admin Dashboard */
+h2.title {
+	margin-bottom: 30px;
+	padding-left: 15px;
+}
+
+.total {
+	display: flex;
+	align-items: center;
+	padding: 15px;
+	border-left: 7px solid #dddfeb;
+	transition: 0.3s;
+	background-color: #fff;
+	margin-bottom: 30px;
+}
+
+.total:hover {
+	color: #fff;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	margin-top: -10px;
+	margin-right: -5px;
+	margin-left: 5px;
+}
+
+.total .icon {
+	flex-grow: 0.5;
+}
+
+.total .info {
+	flex-grow: 1;
+}
+
+.total .info h6 {
+	text-transform: uppercase;
+}
+
+.total i {
+	font-size: 2.5em;
+	color: #dddfeb;
+}
+
+.total.product_total {
+	border-color: #4e73df;
+}
+
+.total.product_total:hover {
+	background-color: #4e73df;
+}
+
+.total.customer_total {
+	border-color: #36b9cc;
+}
+
+.total.customer_total:hover {
+	background-color: #36b9cc;
+}
+
+.total.revenue_total {
+	border-color: #1cc88a;
+}
+
+.total.revenue_total:hover {
+	background-color: #1cc88a;
+}
