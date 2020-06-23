@@ -16,6 +16,10 @@ class HomeController extends Controller
     {
         return view('client.layouts.home');
     }
+    public function about()
+    {
+        return view('client.layouts.about_us');
+    }
     public function login()
     {
         return view('client.layouts.login');
