@@ -10,7 +10,7 @@
 	</form>
 	<!-- Admin Icon -->
 	<div class="admin_profile">
-		<a class="nav-link dropdown-toggle" href="/admin">Admin Name</a>
+		<a class="nav-link dropdown-toggle" href="#">Admin Name</a>
 		<div class="logout_button">
 			<a href="#">Logout</a>
 		</div>
