@@ -2,8 +2,11 @@
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLabel">Delete</h5> 
-			</div> 
+				<h4 class="modal-title" id="exampleModalLabel"><b class="text-danger">Warring!</b></h4> 
+			</div>
+			<div class="modal-body">
+				<h4>Are you sure you want to delete?</h4>
+			</div>
 			<div class="modal-footer">
 				<input type="hidden" id="id" name="id">
 				<input type="submit" class="btn btn-danger" value="Delete">
