@@ -11,6 +11,12 @@ interface EloquentInterface
     public function getAll();
 
     /**
+ 	 * Get pluck with name and id
+     * @return
+     */
+    public function getPluck($name, $id);
+    
+    /**
      * Get one
      * @param $id
      * @return mixed

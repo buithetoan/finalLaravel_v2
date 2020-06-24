@@ -45,6 +45,15 @@ abstract class EloquentRepository implements EloquentInterface
     }
 
     /**
+     * Get pluck with name and id
+     * @param $id, $name
+     * @return
+     */
+    public function getPluck($name, $id)
+    {
+        return $this->_model::where('is_deleted', 0)->get()->pluck($name, $id);
+    }
+    /**
      * Get one
      * @param $id
      * @return mixed

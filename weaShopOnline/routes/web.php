@@ -29,4 +29,8 @@ Route::group(['namespace'=>'Admin','prefix'=>'/'],function (){
     Route::delete('brand_delete', 'BrandController@destroy')->name('brand_delete');
 	Route::resource('/admin/slide','SlideController');
     Route::delete('slide_delete', 'SlideController@destroy')->name('slide_delete');
+	Route::resource('/admin/category','CategoryController');
+    Route::delete('category_delete', 'CategoryController@destroy')->name('category_delete');
+    Route::resource('/admin/product','ProductController');
+    Route::delete('product_delete', 'ProductController@destroy')->name('product_delete');
 });

@@ -11,10 +11,10 @@
 		<a class="item_link" href="{{ route('brand.index') }}">Brand</a>
 	</li>
 	<li class="list_item">
-		<a class="item_link" href="#">Category</a>
+		<a class="item_link" href="{{ route('category.index') }}">Category</a>
 	</li>
 	<li class="list_item">
-		<a class="item_link" href="#">Product</a>
+		<a class="item_link" href="{{ route('product.index') }}">Product</a>
 	</li>
 	<li class="list_item">
 		<a class="item_link" href="#">User Management</a>
