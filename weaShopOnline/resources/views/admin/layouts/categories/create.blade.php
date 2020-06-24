@@ -18,25 +18,6 @@ Add new category
 				<span class="text-danger">{{ $errors->first('name')}}</span>
 			</div>
 			<div class="form-group">
-				{{ Form::label('Parent ID: ','',['class' => 'font-weight-bold']) }}
-				{!! Form::text('parent_id', null, [
-					'class' => 'form-control',
-					'placeholder'=>"ParentId"
-				])
-				!!}
-				<span class="text-danger">{{ $errors->first('parent_id')}}</span>
-			</div>
-			<div class="form-group">
-				{{ Form::label('Display Order: ','',['class' => 'font-weight-bold']) }}
-				{!! Form::text('display_order', null, [
-					'class' => 'form-control',
-					'placeholder'=>"Display Order"
-				])
-				!!}
-				<span class="text-danger">{{ $errors->first('display_order')}}</span>
-			</div>
-			
-			<div class="form-group">
 				{{ Form::label('Description: ','',['class' => 'font-weight-bold']) }}
 				{!! Form::text('description', null, [
 					'class' => 'form-control',

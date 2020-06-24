@@ -19,10 +19,10 @@ Add new product
 			</div>
 			<div class="form-group">
 				<b>{{ Form::label('Product: ')}}</b>
-				{{ Form::checkbox('is_new',1,true)}}
+				{{ Form::checkbox('is_new')}}
 				{{ Form::label('New')}}
 
-				{{ Form::checkbox('is_hot',0)}}
+				{{ Form::checkbox('is_hot')}}
 				{{ Form::label('Hot')}}
 			</div>
 			<div class="form-group">
@@ -57,11 +57,8 @@ Add new product
 			</div>
 			<div class="form-group">
 				{{ Form::label('Image: ','',['class' => 'font-weight-bold']) }}
-				{!! Form::file('url_image', null, [
-				'class' => 'form-control',
-				'placeholder'=>"Choose image"
-				])
-				!!}
+				{{ Form::file('url_image', null, ['class' => 'form-control' ]) }}
+				<br>
 				<span class="text-danger">{{ $errors->first('url_image')}}</span>
 			</div>
 			<div class="form-group">

@@ -8,6 +8,8 @@ use App\Http\Requests\BrandRequest;
 use App\Repositories\Brand\BrandInterface;
 use Carbon\Carbon;
 use App\Models\Brand;
+use Str;
+
 class BrandController extends Controller
 {
     protected $brandRepository;
@@ -52,7 +54,7 @@ class BrandController extends Controller
         $data = new Brand([
             'name' => $request->name,
             'phone_no' => $request->phone_no,
-            'slug' => $request->slug,
+            'slug' => Str::slug($request->name),
             'logo' => $nameimage,
             'address' => $request->address,
             'created_date' => Carbon::now()->toDateString(),
@@ -110,6 +112,7 @@ class BrandController extends Controller
         $brand->name = $request->name;
         $brand->phone_no = $request->phone_no;
         $brand->logo = $imagename;
+        $brand->slug = Str::slug($request->name);
         $brand->address = $request->address;
         $brand->updated_date = Carbon::now()->toDateTimeString(); 
         $result = $this->brandRepository->update($id, $brand->toArray());

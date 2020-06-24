@@ -24,16 +24,16 @@ Products
 	<table class="table table_xk table-hover table-bordered">
 		<thead class="thead_green">
 			<tr>
-				<th class="text-center">Id</th>
-				<th class="text-center">Name</th>
-				<th class="text-center">Code</th>
-				<th class="text-center">Image</th>
-				<th class="text-center">Price</th>
-				<th class="text-center">Promotion Price</th>
-				<th class="text-center">Quantity</th>
-				<th class="text-center">Hot</th>
-				<th class="text-center">New</th>
-				<th class="text-center">Action</th>
+				<th class="text-center" style="width: 5%">Id</th>
+				<th class="text-center" style="width: 10%">Name</th>
+				<th class="text-center" style="width: 10%">Code</th>
+				<th class="text-center" style="width: 20%">Image</th>
+				<th class="text-center" style="width: 10%">Price</th>
+				<th class="text-center" style="width: 10%">Promotion Price</th>
+				<th class="text-center" style="width: 10%">Quantity</th>
+				<th class="text-center" style="width: 5%">Hot</th>
+				<th class="text-center" style="width: 5%">New</th>
+				<th class="text-center" style="width: 15%">Action</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -47,7 +47,9 @@ Products
 					</a>
 				</td>
 				<td class="text-center">{{ $product->code }}</td>
-				<td class="text-center">{{ $product->urrl_image }}</td>
+				<td class="text-center">
+					<img src="{{asset('images/'.$product->url_image)}}" width="60" alt="image">
+				</td>
 				<td class="text-center">{{ $product->price }}</td>
 				<td class="text-center">{{ $product->promotion_price }}</td>
 				<td class="text-center">{{ $product->quantity }}</td>

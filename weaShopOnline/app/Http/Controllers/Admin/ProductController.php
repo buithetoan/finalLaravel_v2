@@ -62,12 +62,18 @@ class ProductController extends Controller
     public function store(ProductRequest $request)
     {
         $request->validated();
-        // dd($request);
+//        dd($request);
+        $nameimage = "";
+        if($request->hasFile('url_image'))
+        {
+            $nameimage=$request->url_image->getClientOriginalName();
+            $request->url_image->move('images', $nameimage);
+        }
         $data = new Product([
             'name' => $request->name,
             'code' => $request->code,
             'description'=> $request->description,
-            'url_image' => $request->url_image,
+            'url_image' => $nameimage,
             'detail' => $request->detail,
             'price' => $request->price,
             'promotion_price' => $request->promotion_price,
@@ -124,11 +130,17 @@ class ProductController extends Controller
      */
     public function update(ProductRequest $request, $id)
     {
+        if($request->hasFile('url_image'))
+        {
+            $imagename=$request->url_image->getClientOriginalName();
+            $request->url_image->move('images', $imagename);
+        } else $imagename = $request->image;
+        dd($request);
         $product = $this->productRepository->find($id);
         $product->name = $request->name;
         $product->code = $request->code;
         $product->description = $request->description;
-        $product->url_image = $request->url_image;
+        $product->url_image = $imagename;
         $product->detail = $request->detail;
         $product->price = $request->price;
         $product->promotion_price = $request->promotion_price;

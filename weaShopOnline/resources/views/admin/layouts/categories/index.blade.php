@@ -26,8 +26,6 @@ Categories
 			<tr>
 				<th class="text-center">Id</th>
 				<th class="text-center">Name</th>
-				<th class="text-center">ParentId</th>
-				<th class="text-center">Display Order</th>
 				<th class="text-center">Description</th>
 				<th class="text-center">Slug</th>
 				<th class="text-center">Action</th>
@@ -43,8 +41,6 @@ Categories
 						<h4>{{  $category->name }}</h4>
 					</a>
 				</td>
-				<td class="text-center">{{ $category->parent_id }}</td>
-				<td class="text-center">{{ $category->display_order }}</td>
 				<td class="text-center">{{ $category->description }}</td>
 				<td class="text-center">{{ $category->slug }}</td>
 				<td class="text-center action_icon">

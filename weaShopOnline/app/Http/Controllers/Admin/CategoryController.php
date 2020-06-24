@@ -52,9 +52,7 @@ class CategoryController extends Controller
         $request->validated();
         $data = new ProductCategory([
             'name' => $request->name,
-            'parent_id' => $request->parent_id,
             'slug'=> Str::slug($request->name),
-            'display_order' => $request->display_order,
             'description' => $request->description,
             'created_date' => Carbon::now()->toDateString(),
             'updated_date' => Carbon::now()->toDateString(),
@@ -103,9 +101,7 @@ class CategoryController extends Controller
     {
         $category = $this->categoryRepository->find($id);
         $category->name = $request->name;
-        $category->parent_id = $request->parent_id;
         $category->slug = Str::slug($request->name);
-        $category->display_order = $request->display_order;
         $category->description = $request->description;
         $category->updated_date = Carbon::now()->toDateTimeString(); 
         $result = $this->categoryRepository->update($id, $category->toArray());

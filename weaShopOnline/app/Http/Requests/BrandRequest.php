@@ -25,7 +25,7 @@ class BrandRequest extends FormRequest
     {
         if ($this->method()=='PUT'){
             return [
-                'name' => 'required|max:50|min:5|string',
+                'name' => 'required|max:255|string',
                 'address' => 'required|max:100|min:10',
                 'phone_no' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|size:10',
                 'logo' => 'mimes:jpeg,jpg,png',
@@ -33,7 +33,7 @@ class BrandRequest extends FormRequest
             ];
         }else{
             return [
-                'name' => 'required|max:50|min:5|string',
+                'name' => 'required|max:255|string',
                 'address' => 'required|max:100|min:10',
                 'phone_no' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|size:10',
                 'logo' => 'required|mimes:jpeg,jpg,png',
