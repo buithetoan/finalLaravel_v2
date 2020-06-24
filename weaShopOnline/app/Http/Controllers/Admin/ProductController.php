@@ -79,8 +79,8 @@ class ProductController extends Controller
             'promotion_price' => $request->promotion_price,
             'quantity' => $request->quantity,
             'slug' => Str::slug($request->name),
-            'is_hot' => $request->is_hot,
-            'is_new' => $request->is_new,
+            'is_hot' => $request->has('is_hot') ? 1 : 0,
+            'is_new' => $request->has('is_new') ? 1 : 0,
             'category_id' => $request->category_id,
             'brand_id' => $request->brand_id,
             'created_date' => Carbon::now()->toDateString(),
@@ -135,7 +135,7 @@ class ProductController extends Controller
             $imagename=$request->url_image->getClientOriginalName();
             $request->url_image->move('images', $imagename);
         } else $imagename = $request->image;
-        dd($request);
+
         $product = $this->productRepository->find($id);
         $product->name = $request->name;
         $product->code = $request->code;
@@ -146,8 +146,8 @@ class ProductController extends Controller
         $product->promotion_price = $request->promotion_price;
         $product->quantity = $request->quantity;
         $product->slug = Str::slug($request->name);
-        $product->is_hot = $request->is_hot;
-        $product->is_new = $request->is_new;
+        $product->is_hot = $request->has('is_hot') ? 1 : 0;
+        $product->is_new = $request->has('is_new') ? 1 : 0;
         $product->brand_id = $request->brand_id;
         $product->category_id = $request->category_id;
         $product->updated_date = Carbon::now()->toDateTimeString(); 

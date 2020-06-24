@@ -19,10 +19,10 @@ Edit product
 			</div>
 			<div class="form-group">
 				<b>{{ Form::label('Product: ')}}</b>
-				{{ Form::checkbox('is_new', $product->is_new, $product->is_new == 1 ? true : false)}}
+				{{ Form::checkbox('is_new', null, $product->is_new == 1 ? true : false,['id'=>'is_new'])}}
 				{{ Form::label('New')}}
 
-				{{ Form::checkbox('is_hot', $product->is_hot, $product->is_hot == 1 ? true : false)}}
+				{{ Form::checkbox('is_hot', null, $product->is_hot == 1 ? true : false,['id'=>'is_hot'])}}
 				{{ Form::label('Hot')}}
 			</div>
 			<div class="form-group">

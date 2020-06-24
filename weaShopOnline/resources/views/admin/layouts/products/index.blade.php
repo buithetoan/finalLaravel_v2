@@ -4,23 +4,27 @@ Products
 @endsection
 @section('content')
 <div class="content_yield">
-	<h3 class="page_title">Products</h3>
-	<a href="{{ route('product.create') }}" class="btn bg-color-green add_new_button"><i class="fas fa-plus"></i> Add new</a>
-	@if(Session::has('message'))
-	<div id="mydiv" style="position:absolute; right: 10px; top: 10px;" class="float-right mt-2 alert alert-success alert-dismissible fade show" role="alert" style="position: absolute;">
-		<strong>{{ Session::get('message') }}</strong>
-		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-			<span aria-hidden="true">&times;</span>
-		</button>
+	<div class="row">
+		<h3 class="col-md-8 page_title">Products</h3>
+		<div class="col-md-4">
+			@if(Session::has('message'))
+			<div id="div-alert" style="position:absolute; right: 10px;" class="float-right mt-2 alert alert-success alert-dismissible show" role="alert" style="position: absolute;">
+				<strong>{{ Session::get('message') }}</strong>
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			@elseif(Session::has('err'))
+			<div id="div-alert" style="position:absolute; right: 10px;" class="float-right mt-2 alert alert-success alert-dismissible show" role="alert" style="position: absolute;">
+				<strong>{{ Session::get('err') }}</strong>
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			@endif			
+		</div>
 	</div>
-	@elseif(Session::has('err'))
-	<div id="mydiv" style="position:absolute; right: 10px; top: 100px;" class="float-right mt-2 alert alert-success alert-dismissible fade show" role="alert" style="position: absolute;">
-		<strong>{{ Session::get('err') }}</strong>
-		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-			<span aria-hidden="true">&times;</span>
-		</button>
-	</div>
-	@endif
+	<a href="{{ route('product.create') }}" class="btn bg-color-green add_new_button"><i class="fas fa-plus"></i> Add new</a>	
 	<table class="table table_xk table-hover table-bordered">
 		<thead class="thead_green">
 			<tr>
@@ -53,8 +57,12 @@ Products
 				<td class="text-center">{{ $product->price }}</td>
 				<td class="text-center">{{ $product->promotion_price }}</td>
 				<td class="text-center">{{ $product->quantity }}</td>
-				<td class="text-center">{{ $product->is_hot }}</td>
-				<td class="text-center">{{ $product->is_new }}</td>
+				<td class="text-center">
+					{!! $product->is_hot == 1 ? '<i class="fa fa-check text-success"></i>' : '<i class="fa fa-times text-danger"></i>' !!}
+				</td>
+				<td class="text-center">
+					{!! $product->is_new == 1 ? '<i class="fa fa-check text-success"></i>' : '<i class="fa fa-times text-danger"></i>' !!}
+				</td>
 				<td class="text-center action_icon">
 					<a href="{{route('product.edit',$product->id)}}"><i class="far fa-edit edit"></i></a>
 					<a type="button" class="fas fa-trash-alt deletebutton text-danger btn" data-id="{{$product->id}}" data-toggle="modal" data-target="#Modal"></a>
