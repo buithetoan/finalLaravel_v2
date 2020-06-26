@@ -22,4 +22,7 @@
 	<li class="list_item">
 		<a class="item_link" href="#">Slide</a>
 	</li>
+	<li class="list_item">
+		<a class="item_link" href="#">Order Management</a>
+	</li>
 </ul>

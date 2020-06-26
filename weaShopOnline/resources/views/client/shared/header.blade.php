@@ -41,7 +41,6 @@
                     </div>
                     <div class="our-link">
                         <ul>
-                            <li><a href="#">My Account</a></li>
                             <li><a href="#myModal_lg" class="trigger-btn" data-toggle="modal">Login</a></li>
                             <li><a href="#myModal_rg" class="trigger-btn" data-toggle="modal">Register</a></li>
                         </ul>
@@ -61,14 +60,13 @@
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="fa fa-bars"></i>
                 </button>
-                    <a class="navbar-brand" href="index.html"><img src="{{asset('front_assets/images/logo_1.png')}}" class="logo" alt=""></a>
+                    <a class="navbar-brand" href="index.html"><img src="{{asset('front_assets/images/logo.png')}}" class="logo" alt=""></a>
                 </div>
                 <!-- End Header Navigation -->
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="navbar-menu">
                     <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
                         <li class="nav-item active"><a class="nav-link" href="{{ url('/home') }}">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{ url('/about-us') }}">About Us</a></li>
                         <li class="dropdown megamenu-fw">
                             <a href="{{ url('/product-all') }}" class="nav-link dropdown-toggle" data-toggle="dropdown">Product</a>
                             <ul class="dropdown-menu megamenu-content" role="menu">
@@ -126,6 +124,8 @@
                                 </li>
                             </ul>
                         </li>
+                        <li class="nav-item"><a class="nav-link" href="{{ url('/about-us') }}">About Us</a></li>
+                        
                     </ul>
                 </div>
                 <!-- /.navbar-collapse -->
@@ -147,17 +147,17 @@
                 <li class="cart-box">
                     <ul class="cart-list">
                         <li>
-                            <a href="#" class="photo"><img src="{{asset('front_assets/images/img-pro-01.jpg')}}" class="cart-thumb" alt="" /></a>
+                            <a href="#" class="photo"><img src="{{asset('front_assets/images/dell-4.jpeg')}}" class="cart-thumb" alt="" /></a>
                             <h6><a href="#">Delica omtantur </a></h6>
                             <p>1x - <span class="price">$80.00</span></p>
                         </li>
                         <li>
-                            <a href="#" class="photo"><img src="{{asset('front_assets/images/img-pro-02.jpg')}}" class="cart-thumb" alt="" /></a>
+                            <a href="#" class="photo"><img src="{{asset('front_assets/images/mac-1.jpg')}}" class="cart-thumb" alt="" /></a>
                             <h6><a href="#">Omnes ocurreret</a></h6>
                             <p>1x - <span class="price">$60.00</span></p>
                         </li>
                         <li>
-                            <a href="#" class="photo"><img src="{{asset('front_assets/images/img-pro-03.jpg')}}" class="cart-thumb" alt="" /></a>
+                            <a href="#" class="photo"><img src="{{asset('front_assets/images/asus-1.jpg')}}" class="cart-thumb" alt="" /></a>
                             <h6><a href="#">Agam facilisis</a></h6>
                             <p>1x - <span class="price">$40.00</span></p>
                         </li>

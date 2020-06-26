@@ -23,7 +23,7 @@
                                 <tr>
                                     <td class="thumbnail-img">
                                         <a href="#">
-									<img class="img-fluid" src="{{asset('front_assets/images/img-pro-01.jpg')}}" alt="" />
+									<img class="img-fluid" src="{{asset('front_assets/images/msi-3.png')}}" alt="" />
 								</a>
                                     </td>
                                     <td class="name-pr">
@@ -47,7 +47,7 @@
                                 <tr>
                                     <td class="thumbnail-img">
                                         <a href="#">
-									<img class="img-fluid" src="{{asset('front_assets/images/img-pro-02.jpg')}}" alt="" />
+									<img class="img-fluid" src="{{asset('front_assets/images/msi-4.jpg')}}" alt="" />
 								</a>
                                     </td>
                                     <td class="name-pr">
@@ -71,7 +71,7 @@
                                 <tr>
                                     <td class="thumbnail-img">
                                         <a href="#">
-									<img class="img-fluid" src="{{asset('front_assets/images/img-pro-03.jpg')}}" alt="" />
+									<img class="img-fluid" src="{{asset('front_assets/images/msi-5.png')}}" alt="" />
 								</a>
                                     </td>
                                     <td class="name-pr">
