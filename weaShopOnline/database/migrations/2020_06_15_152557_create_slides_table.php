@@ -19,8 +19,6 @@ class CreateSlidesTable extends Migration
             $table->string('description',255)->nullable();
             $table->string('image',255);
             $table->string('url',255)->nullable();
-            $table->date('created_date')->nullable();
-            $table->date('updated_date')->nullable();
             $table->boolean('is_deleted')->default(0);
             $table->timestamps();
         });

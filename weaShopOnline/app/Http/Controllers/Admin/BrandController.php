@@ -17,6 +17,7 @@ class BrandController extends Controller
     public function __construct(BrandInterface $brandRepos)
     {
         $this->brandRepository = $brandRepos;
+        $this->middleware('guest', ['except' => 'logout']);
     }
     /**
      * Display a listing of the resource.
@@ -57,8 +58,6 @@ class BrandController extends Controller
             'slug' => Str::slug($request->name),
             'logo' => $nameimage,
             'address' => $request->address,
-            'created_date' => Carbon::now()->toDateString(),
-            'updated_date' => Carbon::now()->toDateString(),
             'is_deleted' => false,
         ]);
         $brands = $this->brandRepository->create($data->toArray());
@@ -114,7 +113,6 @@ class BrandController extends Controller
         $brand->logo = $imagename;
         $brand->slug = Str::slug($request->name);
         $brand->address = $request->address;
-        $brand->updated_date = Carbon::now()->toDateTimeString(); 
         $result = $this->brandRepository->update($id, $brand->toArray());
 
         return redirect('admin/brand')->with('message','Edit successfully!');

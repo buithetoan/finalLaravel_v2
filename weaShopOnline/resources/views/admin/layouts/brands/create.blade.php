@@ -4,7 +4,7 @@ Add new brand
 @endsection
 @section('content')
 <div class="content_yield">
-	{{ Form::open(['url' => 'admin/brand', 'method' => 'post','enctype '=>'multipart/form-data','class' => 'col-md-12 row']) }}
+	{{ Form::open(['route' => 'brand.create', 'method' => 'post','enctype '=>'multipart/form-data','class' => 'col-md-12 row']) }}
 	<div class="col-md-12 m-auto">
 		<h3 class="mb-5 font-weight-bold">Brand</h3>		
 		<div class="col-lg-10 col-md-12 col-sm-12 row">

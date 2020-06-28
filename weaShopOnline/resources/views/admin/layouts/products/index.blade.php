@@ -73,7 +73,7 @@ Products
 		</tbody>
 	</table>
 </div>
-{{Form::open(['route' => ['product_delete'], 'method' => 'DELETE'])}}  
+{{-- {{Form::open(['route' => ['product_delete'], 'method' => 'DELETE'])}}  
 @include('admin.modal.modaldelete')
 {{ Form::close() }}
 <script>
@@ -82,5 +82,5 @@ Products
 		console.log(id);
 		$('#id').val(id);
 	});
-</script>
+</script> --}}
 @endsection

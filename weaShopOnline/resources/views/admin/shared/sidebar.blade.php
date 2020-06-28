@@ -17,9 +17,12 @@
 		<a class="item_link" href="{{ route('product.index') }}">Product</a>
 	</li>
 	<li class="list_item">
-		<a class="item_link" href="#">User Management</a>
+		<a class="item_link" href="{{ route('user.index') }}">User Management</a>
 	</li>
 	<li class="list_item">
-		<a class="item_link" href="{{ route('slide.index') }}">Slide</a>
+		<a class="item_link" href="{{ route('role.index') }}">Role Management</a>
 	</li>
+	{{-- <li class="list_item">
+		<a class="item_link" href="{{ route('slide.index') }}">Slide</a>
+	</li> --}}
 </ul>

@@ -29,7 +29,6 @@ class BrandRequest extends FormRequest
                 'address' => 'required|max:100|min:10',
                 'phone_no' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|size:10',
                 'logo' => 'mimes:jpeg,jpg,png',
-                'slug' => 'required|max:50|min:1|string',
             ];
         }else{
             return [
@@ -37,7 +36,6 @@ class BrandRequest extends FormRequest
                 'address' => 'required|max:100|min:10',
                 'phone_no' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|size:10',
                 'logo' => 'required|mimes:jpeg,jpg,png',
-                'slug' => 'required|max:50|string',
             ];
         } 
     }
@@ -56,9 +54,6 @@ class BrandRequest extends FormRequest
             'phone_no.size' => 'Phone size is 10 characters.',             
             'logo.required' => 'Please select Logo.',    
             'logo.mimes' => 'Please select file jpg/jpeg/png.', 
-            'slug.required' => 'Please enter Slug.',
-            'slug.string' => 'Do not enter special characters.',
-            'slug.max:50' => 'Maximum Slug length is 50 characters.', 
         ];
     }
 }

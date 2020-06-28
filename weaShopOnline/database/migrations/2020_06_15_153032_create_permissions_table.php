@@ -17,8 +17,6 @@ class CreatePermissionsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name',255);
             $table->string('display_name',255);
-            $table->date('created_date')->nullable();
-            $table->date('updated_date')->nullable();
             $table->timestamps();
         });
     }

@@ -65,7 +65,7 @@ Brands
 		</tbody>
 	</table>
 </div>
-{{Form::open(['route' => ['brand_delete'], 'method' => 'DELETE'])}}  
+{{-- {{Form::open(['route' => ['brand_delete'], 'method' => 'DELETE'])}}  
 @include('admin.modal.modaldelete')
 {{ Form::close() }}
 <script>
@@ -74,7 +74,7 @@ Brands
 		console.log(id);
 		$('#id').val(id);
 	});
-</script>
+</script> --}}
 <script>
 	setTimeout(function() {
 		var element = document.getElementById("div-alert");

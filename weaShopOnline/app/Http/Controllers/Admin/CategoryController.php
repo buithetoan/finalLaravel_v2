@@ -54,8 +54,6 @@ class CategoryController extends Controller
             'name' => $request->name,
             'slug'=> Str::slug($request->name),
             'description' => $request->description,
-            'created_date' => Carbon::now()->toDateString(),
-            'updated_date' => Carbon::now()->toDateString(),
             'is_deleted' => false,
         ]);
         $categories = $this->categoryRepository->create($data->toArray());
@@ -103,7 +101,6 @@ class CategoryController extends Controller
         $category->name = $request->name;
         $category->slug = Str::slug($request->name);
         $category->description = $request->description;
-        $category->updated_date = Carbon::now()->toDateTimeString(); 
         $result = $this->categoryRepository->update($id, $category->toArray());
 
         return redirect('admin/category')->with('message','Edit successfully!');

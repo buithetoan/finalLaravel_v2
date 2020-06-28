@@ -20,8 +20,6 @@ class CreateBrandsTable extends Migration
            $table->string('address',255);
            $table->string('phone_no',255);
            $table->string('slug',255);
-           $table->date('created_date')->nullable();
-           $table->date('updated_date')->nullable();
            $table->boolean('is_deleted')->default(0);
            $table->timestamps();
        });

@@ -24,8 +24,6 @@ class CreateOrderDetailsTable extends Migration
             $table->foreign('product_id')->references('id')->on('products')
             ->onUpdate('cascade')
             ->onDelete('cascade');
-            $table->date('created_date')->nullable();
-            $table->date('updated_date')->nullable();
             $table->boolean('is_deleted')->default(0);
             $table->timestamps();
         });

@@ -18,8 +18,6 @@ class CreateProductCategoriesTable extends Migration
             $table->string('name',255);
             $table->string('description',255)->nullable();
             $table->string('slug',255);
-            $table->date('created_date')->nullable();
-            $table->date('updated_date')->nullable();
             $table->boolean('is_deleted')->default(0);
             $table->timestamps();
         });
