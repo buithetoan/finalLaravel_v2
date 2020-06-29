@@ -5,6 +5,8 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use App\Repositories\Brand\BrandInterface;
 use App\Repositories\Brand\BrandRepository;
+use App\Repositories\Order\OrderInterface;
+use App\Repositories\Order\OrderRepository;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -18,7 +20,11 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(
             BrandInterface::class,
             BrandRepository::class
-        ); 
+        );
+        $this->app->bind(
+            OrderInterface::class,
+            OrderRepository::class
+        );  
     }
 
     /**

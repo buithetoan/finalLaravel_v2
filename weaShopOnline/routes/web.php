@@ -27,5 +27,6 @@ Route::group(['namespace'=>'Admin','prefix'=>'/'],function (){
     Route::get('/admin/dashboard', 'DashboardController@index');
     Route::get('/admin/', 'DashboardController@index');    
     Route::resource('/admin/brand','BrandController');
+    Route::resource('/admin/order','OrderController');
     Route::delete('brand_delete', 'BrandController@destroy')->name('brand_delete');
 });
