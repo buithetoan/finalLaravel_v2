@@ -8,4 +8,11 @@
 
 5- php artisan migrate
 
-** Lỗi 10k - pm Anh Toàn
+** Trong quá trình làm bài sẽ chạy thêm 1 số câu lệnh khác:
+- install laravel/ui: composer require laravel/ui
+- refresh migration: php artisan migrate:refresh
+- seed data: php artisan db:seed
+- optimize: php artisan optimize
+- view routes: php artisan route:list
+
+
