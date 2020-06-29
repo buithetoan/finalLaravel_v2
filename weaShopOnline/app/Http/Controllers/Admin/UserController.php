@@ -6,26 +6,22 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\UserRequest;
 use App\Repositories\User\UserInterface;
+use App\Repositories\Role\RoleInterface;
+use App\Repositories\RoleUser\RoleUserInterface;
 use Carbon\Carbon;
 use App\Models\User;
-use App\Models\Role;
-use Illuminate\Database\Eloquent\Model;
-use DB;
 class UserController extends Controller
 {
     protected $userRepository;
-    private $user;
-    private $role;
+    protected $roleRepository;
+    protected $roleUserRepository;
 
-    public function __construct(User $user, Role $role)
+    public function __construct(UserInterface $userRepos, RoleInterface $roleRepos, RoleUserInterface $roleUserRepos)
     {
-        $this->user = $user;
-        $this->role = $role;
+        $this->userRepository = $userRepos;
+        $this->roleRepository = $roleRepos;
+        $this->roleUserRepository = $roleUserRepos;        
     }
-    // public function __construct(UserInterface $userRepos)
-    // {
-    //     $this->userRepository = $userRepos;
-    // }
     /**
      * Display a listing of the resource.
      *
@@ -33,7 +29,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = $this->user->all();
+        $users = $this->userRepository->getAll();
 
         return view('admin.layouts.users.index', compact('users'));
     }
@@ -45,7 +41,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        $roles = $this->role->all();
+        $roles = $this->roleRepository->getAll();
         return view('admin.layouts.users.create',compact('roles'));
     }
 
@@ -59,13 +55,19 @@ class UserController extends Controller
     {
         try {
             $request->validated();
-            $userCreate = $this->user->create([
+            $data = new User([
                 'name' => $request->name,
                 'email' => $request->email,
                 'password' => bcrypt($request->password),
                 'is_deleted' => false,
+                'level' => $request->level,
+                'created_date' => Carbon::now()->toDateString(),
+                'updated_date' => Carbon::now()->toDateString(),
             ]);
-            $userCreate->roles()->attach($request->roles);
+            $userCreate = $this->userRepository->create($data->toArray());
+            // Insert data to role_permission
+            $userCreate->roles()->attach($request->role);
+
             $userCreate->save();
             if ($userCreate) return redirect('/admin/user')->with('message','Create new successfully!');
             else return back()->with('err','Save error!');
@@ -93,9 +95,9 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $roles = $this->role->all();
-        $user = $this->user->findOrfail($id);
-        $listRoleOfUser = DB::table('role_user')->where('user_id', $id)->pluck('role_id');
+        $roles = $this->roleRepository->getAll();
+        $user = $this->userRepository->find($id);
+        $listRoleOfUser = $this->roleUserRepository->getAllRoleOfUser($id);
         return view('admin.layouts.users.edit', compact('user','roles','listRoleOfUser'));
     }
 
@@ -106,19 +108,19 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UserRequest $request, $id)
+    public function update(Request $request, $id)
     {
         try {
-            $this->user->where('id', $id)->update([
+            $data = new User([
                 'name' => $request->name,
                 'email' => $request->email,
+                'updated_date' => Carbon::now()->toDateString(),
             ]);
 
-            // Update to role_user table
-            DB::table('role_user')->where('user_id', $id)->delete();
-            $userCreate = $this->user->find($id);
-            $userCreate->roles()->attach($request->roles);
-            $userCreate->update();
+            $this->roleUserRepository->deleteRoleOfUser($id);
+            $userUpdate = $this->userRepository->find($id);
+            $userUpdate->roles()->attach($request->roles);
+            $result = $this->userRepository->update($id, $userUpdate->toArray());
             return redirect('admin/user')->with('message','Edit successfully!');
         } catch (Exception $e) {
             
@@ -133,6 +135,14 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try {
+            $user = $this->userRepository->find($id);
+            $this->roleUserRepository->deleteRoleOfUser($id);
+            $user = $this->userRepository->delete($user->id);
+            if ($user) return back()->with('message','Delete success!');            
+            else return back()->with('err','Delete fail!');
+        } catch (Exception $e) {
+            
+        }        
     }
 }

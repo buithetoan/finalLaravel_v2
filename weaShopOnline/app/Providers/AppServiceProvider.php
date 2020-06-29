@@ -18,6 +18,18 @@ use App\Repositories\Product\ProductRepository;
 //user
 use App\Repositories\User\UserInterface;
 use App\Repositories\User\UserRepository;
+//role
+use App\Repositories\Role\RoleInterface;
+use App\Repositories\Role\RoleRepository;
+//permission
+use App\Repositories\Permission\PermissionInterface;
+use App\Repositories\Permission\PermissionRepository;
+//permission role
+use App\Repositories\PermissionRole\PermissionRoleInterface;
+use App\Repositories\PermissionRole\PermissionRoleRepository;
+//role user
+use App\Repositories\RoleUser\RoleUserInterface;
+use App\Repositories\RoleUser\RoleUserRepository;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -46,6 +58,22 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(
             UserInterface::class,
             UserRepository::class
+        );
+        $this->app->bind(
+            RoleInterface::class,
+            RoleRepository::class
+        );
+        $this->app->bind(
+            PermissionInterface::class,
+            PermissionRepository::class
+        );
+        $this->app->bind(
+            PermissionRoleInterface::class,
+            PermissionRoleRepository::class
+        );
+        $this->app->bind(
+            RoleUserInterface::class,
+            RoleUserRepository::class
         );
     }
 
