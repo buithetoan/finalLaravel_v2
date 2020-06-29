@@ -29,7 +29,7 @@ Add new brand
 			<div class="form-group">
 				{{ Form::label('Phone No: ','',['class' => 'font-weight-bold']) }}
 				{!! Form::text('phone_no', null, [
-					'class' => 'form-control',
+					'class' => 'form-control','onKeyPress'=>'return isNumberKey(event)',
 					'placeholder'=>"Phone No"
 				])
 				!!}
@@ -49,4 +49,13 @@ Add new brand
 	</div>
 	{{ Form::close() }}
 </div>
+<script language='javascript'>
+ function isNumberKey(evt)
+ {
+ 	var charCode = (evt.which) ? evt.which : event.keyCode
+ 	if (charCode > 31 && (charCode < 48 || charCode > 57))
+ 		return false;
+ 		return true;
+ }
+ </script>
 @endsection

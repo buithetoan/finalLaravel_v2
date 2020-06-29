@@ -25,13 +25,11 @@ class CategoryRequest extends FormRequest
     {
         if ($this->method()=='PUT'){
             return [
-                'name' => 'required|string|max:50|min:1',
-                'parent_id' => 'numeric|max:50|min:1',
+                'name' => 'required|max:100|min:1|regex:/^[a-zA-Z0-9\s]+$/',
             ];
         }else{
             return [
-                'name' => 'required|string|max:50|min:1',
-                'parent_id' => 'numeric|max:50|min:1',
+                'name' => 'required|max:100|min:1|regex:/^[a-zA-Z0-9\s]+$/',
             ];
         } 
     }
@@ -39,12 +37,9 @@ class CategoryRequest extends FormRequest
     {
         return [
             'name.required' => 'Please enter Name.',
-            'name.string' => 'Do not enter special characters.',
-            'name.max:50' => 'Maximum Name length is 50 characters.',
+            'name.max' => 'Maximum Name length is 100 characters.',
             'name.min' => 'Minimum Name length is 1 characters.',
-            'parent_id.max' => 'Maximum Parent ID length is 50 characters.',
-            'parent_id.min' => 'Minimum Parent ID length is 1 characters.',
-            'parent_id.numeric' => 'Invalid! Parent ID only enter number.'
+            'name.regex' => 'Name cannot enter special characters.',
         ];
     }
 }

@@ -25,19 +25,17 @@ class BrandRequest extends FormRequest
     {
         if ($this->method()=='PUT'){
             return [
-                'name' => 'required|max:255|string',
+                'name' => 'required|max:255|min:1|regex:/^[a-zA-Z0-9\s]+$/',
                 'address' => 'required|max:100|min:10',
-                'phone_no' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|size:10',
+                'phone_no' => 'required|regex:/^[0][0-9]*$/|size:10',
                 'logo' => 'mimes:jpeg,jpg,png',
-                'slug' => 'required|max:50|min:1|string',
             ];
         }else{
             return [
-                'name' => 'required|max:255|string',
+                'name' => 'required|max:255|min:1|regex:/^[a-zA-Z0-9\s]+$/',
                 'address' => 'required|max:100|min:10',
-                'phone_no' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|size:10',
+                'phone_no' => 'required|regex:/^[0][0-9]*$/|size:10',
                 'logo' => 'required|mimes:jpeg,jpg,png',
-                'slug' => 'required|max:50|string',
             ];
         } 
     }
@@ -45,20 +43,17 @@ class BrandRequest extends FormRequest
     {
         return [
             'name.required' => 'Please enter Name.',
-            'name.string' => 'Do not enter special characters.',
-            'name.max:50' => 'Maximum Name length is 50 characters.',
-            'name.min:5' => 'Minimum Name length is 5 characters.',
+            'name.max' => 'Maximum Name length is 50 characters.',
+            'name.min' => 'Minimum Name length is 1 characters.',
+            'name.regex' => 'Name cannot enter special characters.',
             'address.required' => 'Please enter Address.',
-            'address.max:100' => 'Maximum Address length is 100 characters.',
-            'address.min:10' => 'Minimum Address length is 10 characters.',
+            'address.max' => 'Maximum Address length is 100 characters.',
+            'address.min' => 'Minimum Address length is 10 characters.',
             'phone_no.required' => 'Please enter Phone.',
-            'phone_no.numeric' =>'Invalid Phone Number.',
-            'phone_no.size' => 'Phone size is 10 characters.',             
-            'logo.required' => 'Please select Logo.',    
-            'logo.mimes' => 'Please select file jpg/jpeg/png.', 
-            'slug.required' => 'Please enter Slug.',
-            'slug.string' => 'Do not enter special characters.',
-            'slug.max:50' => 'Maximum Slug length is 50 characters.', 
+            'phone_no.regex' =>'Phone Number Invalid.',
+            'phone_no.size' => 'Phone number must be 10 digits',             
+            'logo.required' => 'Please choose Logo.',    
+            'logo.mimes' => 'Image must be a photo (jpeg, png, jpg).', 
         ];
     }
 }
