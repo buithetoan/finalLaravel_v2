@@ -56,8 +56,6 @@ class RoleController extends Controller
             $data = new Role([
                 'name' => $request->name,
                 'display_name' => $request->display_name,
-                'created_date' => Carbon::now()->toDateString(),
-                'updated_date' => Carbon::now()->toDateString(),
             ]);
             $roleCreate = $this->roleRepository->create($data->toArray());
             // Insert data to role_permission
@@ -108,7 +106,6 @@ class RoleController extends Controller
             $data = new Role([
                 'name' => $request->name,
                 'display_name' => $request->display_name,
-                'updated_date' => Carbon::now()->toDateString(),
             ]);
 
             // update to role_permission table

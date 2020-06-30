@@ -25,7 +25,7 @@ class ProductRequest extends FormRequest
     {
         if ($this->method()=='PUT'){
             return [
-                'name' => 'required|string|max:50|min:5',
+                'name' => 'required|string|max:255|min:5',
                 'code' => 'required|max:50|min:1',
                 'url_image' => 'mimes:jpeg,jpg,png',
                 'price' => 'required|numeric|min:1',
@@ -35,7 +35,7 @@ class ProductRequest extends FormRequest
             ];
         }else{
             return [
-                'name' => 'required|string|max:50|min:5',
+                'name' => 'required|string|max:255|min:5',
                 'code' => 'required|max:50|min:1',
                 'url_image' => 'mimes:jpeg,jpg,png',
                 'price' => 'required|numeric|min:1',
@@ -50,7 +50,7 @@ class ProductRequest extends FormRequest
         return [
             'name.required' => 'Please enter Name.',
             'name.string' => 'Do not enter special characters.',
-            'name.max' => 'Maximum Name length is 50 characters.',
+            'name.max' => 'Maximum Name length is 255 characters.',
             'name.min' => 'Minimum Name length is 5 characters.',
             'code.required' => 'Please enter Code.',
             'code.max' => 'Maximum Code length is 50 characters.',
