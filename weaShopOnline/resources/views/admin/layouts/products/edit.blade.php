@@ -64,7 +64,7 @@ Edit product
 			<div class="form-group">
 				{{ Form::label('Price: ','',['class' => 'font-weight-bold']) }}
 				{!! Form::number('price', $product->price, [
-				'class' => 'form-control',
+				'class' => 'form-control','onKeyPress'=>'return isNumberKey(event)',
 				'placeholder'=>"Price"
 				])
 				!!}
@@ -73,7 +73,7 @@ Edit product
 			<div class="form-group">
 				{{ Form::label('Promotion Price: ','',['class' => 'font-weight-bold']) }}
 				{!! Form::number('promotion_price', $product->promotion_price, [
-				'class' => 'form-control',
+				'class' => 'form-control','onKeyPress'=>'return isNumberKey(event)',
 				'placeholder'=>"Promotion Price"
 				])
 				!!}
@@ -82,7 +82,7 @@ Edit product
 			<div class="form-group">
 				{{ Form::label('Quantity: ','',['class' => 'font-weight-bold']) }}
 				{!! Form::number('quantity', $product->quantity, [
-				'class' => 'form-control',
+				'class' => 'form-control','onKeyPress'=>'return isNumberKey(event)',
 				'placeholder'=>"Quantity"
 				])
 				!!}
@@ -108,6 +108,15 @@ Edit product
 	</div>
 	{{ Form::close() }}
 </div>
+<script language='javascript'>
+ function isNumberKey(evt)
+ {
+ 	var charCode = (evt.which) ? evt.which : event.keyCode
+ 	if (charCode > 31 && (charCode < 48 || charCode > 57))
+ 		return false;
+ 		return true;
+ }
+ </script>
 <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
 <script> CKEDITOR.replace('editor1'); </script>
 @endsection
