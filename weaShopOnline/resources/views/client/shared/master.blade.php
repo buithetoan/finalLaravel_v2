@@ -57,8 +57,6 @@
     <script src="{{asset('front_assets/js/isotope.min.js')}}"></script>
     <script src="{{asset('front_assets/js/owl.carousel.min.js')}}"></script>
     <script src="{{asset('front_assets/js/baguetteBox.min.js')}}"></script>
-    <script src="{{asset('front_assets/js/form-validator.min.js')}}"></script>
-    <script src="{{asset('front_assets/js/contact-form-script.js')}}"></script>
     <script src="{{asset('front_assets/js/custom.js')}}"></script>
 
 </body>

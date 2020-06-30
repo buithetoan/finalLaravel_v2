@@ -30,6 +30,9 @@ use App\Repositories\PermissionRole\PermissionRoleRepository;
 //role user
 use App\Repositories\RoleUser\RoleUserInterface;
 use App\Repositories\RoleUser\RoleUserRepository;
+//order
+use App\Repositories\Order\OrderInterface;
+use App\Repositories\Order\OrderRepository;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -74,6 +77,10 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(
             RoleUserInterface::class,
             RoleUserRepository::class
+        );
+        $this->app->bind(
+            OrderInterface::class,
+            OrderRepository::class
         );
     }
 

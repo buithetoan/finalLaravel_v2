@@ -22,6 +22,9 @@
 	<li class="list_item">
 		<a class="item_link" href="{{ route('role.index') }}">Role Management</a>
 	</li>
+	<li class="list_item">
+		<a class="item_link" href="{{ route('order.index') }}">Order Management</a>
+	</li>
 	{{-- <li class="list_item">
 		<a class="item_link" href="{{ route('slide.index') }}">Slide</a>
 	</li> --}}
