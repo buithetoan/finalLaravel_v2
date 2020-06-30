@@ -61,8 +61,6 @@ class UserController extends Controller
                 'password' => bcrypt($request->password),
                 'is_deleted' => false,
                 'level' => $request->level,
-                'created_date' => Carbon::now()->toDateString(),
-                'updated_date' => Carbon::now()->toDateString(),
             ]);
             $userCreate = $this->userRepository->create($data->toArray());
             // Insert data to role_permission
@@ -114,7 +112,6 @@ class UserController extends Controller
             $data = new User([
                 'name' => $request->name,
                 'email' => $request->email,
-                'updated_date' => Carbon::now()->toDateString(),
             ]);
 
             $this->roleUserRepository->deleteRoleOfUser($id);

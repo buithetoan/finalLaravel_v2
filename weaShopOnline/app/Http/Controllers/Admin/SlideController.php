@@ -56,8 +56,6 @@ class SlideController extends Controller
             'image' => $nameimage,
             'url' => $request->url,
             'description' => $request->description,
-            'created_date' => Carbon::now()->toDateString(),
-            'updated_date' => Carbon::now()->toDateString(),
             'is_deleted' => false,
         ]);
         $slides = $this->slideRepository->create($data->toArray());
@@ -114,7 +112,6 @@ class SlideController extends Controller
         $slide->description = $request->description;
         $slide->image = $imagename;
         $slide->url = $request->url;
-        $slide->updated_date = Carbon::now()->toDateTimeString();
         $result = $this->slideRepository->update($id, $slide->toArray());
 
         return redirect('admin/slide')->with('message','Edit successfully!');

@@ -4,7 +4,7 @@ Add new product
 @endsection
 @section('content')
 <div class="content_yield">
-	{{ Form::open(['url' => 'admin/product', 'method' => 'post','enctype '=>'multipart/form-data','class' => 'col-md-12 row']) }}
+	{{ Form::open(['route' => 'product.store', 'method' => 'post','enctype '=>'multipart/form-data','class' => 'col-md-12 row']) }}
 	<div class="col-md-12 m-auto">
 		<h3 class="mb-5 font-weight-bold">Product</h3>		
 		<div class="col-lg-10 col-md-12 col-sm-12 row">

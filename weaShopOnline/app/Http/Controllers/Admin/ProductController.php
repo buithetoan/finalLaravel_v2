@@ -83,8 +83,6 @@ class ProductController extends Controller
             'is_new' => $request->has('is_new') ? 1 : 0,
             'category_id' => $request->category_id,
             'brand_id' => $request->brand_id,
-            'created_date' => Carbon::now()->toDateString(),
-            'updated_date' => Carbon::now()->toDateString(),
             'is_deleted' => false,
         ]);
         $products = $this->productRepository->create($data->toArray());
@@ -150,7 +148,6 @@ class ProductController extends Controller
         $product->is_new = $request->has('is_new') ? 1 : 0;
         $product->brand_id = $request->brand_id;
         $product->category_id = $request->category_id;
-        $product->updated_date = Carbon::now()->toDateTimeString(); 
         $result = $this->productRepository->update($id, $product->toArray());
 
         return redirect('admin/product')->with('message','Edit successfully!');

@@ -28,16 +28,16 @@ Products
 	<table class="table table_xk table-hover table-bordered">
 		<thead class="thead_green">
 			<tr>
-				<th class="text-center" style="width: 5%">Id</th>
+				<th class="text-center" style="width: 3%">Id</th>
 				<th class="text-center" style="width: 10%">Name</th>
 				<th class="text-center" style="width: 10%">Code</th>
-				<th class="text-center" style="width: 20%">Image</th>
+				<th class="text-center" style="width: 5%">Image</th>
 				<th class="text-center" style="width: 10%">Price</th>
 				<th class="text-center" style="width: 10%">Promotion Price</th>
-				<th class="text-center" style="width: 10%">Quantity</th>
-				<th class="text-center" style="width: 5%">Hot</th>
-				<th class="text-center" style="width: 5%">New</th>
-				<th class="text-center" style="width: 15%">Action</th>
+				<th class="text-center" style="width: 5%">Quantity</th>
+				<th class="text-center" style="width: 3%">Hot</th>
+				<th class="text-center" style="width: 3%">New</th>
+				<th class="text-center" style="width: 10%">Action</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -46,7 +46,7 @@ Products
 			<tr>
 				<td class="text-center">{{++$key}}</td>
 				<td class="text-center">
-					<a href="{{route('product.show',$product->id)}}">
+					<a href="">
 						<h4>{{  $product->name }}</h4>
 					</a>
 				</td>
