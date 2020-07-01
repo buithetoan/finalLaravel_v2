@@ -33,6 +33,9 @@ Route::group(['middleware' => ['web']], function () {
     Route::post('admin/logout', ['as'=>'admin.logout','uses'=>'Admin\LoginController@adminLogout']);
 	Route::resource('/admin/order','Admin\OrderController');
 	Route::delete('order_delete', 'Admin\OrderController@destroy')->name('order_delete');
+	// ----- Order Detail -----
+	Route::resource('/admin/orderdetail','Admin\OrderDetailController');
+	// ----- End Order Detail -----
     Route::middleware(['checkuser'])->group(function () {
 		Route::group(['namespace'=>'Admin','prefix'=>'/'],function (){
 	    	Route::get('/admin/dashboard', 'DashboardController@index');

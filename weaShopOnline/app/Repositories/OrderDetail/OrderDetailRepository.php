@@ -1,9 +1,9 @@
 <?php
-namespace App\Repositories\Order;
+namespace App\Repositories\OrderDetail;
 
 use App\Repositories\EloquentRepository;
 
-class OrderRepository extends EloquentRepository implements OrderInterface
+class OrderDetailRepository extends EloquentRepository implements OrderDetailInterface
 {
     /**
      * get model

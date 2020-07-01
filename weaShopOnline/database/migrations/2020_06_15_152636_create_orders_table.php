@@ -22,7 +22,7 @@ class CreateOrdersTable extends Migration
             ->onUpdate('cascade')
             ->onDelete('cascade');
             $table->boolean('is_deleted')->default(0);
-            $table->timestamps();
+            $table->timestamps(); 
         });
     }
 

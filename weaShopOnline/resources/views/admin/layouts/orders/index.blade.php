@@ -25,12 +25,11 @@ orders
 		<thead class="thead_green">
 			<tr>
 				<th class="text-center">Id</th>
-				<th class="text-center">Product Name</th>
-				<th class="text-center">Quantity</th>
-				<th class="text-center">Customer Name</th>
-				<th class="text-center">Order Status</th>
-				<th class="text-center">Payment Status</th>
-				<th class="text-center">Total</th>
+				<th class="text-center">Name</th>
+				<th class="text-center">Logo</th>
+				<th class="text-center">Address</th>
+				<th class="text-center">PhoneNo</th>
+				<th class="text-center">Slug</th>
 				<th class="text-center">Action</th>
 			</tr>
 		</thead>
@@ -41,18 +40,18 @@ orders
 				<td class="text-center">{{++$key}}</td>
 				<td class="text-center">
 					<a href="">
-						<h4>{{  $order->name }}</h4>
+						<h4>{{ $brand->name }}</h4>
 					</a>
 				</td>
 				<td class="text-center">
-					<img src="{{asset('images/'.$brand->logo)}}" width="50" height="50" alt="logo">
+					<img src="{{ asset('images/'.$brand->logo) }}" alt="">
 				</td>
-				<td class="text-center">{{ $order->address }}</td>
-				<td class="text-center">{{ $order->phone_no }}</td>
-				<td class="text-center">{{ $order->slug }}</td>
+				<td class="text-center">{{ $brand->address }}</td>
+				<td class="text-center">{{ $brand->phone_no }}</td>
+				<td class="text-center">{{ $brand->slug }}</td>
 				<td class="text-center action_icon">
-					<a href="{{route('order.edit',$order->id)}}"><i class="far fa-edit edit"></i></a>
-					<a type="button" class="fas fa-trash-alt deletebutton text-danger btn" data-id="{{$order->id}}" data-toggle="modal" data-target="#Modal"></a>
+					<a href="{{route('brand.edit',$brand->id)}}"><i class="far fa-edit edit"></i></a>
+					<a type="button" class="fas fa-trash-alt deletebutton text-danger btn" data-id="{{$brand->id}}" data-toggle="modal" data-target="#Modal"></a>
 				</td>
 			</tr>
 			@endforeach
