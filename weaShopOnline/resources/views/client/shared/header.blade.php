@@ -42,9 +42,9 @@
                 <div class="our-link">
                     <ul>
                         @if(Auth::check())
-                        <a class="nav-link dropdown-toggle" href="#">{{ Auth::user()->name }}</a>
+                        <button class="btn btn-outline-danger" id="flip"> <a href="#">{{ Auth::user()->name }}</a></button>
                         <div class="logout_button">
-                            <a class="dropdown-item" href="{{ route('client.logout') }}"
+                            <a id="panel" style="display: none;" href="{{ route('client.logout') }}"
                             onclick="event.preventDefault();
                             document.getElementById('logout-form').submit();">
                         {{ __('Logout') }}</a>
