@@ -33,6 +33,9 @@ use App\Repositories\RoleUser\RoleUserRepository;
 //order
 use App\Repositories\Order\OrderInterface;
 use App\Repositories\Order\OrderRepository;
+//customer
+use App\Repositories\Customer\CustomerInterface;
+use App\Repositories\Customer\CustomerRepository;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -81,6 +84,10 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(
             OrderInterface::class,
             OrderRepository::class
+        );
+        $this->app->bind(
+            CustomerInterface::class,
+            CustomerRepository::class
         );
     }
 

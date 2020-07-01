@@ -26,11 +26,13 @@ Route::group(['middleware' => ['web']], function () {
     Route::post('login', ['as'=>'client.login','uses'=>'Auth\LoginController@webLoginPost']);
     Route::get('logout', 'Auth\LoginController@webLogout');
     Route::post('logout', ['as'=>'client.logout','uses'=>'Auth\LoginController@webLogout']);
-
+    Route::post('register',['as' => 'client.register', 'uses' => 'Client\RegisterController@create']);
+    
     Route::get('admin/login', 'Admin\LoginController@showAdminLogin');
     Route::post('admin/login', ['as'=>'admin.login','uses'=>'Admin\LoginController@adminLogin']);
     Route::get('admin/logout', 'Admin\LoginController@adminLogout');
     Route::post('admin/logout', ['as'=>'admin.logout','uses'=>'Admin\LoginController@adminLogout']);
+	
 	Route::resource('/admin/order','Admin\OrderController');
 	Route::delete('order_delete', 'Admin\OrderController@destroy')->name('order_delete');
     Route::middleware(['checkuser'])->group(function () {
