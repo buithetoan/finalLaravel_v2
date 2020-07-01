@@ -1,26 +1,30 @@
 @extends('admin.shared.main')
 @section('title')
-orders
+weaShopOnline - Orders
 @endsection
 @section('content')
 <div class="content_yield">
-	<h3 class="page_title">Orders</h3>
-	<a href="{{ route('order.create') }}" class="btn bg-color-green add_new_button"><i class="fas fa-plus"></i> Add new</a>
-	@if(Session::has('message'))
-	<div id="mydiv" style="position:absolute; right: 10px; top: 10px;" class="float-right mt-2 alert alert-success alert-dismissible fade show" role="alert" style="position: absolute;">
-		<strong>{{ Session::get('message') }}</strong>
-		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-			<span aria-hidden="true">&times;</span>
-		</button>
+	<div class="row">
+		<h3 class="col-md-8 page_title">Orders</h3>
+		<div class="col-md-4">
+			@if(Session::has('message'))
+			<div id="div-alert" style="position:absolute; right: 10px;" class="float-right mt-2 alert alert-success alert-dismissible show" role="alert" style="position: absolute;">
+				<strong>{{ Session::get('message') }}</strong>
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			@elseif(Session::has('err'))
+			<div id="div-alert" style="position:absolute; right: 10px;" class="float-right mt-2 alert alert-success alert-dismissible show" role="alert" style="position: absolute;">
+				<strong>{{ Session::get('err') }}</strong>
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			@endif			
+		</div>
 	</div>
-	@elseif(Session::has('err'))
-	<div id="mydiv" style="position:absolute; right: 10px; top: 100px;" class="float-right mt-2 alert alert-success alert-dismissible fade show" role="alert" style="position: absolute;">
-		<strong>{{ Session::get('err') }}</strong>
-		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-			<span aria-hidden="true">&times;</span>
-		</button>
-	</div>
-	@endif
+	<a href="{{ route('order.create') }}" class="btn bg-color-green add_new_button"><i class="fas fa-plus"></i> Add new</a>	
 	<table class="table table_xk table-hover table-bordered">
 		<thead class="thead_green">
 			<tr>
@@ -60,7 +64,7 @@ orders
 		</tbody>
 	</table>
 </div>
-{{-- {{Form::open(['route' => ['order_delete'], 'method' => 'DELETE'])}}  
+{{Form::open(['route' => ['order.delete'], 'method' => 'DELETE'])}}  
 @include('admin.modal.modaldelete')
 {{ Form::close() }}
 <script>
@@ -69,5 +73,11 @@ orders
 		console.log(id);
 		$('#id').val(id);
 	});
-</script> --}}
+</script>
+<script>
+    setTimeout(function() {
+        var element = document.getElementById("div-alert");
+        element.classList.add("fade");
+    }, 2000)
+</script>
 @endsection

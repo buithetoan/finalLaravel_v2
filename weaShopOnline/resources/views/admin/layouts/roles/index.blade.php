@@ -1,6 +1,6 @@
 @extends('admin.shared.main')
 @section('title')
-Roles
+weaShopOnline - Roles
 @endsection
 @section('content')
 <div class="content_yield">

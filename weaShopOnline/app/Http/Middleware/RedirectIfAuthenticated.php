@@ -19,7 +19,7 @@ class RedirectIfAuthenticated
     public function handle($request, Closure $next, $guard = null)
     {
         if(Auth::guard($guard)->check()){
-            if (auth()->user()->level == 3) {
+            if (auth()->user()->level == 1) {
                 return $next($request);
             }
         }

@@ -1,6 +1,6 @@
 @extends('admin.shared.main')
 @section('title')
-Categories
+weaShopOnline - Categories
 @endsection
 @section('content')
 <div class="content_yield">
@@ -59,7 +59,7 @@ Categories
 		</tbody>
 	</table>
 </div>
-{{-- {{Form::open(['route' => ['category_delete'], 'method' => 'DELETE'])}}  
+{{Form::open(['route' => ['category.delete'], 'method' => 'DELETE'])}}  
 @include('admin.modal.modaldelete')
 {{ Form::close() }}
 <script>
@@ -68,7 +68,7 @@ Categories
 		console.log(id);
 		$('#id').val(id);
 	});
-</script> --}}
+</script>
 <script>
     setTimeout(function() {
         var element = document.getElementById("div-alert");

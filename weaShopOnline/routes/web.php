@@ -33,8 +33,6 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('admin/logout', 'Admin\LoginController@adminLogout');
     Route::post('admin/logout', ['as'=>'admin.logout','uses'=>'Admin\LoginController@adminLogout']);
 	
-	Route::resource('/admin/order','Admin\OrderController');
-	Route::delete('order_delete', 'Admin\OrderController@destroy')->name('order_delete');
     Route::middleware(['checkuser'])->group(function () {
 		Route::group(['namespace'=>'Admin','prefix'=>'/'],function (){
 	    	Route::get('/admin/dashboard', 'DashboardController@index');
@@ -56,7 +54,11 @@ Route::group(['middleware' => ['web']], function () {
 					'middleware' => 'checkacl:edit_user'
 				]);
 				Route::put('/edit/{id}', 'UserController@update')->name('user.update');
-				Route::delete('delete', 'UserController@destroy')->name('user.delete');
+				Route::delete('/delete', [
+					'as' => 'user.delete',
+					'uses' =>'UserController@destroy',
+					'middleware'=> 'checkacl:delete_user'
+				]);
 			});
 			Route::prefix('admin/role')->group(function () {
 				Route::get('', [
@@ -64,7 +66,6 @@ Route::group(['middleware' => ['web']], function () {
 					'uses' => 'RoleController@index',
 					'middleware' => 'checkacl:view_role'
 				]);
-				Route::get('','RoleController@index')->name('role.index');
 				Route::get('/create', [
 					'as' => 'role.create',
 					'uses' => 'RoleController@create',
@@ -77,7 +78,11 @@ Route::group(['middleware' => ['web']], function () {
 					'middleware' => 'checkacl:edit_role'
 				]);
 				Route::put('/edit/{id}', 'RoleController@update')->name('role.update');
-				Route::delete('delete', 'RoleController@destroy')->name('role.delete');
+				Route::delete('/delete', [
+					'as' => 'role.delete',
+					'uses' =>'RoleController@destroy',
+					'middleware'=> 'checkacl:delete_role'
+				]);
 			});
 			Route::prefix('admin/brand')->group(function () {
 				Route::get('', [
@@ -97,7 +102,11 @@ Route::group(['middleware' => ['web']], function () {
 					'middleware' => 'checkacl:edit_brand'
 				]);
 				Route::put('/edit/{id}', 'BrandController@update')->name('brand.update');
-				Route::delete('delete', 'BrandController@destroy')->name('brand.delete');
+				Route::delete('/delete', [
+					'as' => 'brand.delete',
+					'uses' =>'BrandController@destroy',
+					'middleware'=> 'checkacl:delete_brand'
+				]);
 			});
 			Route::prefix('admin/category')->group(function () {
 				Route::get('', [
@@ -117,7 +126,11 @@ Route::group(['middleware' => ['web']], function () {
 					'middleware' => 'checkacl:edit_category'
 				]);
 				Route::put('/edit/{id}', 'CategoryController@update')->name('category.update');
-				Route::delete('delete', 'CategoryController@destroy')->name('category.delete');
+				Route::delete('/delete', [
+					'as' => 'category.delete',
+					'uses' =>'CategoryController@destroy',
+					'middleware'=> 'checkacl:delete_category'
+				]);
 			});
 			Route::prefix('admin/product')->group(function () {
 				Route::get('', [
@@ -137,7 +150,11 @@ Route::group(['middleware' => ['web']], function () {
 					'middleware' => 'checkacl:edit_product'
 				]);
 				Route::put('/edit/{id}', 'ProductController@update')->name('product.update');
-				Route::delete('delete', 'ProductController@destroy')->name('product.delete');
+				Route::delete('/delete', [
+					'as' => 'product.delete',
+					'uses' =>'ProductController@destroy',
+					'middleware'=> 'checkacl:delete_product'
+				]);
 			});
 			Route::prefix('admin/slide')->group(function () {
 				Route::get('', [
@@ -157,7 +174,35 @@ Route::group(['middleware' => ['web']], function () {
 					'middleware' => 'checkacl:edit_slide'
 				]);
 				Route::put('/edit/{id}', 'SlideController@update')->name('slide.update');
-				Route::delete('delete', 'SlideController@destroy')->name('slide.delete');
+				Route::delete('/delete', [
+					'as' => 'slide.delete',
+					'uses' =>'SlideController@destroy',
+					'middleware'=> 'checkacl:delete_slide'
+				]);
+			});
+			Route::prefix('admin/order')->group(function () {
+				Route::get('', [
+					'as' => 'order.index',
+					'uses' => 'OrderController@index',
+					'middleware' => 'checkacl:view_order'
+				]);
+				Route::get('/create', [
+					'as' => 'order.create',
+					'uses' => 'OrderController@create',
+					'middleware' => 'checkacl:create_order'
+				]);
+				Route::post('/create', 'OrderController@store')->name('order.store');
+				Route::get('/order/{id}', [
+					'as' => 'order.edit',
+					'uses' => 'OrderController@edit',
+					'middleware' => 'checkacl:edit_order'
+				]);
+				Route::put('/edit/{id}', 'OrderController@update')->name('order.update');
+				Route::delete('/delete', [
+					'as' => 'order.delete',
+					'uses' =>'OrderController@destroy',
+					'middleware'=> 'checkacl:delete_order'
+				]);
 			});
 		});
 	});

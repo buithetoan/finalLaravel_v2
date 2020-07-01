@@ -1,6 +1,6 @@
 @extends('admin.shared.main')
 @section('title')
-Products
+weaShopOnline - Products
 @endsection
 @section('content')
 <div class="content_yield">
@@ -30,14 +30,13 @@ Products
 			<tr>
 				<th class="text-center" style="width: 3%">Id</th>
 				<th class="text-center" style="width: 10%">Name</th>
-				<th class="text-center" style="width: 10%">Code</th>
 				<th class="text-center" style="width: 5%">Image</th>
 				<th class="text-center" style="width: 10%">Price</th>
 				<th class="text-center" style="width: 10%">Promotion Price</th>
 				<th class="text-center" style="width: 5%">Quantity</th>
 				<th class="text-center" style="width: 3%">Hot</th>
 				<th class="text-center" style="width: 3%">New</th>
-				<th class="text-center" style="width: 10%">Action</th>
+				<th class="text-center" style="width: 4%">Action</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -50,7 +49,6 @@ Products
 						<h4>{{  $product->name }}</h4>
 					</a>
 				</td>
-				<td class="text-center">{{ $product->code }}</td>
 				<td class="text-center">
 					<img src="{{asset('images/'.$product->url_image)}}" width="60" alt="image">
 				</td>
@@ -73,7 +71,7 @@ Products
 		</tbody>
 	</table>
 </div>
-{{-- {{Form::open(['route' => ['product_delete'], 'method' => 'DELETE'])}}  
+{{Form::open(['route' => ['product.delete'], 'method' => 'DELETE'])}}  
 @include('admin.modal.modaldelete')
 {{ Form::close() }}
 <script>
@@ -82,5 +80,11 @@ Products
 		console.log(id);
 		$('#id').val(id);
 	});
-</script> --}}
+</script>
+<script>
+    setTimeout(function() {
+        var element = document.getElementById("div-alert");
+        element.classList.add("fade");
+    }, 2000)
+</script>
 @endsection

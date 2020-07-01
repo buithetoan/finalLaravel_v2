@@ -18,7 +18,7 @@ class CheckLogin
     public function handle($request, Closure $next, $guard = null)
     {
         if(Auth::guard('admin')->check()){
-            if(Auth::guard('admin')->user()->level != 3){
+            if(Auth::guard('admin')->user()->level == 0){
                 return $next($request);
             }else{
                 return abort(401); 

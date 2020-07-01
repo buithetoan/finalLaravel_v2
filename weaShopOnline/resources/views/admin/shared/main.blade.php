@@ -21,6 +21,11 @@
 	<link rel="stylesheet" href="{{asset('admin/css/style.css')}}">
 	<!-- Responsive Css -->
 	<link rel="stylesheet" href="{{asset('admin/css/responsive.css')}}">
+	<!-- Datatable-->
+	<link rel="stylesheet" type="text/css" href="{{ asset('admin/css/dataTables.bootstrap.min.css') }}">
+	<script src="{{ asset('admin/js/jquery.dataTables.min.js') }}"></script>
+	<script src="{{ asset('admin/js/dataTables.bootstrap.min.js') }}"></script>
+	
 </head>
 <body>
 	<!-- Page -->

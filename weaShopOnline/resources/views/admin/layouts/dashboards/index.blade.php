@@ -1,6 +1,6 @@
 @extends('admin.shared.main')
 @section('title')
-	Dashboard
+weaShopOnline - Dashboard
 @endsection
 @section('content')
 	<div class="content_yield">

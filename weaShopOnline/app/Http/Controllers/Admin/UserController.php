@@ -60,11 +60,11 @@ class UserController extends Controller
                 'email' => $request->email,
                 'password' => bcrypt($request->password),
                 'is_deleted' => false,
-                'level' => $request->level,
+                'level' => 0,
             ]);
             $userCreate = $this->userRepository->create($data->toArray());
             // Insert data to role_permission
-            $userCreate->roles()->attach($request->role);
+            $userCreate->roles()->attach($request->roles);
 
             $userCreate->save();
             if ($userCreate) return redirect('/admin/user')->with('message','Create new successfully!');

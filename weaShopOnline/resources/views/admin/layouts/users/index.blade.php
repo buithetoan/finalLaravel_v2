@@ -1,6 +1,6 @@
 @extends('admin.shared.main')
 @section('title')
-Users
+weaShopOnline - Users
 @endsection
 @section('content')
 <div class="content_yield">
@@ -56,7 +56,7 @@ Users
         </tbody>
     </table>
 </div>
-{{-- {{Form::open(['route' => ['user_delete'], 'method' => 'DELETE'])}}
+{{Form::open(['route' => ['user.delete'], 'method' => 'DELETE'])}}
 @include('admin.modal.modaldelete')
 {{ Form::close() }}
 <script>
@@ -65,7 +65,7 @@ Users
         console.log(id);
         $('#id').val(id);
     });
-</script> --}}
+</script>
 <script>
     setTimeout(function() {
         var element = document.getElementById("div-alert");

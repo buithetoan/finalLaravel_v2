@@ -28,18 +28,19 @@ class RegisterController extends Controller
     }
     protected function create(Request $request)
     {
+        
+
         $user = new User([
                 'name' => $request->name,
                 'email' => $request->email,
                 'password' => bcrypt($request->password),
                 'is_deleted' => false,
-                'level' => 3,
+                'level' => 1,
             ]);
+        // Auth::login($user,true);
         $userCreate = $this->userRepository->create($user->toArray());
             // Insert data to role_permission
-        $userCreate->roles()->attach(4);
-
-        $userCreate->save();
+        $userCreate->roles()->attach(4);        
 
         $customer = new Customer([
         	'full_name' => $request->full_name,
@@ -51,7 +52,7 @@ class RegisterController extends Controller
         ]);
         $createCustomer = $this->customerRepository->create($customer->toArray());
         $createCustomer->save();
-        Auth::login($user, true);
+        Auth::login($userCreate,true);
         return redirect('/home'); 
     }
 }
