@@ -17,6 +17,7 @@ Route::group(['namespace'=>'Client','prefix'=>'/'],function (){
 	Route::get('/about-us', 'HomeController@about');
 	Route::get('/register', 'HomeController@register');
 	Route::get('/product-all','ProductController@index');
+	Route::get('/product-detail','ProductController@index');
 	Route::get('/cart-page','CartController@cartpage');
 	Route::get('/payment','CartController@payment');
 });

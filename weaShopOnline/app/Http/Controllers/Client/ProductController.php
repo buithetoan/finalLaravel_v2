@@ -16,6 +16,10 @@ class ProductController extends Controller
     {
         return view('client.layouts.products');
     }
+    public function product_detail()
+    {
+        return view('client.layouts.product_detail');
+    }
 
     /**
      * Show the form for creating a new resource.
