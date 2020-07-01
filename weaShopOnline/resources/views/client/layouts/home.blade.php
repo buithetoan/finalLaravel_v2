@@ -6,6 +6,9 @@
     <!-- Start Slider -->
     <div id="slides-shop" class="cover-slides">
         <ul class="slides-container">
+{{--            @foreach($slides as $key => $slide)--}}
+
+{{--            @endforeach--}}
             <li class="text-left">
                 <img src="{{asset('front_assets/images/slide-1.jpg')}}" alt="">
                 <div class="container">
@@ -97,105 +100,104 @@
                     <div class="special-menu text-center">
                         <div class="button-group filter-button-group">
                             <button class="active" data-filter="*">All</button>
-                            <button data-filter=".top-featured">Top featured</button>
-                            <button data-filter=".best-seller">Best seller</button>
+                            <button data-filter=".top-hot">Hot</button>
+                            <button data-filter=".top-new">New</button>
+                            <button data-filter=".top-sale">Best Seller</button>
                         </div>
                     </div>
                 </div>
             </div>
 
             <div class="row special-list">
-                <div class="col-lg-3 col-md-6 special-grid best-seller">
-                    <div class="products-single fix">
-                        <div class="box-img-hover">
-                            <div class="type-lb">
-                                <p class="sale">Sale</p>
+                <!--Top hot product-->
+                @foreach($topHots as $key => $topHot)
+                    <div class="col-lg-3 col-md-6 special-grid top-hot">
+                        <div class="products-single fix">
+                            <div class="box-img-hover">
+                                <img src="{{asset('/images/'.$topHot->url_image)}}" class="img-fluid" alt="Image">
+                                <div class="mask-icon">
+                                    <ul>
+                                        <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
+                                        <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
+                                        <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
+                                    </ul>
+                                    <a class="cart" href="#">Add to Cart</a>
+                                </div>
                             </div>
-                            <img src="{{asset('front_assets/images/asus-1.jpg')}}" class="img-fluid" alt="Image">
-                            <div class="mask-icon">
-                                <ul>
-                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
-                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
-                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
-                                </ul>
-                                <a class="cart" href="#">Add to Cart</a>
+                            <div class="why-text">
+                                <h4>
+                                    <a href="">{{ Illuminate\Support\Str::limit($topHot->name, 25) }}</a>
+                                </h4>
+                                @if($topHot->promotion_price != null)
+                                    <h5>${{$topHot->promotion_price}}</h5>
+                                    <h5 class="text-secondary">$<strike>{{$topHot->price}}</strike></h5>
+                                @else
+                                    <h5>${{$topHot->price}}</h5>
+                                @endif
                             </div>
-                        </div>
-                        <div class="why-text">
-                            <h4>Lorem ipsum dolor sit amet</h4>
-                            <h5> $7.79</h5>
                         </div>
                     </div>
-                </div>
+                @endforeach
 
-                <div class="col-lg-3 col-md-6 special-grid top-featured">
-                    <div class="products-single fix">
-                        <div class="box-img-hover">
-                            <div class="type-lb">
-                                <p class="new">New</p>
+                <!--Top new product-->
+                @foreach($topNews as $key => $topNew)
+                    <div class="col-lg-3 col-md-6 special-grid top-new">
+                        <div class="products-single fix">
+                            <div class="box-img-hover">
+                                <img src="{{asset('/images/'.$topNew->url_image)}}" class="img-fluid" alt="Image">
+                                <div class="mask-icon">
+                                    <ul>
+                                        <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
+                                        <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
+                                        <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
+                                    </ul>
+                                    <a class="cart" href="#">Add to Cart</a>
+                                </div>
                             </div>
-                            <img src="{{asset('front_assets/images/acer-5.png')}}" class="img-fluid" alt="Image">
-                            <div class="mask-icon">
-                                <ul>
-                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
-                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
-                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
-                                </ul>
-                                <a class="cart" href="#">Add to Cart</a>
+                            <div class="why-text">
+                                <h4>
+                                    <a href="">{{ Illuminate\Support\Str::limit($topNew->name, 25) }}</a>
+                                </h4>
+                                @if($topNew->promotion_price != null)
+                                    <h5>${{$topNew->promotion_price}}</h5>
+                                    <h5 class="text-secondary">$<strike>{{$topHot->price}}</strike></h5>
+                                @else
+                                    <h5>${{$topNew->price}}</h5>
+                                @endif
                             </div>
-                        </div>
-                        <div class="why-text">
-                            <h4>Lorem ipsum dolor sit amet</h4>
-                            <h5> $9.79</h5>
                         </div>
                     </div>
-                </div>
+                @endforeach
 
-                <div class="col-lg-3 col-md-6 special-grid top-featured">
-                    <div class="products-single fix">
-                        <div class="box-img-hover">
-                            <div class="type-lb">
-                                <p class="sale">Sale</p>
+                <!--Top Sales product-->
+                @foreach($topSales as $key => $topSale)
+                    <div class="col-lg-3 col-md-6 special-grid top-sale">
+                        <div class="products-single fix">
+                            <div class="box-img-hover">
+                                <img src="{{asset('/images/'.$topSale->url_image)}}" class="img-fluid" alt="Image">
+                                <div class="mask-icon">
+                                    <ul>
+                                        <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
+                                        <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
+                                        <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
+                                    </ul>
+                                    <a class="cart" href="#">Add to Cart</a>
+                                </div>
                             </div>
-                            <img src="{{asset('front_assets/images/msi-4.jpg')}}" class="img-fluid" alt="Image">
-                            <div class="mask-icon">
-                                <ul>
-                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
-                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
-                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
-                                </ul>
-                                <a class="cart" href="#">Add to Cart</a>
+                            <div class="why-text">
+                                <h4>
+                                    <a href="">{{ Illuminate\Support\Str::limit($topSale->name, 25) }}</a>
+                                </h4>
+                                @if($topSale->promotion_price != null)
+                                    <h5>${{$topSale->promotion_price}}</h5>
+                                    <h5 class="text-secondary">$<strike>{{$topSale->price}}</strike></h5>
+                                @else
+                                    <h5>${{$topSale->price}}</h5>
+                                @endif
                             </div>
-                        </div>
-                        <div class="why-text">
-                            <h4>Lorem ipsum dolor sit amet</h4>
-                            <h5> $10.79</h5>
                         </div>
                     </div>
-                </div>
-
-                <div class="col-lg-3 col-md-6 special-grid best-seller">
-                    <div class="products-single fix">
-                        <div class="box-img-hover">
-                            <div class="type-lb">
-                                <p class="sale">Sale</p>
-                            </div>
-                            <img src="{{asset('front_assets/images/mac-2.png')}}" class="img-fluid" alt="Image">
-                            <div class="mask-icon">
-                                <ul>
-                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
-                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
-                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
-                                </ul>
-                                <a class="cart" href="#">Add to Cart</a>
-                            </div>
-                        </div>
-                        <div class="why-text">
-                            <h4>Lorem ipsum dolor sit amet</h4>
-                            <h5> $15.79</h5>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>

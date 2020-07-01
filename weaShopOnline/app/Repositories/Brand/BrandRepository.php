@@ -18,9 +18,9 @@ class BrandRepository extends EloquentRepository implements BrandInterface
      * Get 5 brand
      * @return mixed
      */
-    public function getBrand()
+    public function getTopBrand($top)
     {
-        return $this->_model::take(5)->get();
+        return $this->_model::where('is_deleted', 0)->take($top)->get();
     }
     
 }

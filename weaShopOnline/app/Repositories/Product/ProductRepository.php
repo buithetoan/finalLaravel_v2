@@ -22,5 +22,17 @@ class ProductRepository extends EloquentRepository implements ProductInterface
     {
         return $this->_model::take(5)->get();
     }
+
+    public function getTopHotProduct($top){
+        return $this->_model::where('is_hot', 1)->where('is_deleted', 0)->take($top)->get();
+    }
+
+    public function getTopNewProduct($top){
+        return $this->_model::where('is_new', 1)->where('is_deleted', 0)->take($top)->get();
+    }
+
+    public function getTopSaleProduct($top){
+        return $this->_model::where('promotion_price', '!=', null)->where('is_deleted', 'false')->take($top)->get();
+    }
     
 }
