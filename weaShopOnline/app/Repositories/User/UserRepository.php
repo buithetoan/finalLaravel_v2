@@ -11,4 +11,8 @@ class UserRepository extends EloquentRepository implements UserInterface{
     {
         return \App\Models\User::class;
     }
+
+	public function getTotalUser(){
+        return $this->_model::where('is_deleted', 0)->where('level', 3)->get()->count();
+    }
 }

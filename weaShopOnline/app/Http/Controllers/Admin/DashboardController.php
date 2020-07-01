@@ -3,13 +3,22 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Repositories\Order\OrderInterface;
+use App\Repositories\Product\ProductInterface;
+use App\Repositories\User\UserInterface;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
-    public function __construct()
+    protected $productRepository;
+    protected $orderRepository;
+    protected $userRepository;
+    public function __construct(ProductInterface $productRepos, OrderInterface $orderRepos, UserInterface $userRepos)
     {
         $this->middleware('guest', ['except' => 'logout']);
+        $this->productRepository = $productRepos;
+        $this->orderRepository = $orderRepos;
+        $this->userRepository = $userRepos;
     }
     /**
      * Display a listing of the resource.
@@ -18,6 +27,8 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        return view('admin.layouts.dashboards.index');
+        $total_product = $this->productRepository->getTotalProduct();
+        $total_customer = $this->userRepository->getTotalUser();
+        return view('admin.layouts.dashboards.index', compact('total_product', 'total_customer'));
     }
 }

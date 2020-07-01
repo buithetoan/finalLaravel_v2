@@ -12,7 +12,7 @@ weaShopOnline - Dashboard
 				</div>
 				<div class="info">
 					<h6>Total product</h6>
-					<h3>3000</h3>
+					<h3>{{$total_product}}</h3>
 				</div>
 			</div>
 		</div>
@@ -23,7 +23,7 @@ weaShopOnline - Dashboard
 				</div>
 				<div class="info">
 					<h6>Total customer</h6>
-					<h3>300</h3>
+					<h3>{{$total_customer}}</h3>
 				</div>
 			</div>
 		</div>
