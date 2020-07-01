@@ -27,7 +27,6 @@ class SlideRequest extends FormRequest
             return [
                 'content' => 'required|max:255|min:5|string',
                 'description' => 'required|max:255|min:10',
-                'display_order' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/',
                 'image' => 'mimes:jpeg,jpg,png',
                 'url' => 'required|max:255|min:1|string',
             ];
@@ -35,7 +34,6 @@ class SlideRequest extends FormRequest
             return [
                 'content' => 'required|max:255|min:5|string',
                 'description' => 'required|max:255|min:10',
-                'display_order' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/',
                 'image' => 'required|mimes:jpeg,jpg,png',
                 'url' => 'required|max:255|min:1|string',
             ];
@@ -52,8 +50,6 @@ class SlideRequest extends FormRequest
             'description.required' => 'Please enter description.',
             'description.max:100' => 'Maximum description length is 255 characters.',
             'description.min:10' => 'Minimum description length is 10 characters.',
-            'display_order.required' => 'Please enter display order.',
-            'display_order.numeric' =>'Invalid type number.',
             'image.required' => 'Please select Image.',
             'image.mimes' => 'Please select file jpg/jpeg/png.',
             'url.required' => 'Please enter Slug.',

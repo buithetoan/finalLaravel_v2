@@ -52,7 +52,6 @@ class SlideController extends Controller
         $request->image->move('images', $nameimage);
         $data = new Slide([
             'content' => $request->content,
-            'display_order' => $request->display_order,
             'image' => $nameimage,
             'url' => $request->url,
             'description' => $request->description,

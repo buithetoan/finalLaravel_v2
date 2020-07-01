@@ -11,6 +11,9 @@
 		<a class="item_link" href="{{ route('brand.index') }}">Brand</a>
 	</li>
 	<li class="list_item">
+		<a class="item_link" href="{{ route('slide.index') }}">Slide</a>
+	</li>
+	<li class="list_item">
 		<a class="item_link" href="{{ route('category.index') }}">Category</a>
 	</li>
 	<li class="list_item">

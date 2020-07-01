@@ -4,7 +4,7 @@
 @endsection
 @section('content')
     <div class="content_yield">
-        {{ Form::open(['url' => 'admin/slide', 'method' => 'post','enctype '=>'multipart/form-data','class' => 'col-md-12 row']) }}
+        {{ Form::open(['route' => 'slide.store', 'method' => 'post','enctype '=>'multipart/form-data','class' => 'col-md-12 row']) }}
         <div class="col-md-12 m-auto">
             <h3 class="mb-5 font-weight-bold">Slide</h3>
             <div class="col-lg-10 col-md-12 col-sm-12 row">
@@ -35,17 +35,7 @@
                     ])
                     !!}
                     <span class="text-danger">{{ $errors->first('url')}}</span>
-                </div>
-                <div class="form-group">
-                    {{ Form::label('Display Order: ','',['class' => 'font-weight-bold']) }}
-                    {!! Form::text('display_order', null, [
-                        'class' => 'form-control',
-                        'type' => 'number',
-                        'placeholder'=>"Display Order"
-                    ])
-                    !!}
-                    <span class="text-danger">{{ $errors->first('display_order')}}</span>
-                </div>
+                </div>                
                 <div class="form-group">
                     {{ Form::label('Image: ','',['class' => 'font-weight-bold']) }}
                     {{ Form::file('image', null, ['class' => 'form-control' ]) }}

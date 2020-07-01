@@ -139,6 +139,26 @@ Route::group(['middleware' => ['web']], function () {
 				Route::put('/edit/{id}', 'ProductController@update')->name('product.update');
 				Route::delete('delete', 'ProductController@destroy')->name('product.delete');
 			});
+			Route::prefix('admin/slide')->group(function () {
+				Route::get('', [
+					'as' => 'slide.index',
+					'uses' => 'SlideController@index',
+					'middleware' => 'checkacl:view_slide'
+				]);
+				Route::get('/create', [
+					'as' => 'slide.create',
+					'uses' => 'SlideController@create',
+					'middleware' => 'checkacl:create_slide'
+				]);
+				Route::post('/create', 'SlideController@store')->name('slide.store');
+				Route::get('/slide/{id}', [
+					'as' => 'slide.edit',
+					'uses' => 'SlideController@edit',
+					'middleware' => 'checkacl:edit_slide'
+				]);
+				Route::put('/edit/{id}', 'SlideController@update')->name('slide.update');
+				Route::delete('delete', 'SlideController@destroy')->name('slide.delete');
+			});
 		});
 	});
 });

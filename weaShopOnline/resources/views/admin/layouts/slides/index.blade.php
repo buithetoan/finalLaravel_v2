@@ -60,7 +60,7 @@ slides
         </tbody>
     </table>
 </div>
-{{Form::open(['route' => ['slide_delete'], 'method' => 'DELETE'])}}
+{{-- {{Form::open(['route' => ['slide_delete'], 'method' => 'DELETE'])}}
 @include('admin.modal.modaldelete')
 {{ Form::close() }}
 <script>
@@ -69,7 +69,7 @@ slides
         console.log(id);
         $('#id').val(id);
     });
-</script>
+</script> --}}
 <script>
     setTimeout(function() {
         var element = document.getElementById("div-alert");

@@ -36,15 +36,6 @@
                     <span class="text-danger">{{ $errors->first('url')}}</span>
                 </div>
                 <div class="form-group">
-                    {{ Form::label('Display Order: ','',['class' => 'font-weight-bold']) }}
-                    {!! Form::text('display_order', $slide->display_order, [
-                        'class' => 'form-control',
-                        'placeholder'=>"Display Order"
-                    ])
-                    !!}
-                    <span class="text-danger">{{ $errors->first('display_order')}}</span>
-                </div>
-                <div class="form-group">
                     {{ Form::label('Image: ','',['class' => 'font-weight-bold']) }}
                     {{ Form::file('image', ['class' => 'form-control' ]) }}
                     <input type="hidden" value="{{$slide->image}}" name="old_image"><br>
