@@ -27,13 +27,15 @@
                     <span class="text-danger">{{ $errors->first('display_name')}}</span>
                 </div>
                 <div class="form-group">
-                    @foreach($permissions as $key => $permission)
-                        <div class="form-check">
+                    <div class="role_group">
+                        @foreach($permissions as $key => $permission)
+                        <div class="form-check col-2">
                             <input {{ $getAllPermissionOfRole->contains($permission->id) ? 'checked' : '' }} id="per_{{$key}}"
                                    type="checkbox" class="form-check-input" name="permission[]" value="{{ $permission->id }}">
                             <label class="form-check-label" for="per_{{$key}}" >{{ $permission->display_name }}</label>
                         </div>
-                    @endforeach
+                        @endforeach
+                    </div>
                 </div>
 
                 <div class="form-group text-right">

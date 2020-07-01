@@ -293,3 +293,31 @@ h2.title {
 .total.revenue_total:hover {
 	background-color: #1cc88a;
 }
+
+/* Role page */
+.role_group {
+	padding: 30px;
+	background: #fff;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	margin-top: 30px;
+	margin-bottom: 20px;
+}
+
+.role_group .col-2 {
+	padding-left: 30px;
+}
+
+.role_group .col-2:nth-child(4n) {
+	margin-bottom: 10px;
+	border-bottom: 1px solid #ccc;
+	padding-bottom: 3px;
+}
+.role_group .col-2:nth-child(4n):last-child {
+	margin-bottom: 0;
+	border: none;
+	padding-bottom: 0;
+}
+.role_group .col-2 .form-check-input {
+	margin-right: 15px;
+}

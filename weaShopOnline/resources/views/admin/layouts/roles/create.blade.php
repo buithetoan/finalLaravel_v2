@@ -27,12 +27,14 @@
                     <span class="text-danger">{{ $errors->first('display_name')}}</span>
                 </div>
                 <div class="form-group">
-                    @foreach($permissions as $key => $permission)
+                    <div class="role_group">
+                        @foreach($permissions as $key => $permission)
                         <div class="col-2">
                             <input type="checkbox" id="per_{{$key}}" class="form-check-input" name="permission[]" value="{{ $permission->id }}">
                             <label class="form-check-label" for="per_{{$key}}" >{{ $permission->display_name }}</label>
                         </div>
-                    @endforeach
+                        @endforeach
+                    </div>
                 </div>
                 <div class="form-group text-right">
                     <a class="btn btn-info mt-3" href="{{ route('user.index') }}" title="back">Back to list</a>
