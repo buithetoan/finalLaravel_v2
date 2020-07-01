@@ -7,5 +7,5 @@ interface BrandInterface
      * Get 5 brand
      * @return mixed
      */
-    public function getBrand();
+    public function getTopBrand($top);
 }

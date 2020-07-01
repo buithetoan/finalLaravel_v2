@@ -3,18 +3,32 @@
 namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
+use App\Repositories\Brand\BrandInterface;
+use App\Repositories\Product\ProductInterface;
+use App\Repositories\Slide\SlideInterface;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    protected $productRepository;
+    protected $brandRepository;
+    protected $slideRepository;
+
+    public function __construct(ProductInterface $productRepos, BrandInterface $brandRepos, SlideInterface $slideRepos)
+    {
+        $this->productRepository = $productRepos;
+        $this->brandRepository = $brandRepos;
+        $this->slideRepository = $slideRepos;
+    }
+
     public function index()
     {
-        return view('client.layouts.home');
+        $slides = $this->slideRepository->getTopSlide(3);
+        $topHots = $this->productRepository->getTopHotProduct(4);
+        $topNews = $this->productRepository->getTopNewProduct(4);
+        $topSales = $this->productRepository->getTopSaleProduct(4);
+        $brands = $this->brandRepository->getTopBrand(10);
+        return view('client.layouts.home', compact('slides', 'topHots', 'topNews', 'topSales', 'brands'));
     }
     public function about()
     {

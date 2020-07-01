@@ -2,10 +2,6 @@
 	<!-- Search Form -->
 	<form class="search_form">
 		<div class="input-group">
-			<input type="text" class="form-control" placeholder="Search">
-			<div class="input-group-append" style="margin-left: 8px;">
-				<button class="btn bg-color-green" type="button">Search</button>
-			</div>
 		</div>
 	</form>
 	<!-- Admin Icon -->

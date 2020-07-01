@@ -25,7 +25,7 @@ class ProductRequest extends FormRequest
     {
         if ($this->method()=='PUT'){
             return [
-                'name' => 'required|max:100|min:5|regex:/^[a-zA-Z0-9\s]+$/',
+                'name' => 'required|max:100|min:5',
                 'code' => 'required|max:100|min:1',
                 'url_image' => 'mimes:jpeg,jpg,png',
                 'price' => 'required|numeric|min:1|regex:/^[1-9][0-9.]*$/',
@@ -36,7 +36,7 @@ class ProductRequest extends FormRequest
             ];
         }else{
             return [
-                'name' => 'required|max:100|min:5|regex:/^[a-zA-Z0-9\s]+$/',
+                'name' => 'required|max:100|min:5',
                 'code' => 'required|max:100|min:1',
                 'url_image' => 'mimes:jpeg,jpg,png',
                 'price' => 'required|numeric|min:1|regex:/^[1-9][0-9.]*$/',
