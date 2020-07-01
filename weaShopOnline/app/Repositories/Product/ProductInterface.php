@@ -7,4 +7,5 @@ interface ProductInterface
     public function getTopHotProduct($top);
     public function getTopNewProduct($top);
     public function getTopSaleProduct($top);
+    public function getTotalProduct();
 }

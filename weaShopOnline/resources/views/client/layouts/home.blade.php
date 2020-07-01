@@ -6,45 +6,20 @@
     <!-- Start Slider -->
     <div id="slides-shop" class="cover-slides">
         <ul class="slides-container">
-{{--            @foreach($slides as $key => $slide)--}}
-
-{{--            @endforeach--}}
-            <li class="text-left">
-                <img src="{{asset('front_assets/images/slide-1.jpg')}}" alt="">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h1 class="m-b-20"><strong>Welcome To <br> WAEshop</strong></h1>
-                            <p class="m-b-40">Our store always gives customers the dedication, prestige, quality, safety, making people fully trust the products.</p>
-                            <p><a class="btn hvr-hover" href="#">Shop New</a></p>
+            @foreach($slides as $key => $slide)
+                <li class="text-left">
+                    <img src="{{asset('images/'.$slide->image)}}" alt="">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h1 class="m-b-20"><strong>WEASHOP</strong></h1>
+                                <p class="m-b-40">{{$slide->description}}</p>
+                                <p><a class="btn hvr-hover" href="{{$slide->url}}">Shop Now</a></p>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </li>
-            <li class="text-center">
-                <img src="{{asset('front_assets/images/slide-1.jpg')}}" alt="">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h1 class="m-b-20"><strong>SEARCH<br>LAPTOP CỦA BẠN</strong></h1>
-                            <p class="m-b-40">Laptop dealer of the world leading famous brands.</p>
-                            <p><a class="btn hvr-hover" href="#">Shop New</a></p>
-                        </div>
-                    </div>
-                </div>
-            </li>
-            <li class="text-right">
-                <img src="{{asset('front_assets/images/slide-1.jpg')}}" alt="">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h1 class="m-b-20"><strong>SALE OFF <br></strong></h1>
-                            <p class="m-b-40">Web Technology | Genuine products | competitive price.</p>
-                            <p><a class="btn hvr-hover" href="#">Shop New</a></p>
-                        </div>
-                    </div>
-                </div>
-            </li>
+                </li>
+            @endforeach
         </ul>
         <div class="slides-navigation">
             <a href="#" class="next"><i class="fa fa-angle-right" aria-hidden="true"></i></a>
@@ -205,6 +180,5 @@
     <!-- Start Instagram Feed  -->
     @include('client.shared.slider_advertisement')
     <!-- End Instagram Feed  -->
-
 </body>
 @endsection

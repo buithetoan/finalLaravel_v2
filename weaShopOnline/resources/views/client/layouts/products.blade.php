@@ -138,8 +138,4 @@
         </div>
     </div>
     <!-- End Shop Page -->
-
-    <!-- Start Instagram Feed  -->
-    @include('client.shared.slider_advertisement')
-    <!-- End Instagram Feed  -->
 @endsection
