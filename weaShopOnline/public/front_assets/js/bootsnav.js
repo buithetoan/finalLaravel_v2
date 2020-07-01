@@ -187,16 +187,13 @@
             // ------------------------------------------------------------------------------ //
             // Toggle Side Menu
             // ------------------------------------------------------------------------------ //
-            $("nav.navbar.bootsnav .attr-nav").each(function(){  
-                $("li.side-menu > a", this).on("click", function(e){
-                    e.preventDefault();
-                    $("nav.navbar.bootsnav > .side").toggleClass("on");
-                    $("body").toggleClass("on-side");
-                });
-            });
+            $("a#call_cart_js").on("click", function(e){
+                e.preventDefault();
+                $(".side").toggleClass("on");
+            });  
             $(".side .close-side").on("click", function(e){
                 e.preventDefault();
-                $("nav.navbar.bootsnav > .side").removeClass("on");
+                $(".side").removeClass("on");
                 $("body").removeClass("on-side");
             });  
             
@@ -584,6 +581,15 @@
         $(".navbar-collapse").removeClass("on");
         $(".navbar-collapse").removeClass("bounceIn");      
     });
-    
+    // Active menu
+    $('.menu_head .nav-item').on('click', function() {
+        // e.preventDefault();
+        if( $('.menu_head .nav-item').hasClass('active')){
+            $('.menu_head .nav-item').removeClass('active');
+        } else {
+            $('.menu_head .nav-item').addClass('active');
+        }
+        
+    });
 }(jQuery));
 

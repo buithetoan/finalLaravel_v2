@@ -60,6 +60,34 @@
             </div>
         </div>
     </div>
+    <!-- Start Side Menu -->
+        <div class="side">
+            <a href="#" class="close-side"><i class="fa fa-times"></i></a>
+            <li class="cart-box">
+                <ul class="cart-list">
+                    <li>
+                        <a href="#" class="photo"><img src="{{asset('front_assets/images/dell-4.jpeg')}}" class="cart-thumb" alt="" /></a>
+                        <h6><a href="#">Delica omtantur </a></h6>
+                        <p>1x - <span class="price">$80.00</span></p>
+                    </li>
+                    <li>
+                        <a href="#" class="photo"><img src="{{asset('front_assets/images/mac-1.jpg')}}" class="cart-thumb" alt="" /></a>
+                        <h6><a href="#">Omnes ocurreret</a></h6>
+                        <p>1x - <span class="price">$60.00</span></p>
+                    </li>
+                    <li>
+                        <a href="#" class="photo"><img src="{{asset('front_assets/images/asus-1.jpg')}}" class="cart-thumb" alt="" /></a>
+                        <h6><a href="#">Agam facilisis</a></h6>
+                        <p>1x - <span class="price">$40.00</span></p>
+                    </li>
+                    <li class="total">
+                        <a href="{{ url('/cart-page') }}" class="btn btn-default hvr-hover btn-cart">VIEW CART</a>
+                        <span class="float-right"><strong>Total</strong>: $180.00</span>
+                    </li>
+                </ul>
+            </li>
+        </div>
+        <!-- End Side Menu -->
 </div>
 </div>
 <!-- End Main Top -->
@@ -79,7 +107,7 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="navbar-menu">
                 <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
-                    <li class="nav-item active"><a class="nav-link" href="{{ url('/home') }}">Home</a></li>
+                    <li class="menu_head nav-item active"><a class="nav-link" href="{{ url('/home') }}">Home</a></li>
                     <li class="dropdown megamenu-fw">
                         <a href="{{ url('/product-all') }}" class="nav-link dropdown-toggle" data-toggle="dropdown">Product</a>
                         <ul class="dropdown-menu megamenu-content" role="menu">
@@ -146,7 +174,7 @@
             <div class="attr-nav">
                 <ul>
                     <li class="search"><a href="#"><i class="fa fa-search"></i></a></li>
-                    <li class="side-menu"><a href="#">
+                    <li class="side-menu"><a href="#" id="call_cart_js">
                         <i class="fa fa-shopping-bag"></i>
                         <span class="badge">3</span>
                     </a></li>
@@ -154,34 +182,7 @@
             </div>
             <!-- End Atribute Navigation -->
         </div>
-        <!-- Start Side Menu -->
-        <div class="side">
-            <a href="#" class="close-side"><i class="fa fa-times"></i></a>
-            <li class="cart-box">
-                <ul class="cart-list">
-                    <li>
-                        <a href="#" class="photo"><img src="{{asset('front_assets/images/dell-4.jpeg')}}" class="cart-thumb" alt="" /></a>
-                        <h6><a href="#">Delica omtantur </a></h6>
-                        <p>1x - <span class="price">$80.00</span></p>
-                    </li>
-                    <li>
-                        <a href="#" class="photo"><img src="{{asset('front_assets/images/mac-1.jpg')}}" class="cart-thumb" alt="" /></a>
-                        <h6><a href="#">Omnes ocurreret</a></h6>
-                        <p>1x - <span class="price">$60.00</span></p>
-                    </li>
-                    <li>
-                        <a href="#" class="photo"><img src="{{asset('front_assets/images/asus-1.jpg')}}" class="cart-thumb" alt="" /></a>
-                        <h6><a href="#">Agam facilisis</a></h6>
-                        <p>1x - <span class="price">$40.00</span></p>
-                    </li>
-                    <li class="total">
-                        <a href="{{ url('/cart-page') }}" class="btn btn-default hvr-hover btn-cart">VIEW CART</a>
-                        <span class="float-right"><strong>Total</strong>: $180.00</span>
-                    </li>
-                </ul>
-            </li>
-        </div>
-        <!-- End Side Menu -->
+        
     </nav>
     <!-- End Navigation -->
 </header>

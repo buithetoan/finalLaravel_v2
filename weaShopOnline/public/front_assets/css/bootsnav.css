@@ -366,18 +366,20 @@ body.on-side{
 	-o-transition: all 0.3s ease-in-out;
 	-ms-transition: all 0.3s ease-in-out;
 	transition: all 0.3s ease-in-out;
-    z-index: 9;
+    /*z-index: 9;*/
 }
 
 .side.on{
     right: 0;
 }
-
+.side {
+    z-index: 999;
+}
 .side .close-side{
     float: right;
     color: #fff;
     position: relative;
-    z-index: 2;
+    z-index: 999;
     font-size: 16px;
 }
 
@@ -1463,4 +1465,3 @@ nav.navbar.bootsnav ul.dropdown-menu.megamenu-content .content ul.menu-col li a:
         padding-bottom: 30px;
     }
 }
-
