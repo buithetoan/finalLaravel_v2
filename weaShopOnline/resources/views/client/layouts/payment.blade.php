@@ -55,7 +55,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-12 d-flex shopping-box"><a href="checkout.html" class="ml-auto btn hvr-hover">PayMent</a>
+            <div class="col-12 d-flex shopping-box"><a href="{{url('payment')}}" class="ml-auto btn hvr-hover">Payment</a>
         </div>
         </div>
     </div>

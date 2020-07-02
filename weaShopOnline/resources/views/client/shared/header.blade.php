@@ -35,21 +35,22 @@
                 <div class="our-link">
                     <ul>
                         @if(Auth::check())
-                        <a class="nav-link dropdown-toggle" href="#">{{ Auth::user()->name }}</a>
-                        <div class="logout_button">
-                            <a class="dropdown-item" href="{{ route('client.logout') }}"
-                            onclick="event.preventDefault();
-                            document.getElementById('logout-form').submit();">
-                        {{ __('Logout') }}</a>
-                        <form id="logout-form" action="{{ route('client.logout') }}" method="POST" style="display: none;">
-                            @csrf
-                        </form>
-                    </div>
-                    @else
-                    <li><a href="#myModal_lg" class="trigger-btn" data-toggle="modal">Login</a></li>
-                    <li><a href="#myModal_rg" class="trigger-btn" data-toggle="modal">Register</a></li>
-                    @endif                                                     
-                </ul>
+                            <li><a class="trigger-btn" href="#">{{ Auth::user()->name }}</a></li>
+                            <li>
+                                <a class="trigger-btn" href="{{ route('client.logout') }}"
+                                   onclick="event.preventDefault();
+                                document.getElementById('logout-form').submit();">
+                                    {{ __('Logout') }}
+                                </a>
+                            </li>
+                            <form id="logout-form" action="{{ route('client.logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                        @else
+                            <li><a href="#myModal_lg" class="trigger-btn" data-toggle="modal">Login</a></li>
+                            <li><a href="#myModal_rg" class="trigger-btn" data-toggle="modal">Register</a></li>
+                        @endif
+                    </ul>
             </div>
         </div>
     </div>

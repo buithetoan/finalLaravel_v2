@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
+use App\Models\Order;
 use App\Models\Product;
 use App\Repositories\Order\OrderInterface;
 use App\Repositories\Product\ProductInterface;
@@ -14,6 +15,7 @@ class CartController extends Controller
 {
     private $productRepository;
     private $orderRepository;
+    private $orderDetailRepository;
 
     public function __construct(ProductInterface $productRepos, OrderInterface $orderRepos)
     {
@@ -148,20 +150,11 @@ class CartController extends Controller
     //Payment
     public function payment(Request $request)
     {
-        $status = 'unconfimred';
-        if ($request->payment != 'cod') {
-            $status = 'cancel';
-        }
         $order = new Order([
-            'order_code' => uniqid(),
-            'total_amount' => $request->total_amount,
-            'status' => $status,
+            'status' => $request->status,
             'payment' => $request->payment,
-            'transaction_date' => Carbon::now()->toDateTimeString(),
-            'notes' => $request->note.' '.$request->address,
-            'user_id' => Auth::guard('client')->user()->id,
-            'created_by' => Auth::guard('client')->user()->id,
-            'updated_at' => null,
+            'created_date' => Carbon::now()->toDateTimeString(),
+            'user_id' => Auth::user()->id,
         ]);
         $result = $this->orderRepo->addNew($order);
         foreach ($request->product_detail_id as $key => $value) {
