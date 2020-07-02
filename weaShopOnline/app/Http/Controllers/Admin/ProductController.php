@@ -48,7 +48,7 @@ class ProductController extends Controller
     {
         $products = $this->productRepository->getAll();
         $brands = $this->brandRepository->getPluck('name','id');
-        $categories = $this->categoryRepository->getPluck('name','id'); 
+        $categories = $this->categoryRepository->getPluck('name','id');
         // vi du minh k muon lay name nua, lay description vs id
         return view('admin.layouts.products.create',compact('products','brands','categories'));
     }

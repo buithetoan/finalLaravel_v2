@@ -4,58 +4,38 @@ Add new order
 @endsection
 @section('content')
 <div class="content_yield">
-    {{ Form::open(['url' => 'admin/order', 'method' => 'post','enctype '=>'multipart/form-data','class' => 'col-md-12 row']) }}
+    {{ Form::open(['route' => 'order.create', 'method' => 'post','enctype '=>'multipart/form-data','class' => 'col-md-12 row']) }}
     <div class="col-md-12 m-auto">
         <h3 class="mb-5 font-weight-bold">Orders</h3>        
         <div class="col-lg-10 col-md-12 col-sm-12 row">
             <div class="form-group">
-                {{ Form::label('Product Name: ','',['class' => 'font-weight-bold']) }}
-                {!! Form::text('product Name', null, [
-                    'class' => 'form-control',
-                    'placeholder'=>"Product Name"
-                ])
-                !!}
-                <span class="text-danger">{{ $errors->first('product Name')}}</span>
-            </div>
-            <div class="form-group">
-                {{ Form::label('Quantity: ','',['class' => 'font-weight-bold']) }}
-                {!! Form::text('quantity', null, [
-                    'class' => 'form-control',
-                    'placeholder'=>"Quantity"
-                ])
-                !!}
-                <span class="text-danger">{{ $errors->first('quantity')}}</span>
-            </div>
-            <div class="form-group">
-                {{ Form::label('Customer Name: ','',['class' => 'font-weight-bold']) }}
-                {!! Form::text('customer', null, [
-                    'class' => 'form-control',
-                    'placeholder'=>"Customer Name"
-                ])
-                !!}
-                <span class="text-danger">{{ $errors->first('customer')}}</span>
-            </div>
-            <div class="form-group">
-                {{ Form::label('Order Status: ','',['class' => 'font-weight-bold']) }}
+                {{ Form::label('Order status: ','',['class' => 'font-weight-bold']) }}
                 {!! Form::text('order_status', null, [
                     'class' => 'form-control',
-                    'placeholder'=>"Order Status"
+                    'placeholder'=>"Order status"
                 ])
-                !!}
+                !!} 
                 <span class="text-danger">{{ $errors->first('order_status')}}</span>
             </div>
             
             <div class="form-group">
-                {{ Form::label('Payment Status: ','',['class' => 'font-weight-bold']) }}
-                {{ Form::text('payment_status', null, ['class' => 'form-control' ]) }}
-                <br>                
-                <span class="text-danger">{{ $errors->first('Payment Status')}}</span>
+                {{ Form::label('Payment status: ','',['class' => 'font-weight-bold']) }}
+                {!! Form::text('payment_status', null, [
+                    'class' => 'form-control',
+                    'placeholder'=>"Payment status"
+                ])
+                !!} 
+                <span class="text-danger">{{ $errors->first('payment_status')}}</span>
             </div>
+
             <div class="form-group">
-                {{ Form::label('Total: ','',['class' => 'font-weight-bold']) }}
-                {{ Form::text('Total', null, ['class' => 'form-control' ]) }}
-                <br>                
-                <span class="text-danger">{{ $errors->first('Total')}}</span>
+                {{ Form::label('Customer: ','',['class' => 'font-weight-bold']) }}
+                {!! Form::select('customer_id', $customers, null, [
+                    'class' => 'form-control',
+                    'placeholder'=>"Choose Customer"
+                ])
+                !!} 
+                <span class="text-danger">{{ $errors->first('customer_id')}}</span>
             </div>
 
             <div class="form-group text-right">

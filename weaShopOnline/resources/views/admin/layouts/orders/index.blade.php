@@ -29,12 +29,9 @@ weaShopOnline - Orders
 		<thead class="thead_green">
 			<tr>
 				<th class="text-center">Id</th>
-				<th class="text-center">Product Name</th>
-				<th class="text-center">Quantity</th>
 				<th class="text-center">Customer Name</th>
 				<th class="text-center">Order Status</th>
 				<th class="text-center">Payment Status</th>
-				<th class="text-center">Total</th>
 				<th class="text-center">Action</th>
 			</tr>
 		</thead>
@@ -43,21 +40,12 @@ weaShopOnline - Orders
 			@foreach($orders as $key => $order)
 			<tr>
 				<td class="text-center">{{++$key}}</td>
-				<td class="text-center">
-					<a href="">
-						<h4>{{  $order->name }}</h4>
-					</a>
-				</td>
-				<td class="text-center">quantity</td>
-				<td class="text-center">
-					<img src="{{asset('images/'.$order->logo)}}" width="50" height="50" alt="logo">
-				</td>
-				<td class="text-center">{{ $order->address }}</td>
-				<td class="text-center">{{ $order->phone_no }}</td>
-				<td class="text-center">{{ $order->slug }}</td>
+				<td class="text-center">{{ $order->customers->full_name }}</td>
+				<td class="text-center">{{ $order->order_status }}</td>
+				<td class="text-center">{{ $order->payment_status }}</td>
 				<td class="text-center action_icon">
-					<a href="{{route('order.edit',$order->id)}}"><i class="far fa-edit edit"></i></a>
-					<a type="button" class="fas fa-trash-alt deletebutton text-danger btn" data-id="{{$order->id}}" data-toggle="modal" data-target="#Modal"></a>
+					<a href="#"><i class="far fa-edit edit"></i></a>
+					<a type="button" class="fas fa-trash-alt deletebutton text-danger btn" data-id="" data-toggle="modal" data-target="#Modal"></a>
 				</td>
 			</tr>
 			@endforeach
@@ -65,20 +53,5 @@ weaShopOnline - Orders
 		</tbody>
 	</table>
 </div>
-{{Form::open(['route' => ['order.delete'], 'method' => 'DELETE'])}}  
-@include('admin.modal.modaldelete')
-{{ Form::close() }}
-<script>
-	$(document).on('click','.deletebutton',function(){
-		var id=$(this).attr('data-id');
-		console.log(id);
-		$('#id').val(id);
-	});
-</script>
-<script>
-    setTimeout(function() {
-        var element = document.getElementById("div-alert");
-        element.classList.add("fade");
-    }, 2000)
-</script>
+
 @endsection

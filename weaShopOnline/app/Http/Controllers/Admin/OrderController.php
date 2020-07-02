@@ -2,19 +2,24 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-// use App\Http\Requests\OrderRequest;
+use App\Repositories\Customer\CustomerInterface;
 use App\Repositories\Order\OrderInterface;
-use Carbon\Carbon;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\OrderRequest;
+use Illuminate\Http\Request; 
+use App\Models\Customer;
 use App\Models\Order;
+use Carbon\Carbon;
+
 class OrderController extends Controller
 {
     protected $orderRepository;
+    protected $customerRepository;
 
-    public function __construct(OrderInterface $orderRepos)
+    public function __construct(OrderInterface $orderRepos, CustomerInterface $customerRepos)
     {
         $this->orderRepository = $orderRepos;
+        $this->customerRepository = $customerRepos;
     }
     /**
      * Display a listing of the resource.
@@ -35,7 +40,9 @@ class OrderController extends Controller
      */
     public function create()
     {
-        return view('admin.layouts.orders.create');
+        $customers = $this->customerRepository->getPluck('full_name','id');
+
+        return view('admin.layouts.orders.create', compact('customers'));
     }
 
     /**
@@ -45,6 +52,21 @@ class OrderController extends Controller
      * @return \Illuminate\Http\Response
      */
     
+    public function store(OrderRequest $request)
+    {
+        $request->validated();
+        
+        $data = new Order([
+            'order_status' => $request->order_status,
+            'payment_status' => $request->payment_status,
+            'customer_id' => $request->customer_id,
+            'is_deleted' => false,
+        ]);
+        $orders = $this->orderRepository->create($data->toArray());
+        $orders->save();
+        if ($orders) return redirect('/admin/order')->with('message','Create New successfully!');
+        else return back()->with('err','Save error!');  
+    }
 
     /**
      * Display the specified resource.

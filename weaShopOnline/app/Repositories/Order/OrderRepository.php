@@ -11,6 +11,6 @@ class   OrderRepository extends EloquentRepository implements OrderInterface
      */
     public function getModel()
     {
-        return \App\Models\Brand::class;
+        return \App\Models\Order::class;
     }
 }

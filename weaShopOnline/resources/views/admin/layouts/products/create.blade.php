@@ -90,7 +90,7 @@ Add new product
 			</div>
 			<div class="form-group">
 				{{ Form::label('Brand: ','',['class' => 'font-weight-bold']) }}
-				{{ Form::select('brand_id', $brands, null,['class' => 'form-control','placeholder'=>"Choose Brand"]) }}
+				{{ Form::select('brand_id', $brands, null,['class' => 'form-control','placeholder'=>"Choose Brand"]) }} 
 
 				<span class="text-danger">{{ $errors->first('brand_id')}}</span>
 			</div>
