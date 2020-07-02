@@ -40,7 +40,7 @@ weaShopOnline - Orders
 		</thead>
 		<tbody>
 			<!-- Loop -->
-			@foreach($orders as $key => $brand)
+			@foreach($orders as $key => $order)
 			<tr>
 				<td class="text-center">{{++$key}}</td>
 				<td class="text-center">
@@ -48,8 +48,9 @@ weaShopOnline - Orders
 						<h4>{{  $order->name }}</h4>
 					</a>
 				</td>
+				<td class="text-center">quantity</td>
 				<td class="text-center">
-					<img src="{{asset('images/'.$brand->logo)}}" width="50" height="50" alt="logo">
+					<img src="{{asset('images/'.$order->logo)}}" width="50" height="50" alt="logo">
 				</td>
 				<td class="text-center">{{ $order->address }}</td>
 				<td class="text-center">{{ $order->phone_no }}</td>

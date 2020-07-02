@@ -40,7 +40,7 @@
 			@include('admin.shared.header')
 			<!-- End NavBar -->
 			<!-- Content Area -->
-			<div class="container-fluid">
+			<div class="container">
 				<!-- Yield content -->
 				@yield('content')
 				<!-- End Yield content -->
