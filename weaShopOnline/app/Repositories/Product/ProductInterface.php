@@ -8,4 +8,6 @@ interface ProductInterface
     public function getTopNewProduct($top);
     public function getTopSaleProduct($top);
     public function getTotalProduct();
+    public function getByCategoryId($id);
+    public function getByBrandId($id);
 }

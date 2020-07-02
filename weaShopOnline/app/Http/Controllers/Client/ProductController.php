@@ -3,20 +3,48 @@
 namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
+use App\Repositories\Brand\BrandInterface;
+use App\Repositories\Category\CategoryInterface;
+use App\Repositories\Product\ProductInterface;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
+    private $productRepository;
+    private $categoryRepository;
+    private $brandRepository;
+    public function __construct(ProductInterface $productRepos, CategoryInterface $categoryRepos, BrandInterface $brandRepos)
+    {
+        $this->productRepository = $productRepos;
+        $this->categoryRepository = $categoryRepos;
+        $this->brandRepository = $brandRepos;
+    }
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('client.layouts.products');
+        $products = $this->productRepository->getAll();
+        $categories = $this->categoryRepository->getAll();
+        $brands = $this->brandRepository->getAll();
+        if ($request->category_id){
+            $products = $this->productRepository->getByCategoryId($request->category_id);
+        }
+        if ($request->brand_id){
+            $products = $this->productRepository->getByCategoryId($request->brand_id);
+        }
+        return view('client.layouts.products', compact('products', 'categories', 'brands'));
     }
 
+    public function product_detail(Request $request)
+    {
+        $product = $this->productRepository->find($request->id);
+        $category = $this->categoryRepository->find($product->category_id);
+        return view('client.layouts.product_detail', compact('product', 'category'));
+    }
     /**
      * Show the form for creating a new resource.
      *

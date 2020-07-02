@@ -29,13 +29,6 @@
                 </div>
             </div>
             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                <div class="custom-select-box">
-                    <select id="basic" class="selectpicker show-tick form-control" data-placeholder="$ USD">
-                        <option>Language</option>
-                        <option>EN</option>
-                        <option>VN</option>
-                    </select>
-                </div>
                 <div class="right-phone-box">
                     <p>Call US : <a href="#"> +(84) 0384443449</a></p>
                 </div>
@@ -65,24 +58,26 @@
             <a href="#" class="close-side"><i class="fa fa-times"></i></a>
             <li class="cart-box">
                 <ul class="cart-list">
+                    @if(session('cart'))
+                    <p style="display: none">{{$totalAmount = 0}}</p>
+                    @foreach(session('cart') as $key => $item)
+                    <p style="display: none;">{{$totalAmount += $item['quantity'] * $item['price']}}</p>
                     <li>
-                        <a href="#" class="photo"><img src="{{asset('front_assets/images/dell-4.jpeg')}}" class="cart-thumb" alt="" /></a>
-                        <h6><a href="#">Delica omtantur </a></h6>
-                        <p>1x - <span class="price">$80.00</span></p>
+                        <a href="#" class="photo"><img src="{{asset('images/'.$item['image'])}}" class="cart-thumb" alt="" /></a>
+                        <h6><a href="#">{{Illuminate\Support\Str::limit($item['name'], 15)}} </a></h6>
+                        <p>{{$item['quantity']}}x - <span class="price">{{$item['price']}}</span></p>
                     </li>
-                    <li>
-                        <a href="#" class="photo"><img src="{{asset('front_assets/images/mac-1.jpg')}}" class="cart-thumb" alt="" /></a>
-                        <h6><a href="#">Omnes ocurreret</a></h6>
-                        <p>1x - <span class="price">$60.00</span></p>
+                    <li class="total text-right">
+                        <span><strong>Total amount</strong>: ${{$item['quantity'] * $item['price']}}</span>
                     </li>
-                    <li>
-                        <a href="#" class="photo"><img src="{{asset('front_assets/images/asus-1.jpg')}}" class="cart-thumb" alt="" /></a>
-                        <h6><a href="#">Agam facilisis</a></h6>
-                        <p>1x - <span class="price">$40.00</span></p>
-                    </li>
+
+                    @endforeach
+                    @else
+                        <h5 class="text-danger text-center" style="padding-top: 10px;">Cart is empty!</h5>
+                    @endif
                     <li class="total">
                         <a href="{{ url('/cart-page') }}" class="btn btn-default hvr-hover btn-cart">VIEW CART</a>
-                        <span class="float-right"><strong>Total</strong>: $180.00</span>
+                        <span class="float-right"><h4>Total: ${{$totalAmount ?? 0}}</h4></span>
                     </li>
                 </ul>
             </li>
@@ -109,64 +104,9 @@
                 <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
                     <li class="menu_head nav-item active"><a class="nav-link" href="{{ url('/home') }}">Home</a></li>
                     <li class="dropdown megamenu-fw">
-                        <a href="{{ url('/product-all') }}" class="nav-link dropdown-toggle" data-toggle="dropdown">Product</a>
-                        <ul class="dropdown-menu megamenu-content" role="menu">
-                            <li>
-                                <div class="row">
-                                    <div class="col-menu col-md-3">
-                                        <h6 class="title">Top</h6>
-                                        <div class="content">
-                                            <ul class="menu-col">
-                                                <li><a href="{{ url('/product-all') }}">Jackets</a></li>
-                                                <li><a href="{{ url('/product-all') }}">Shirts</a></li>
-                                                <li><a href="{{ url('/product-all') }}">Sweaters & Cardigans</a></li>
-                                                <li><a href="{{ url('/product-all') }}">T-shirts</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <!-- end col-3 -->
-                                    <div class="col-menu col-md-3">
-                                        <h6 class="title">Bottom</h6>
-                                        <div class="content">
-                                            <ul class="menu-col">
-                                                <li><a href="">Swimwear</a></li>
-                                                <li><a href="{{ url('/product-all') }}">Skirts</a></li>
-                                                <li><a href="{{ url('/product-all') }}">Jeans</a></li>
-                                                <li><a href="{{ url('/product-all') }}">Trousers</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <!-- end col-3 -->
-                                    <div class="col-menu col-md-3">
-                                        <h6 class="title">Clothing</h6>
-                                        <div class="content">
-                                            <ul class="menu-col">
-                                                <li><a href="{{ url('/product-all') }}">Top Wear</a></li>
-                                                <li><a href="{{ url('/product-all') }}">Party wear</a></li>
-                                                <li><a href="{{ url('/product-all') }}">Bottom Wear</a></li>
-                                                <li><a href="{{ url('/product-all') }}">Indian Wear</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="col-menu col-md-3">
-                                        <h6 class="title">Accessories</h6>
-                                        <div class="content">
-                                            <ul class="menu-col">
-                                                <li><a href="{{ url('/product-all') }}">Bags</a></li>
-                                                <li><a href="{{ url('/product-all') }}">Sunglasses</a></li>
-                                                <li><a href="{{ url('/product-all') }}">Fragrances</a></li>
-                                                <li><a href="{{ url('/product-all') }}">Wallets</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <!-- end col-3 -->
-                                </div>
-                                <!-- end row -->
-                            </li>
-                        </ul>
+                        <a href="{{ url('/product-all') }}" class="nav-link">Product</a>
                     </li>
                     <li class="nav-item"><a class="nav-link" href="{{ url('/about-us') }}">About Us</a></li>
-                    
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -176,7 +116,7 @@
                     <li class="search"><a href="#"><i class="fa fa-search"></i></a></li>
                     <li class="side-menu"><a href="#" id="call_cart_js">
                         <i class="fa fa-shopping-bag"></i>
-                        <span class="badge">3</span>
+                        <span class="badge text-danger">{{count(session('cart'))}}</span>
                     </a></li>
                 </ul>
             </div>
@@ -198,4 +138,4 @@
         </div>
     </div>
 </div>
-    <!-- End Top Search -->
+<!-- End Top Search -->

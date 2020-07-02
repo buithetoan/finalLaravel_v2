@@ -58,7 +58,7 @@
     <script src="{{asset('front_assets/js/owl.carousel.min.js')}}"></script>
     <script src="{{asset('front_assets/js/baguetteBox.min.js')}}"></script>
     <script src="{{asset('front_assets/js/custom.js')}}"></script>
-
+    @yield('script_cart')
 </body>
 </body>
 </html>
