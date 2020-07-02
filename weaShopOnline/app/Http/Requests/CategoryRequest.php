@@ -25,11 +25,13 @@ class CategoryRequest extends FormRequest
     {
         if ($this->method()=='PUT'){
             return [
-                'name' => 'required|max:100|min:1|regex:/^[a-zA-Z0-9\s]+$/',
+                'name' =>   'required|max:100|min:1|
+                            not_regex:/[`\~\!\@\#\$\%\^\&\*\=\;\:\?\>\<\,]/',
             ];
         }else{
             return [
-                'name' => 'required|max:100|min:1|regex:/^[a-zA-Z0-9\s]+$/',
+                'name' =>   'required|max:100|min:1|
+                            not_regex:/[`\~\!\@\#\$\%\^\&\*\=\;\:\?\>\<\,]/',
             ];
         } 
     }
@@ -39,7 +41,7 @@ class CategoryRequest extends FormRequest
             'name.required' => 'Please enter Name.',
             'name.max' => 'Maximum Name length is 100 characters.',
             'name.min' => 'Minimum Name length is 1 characters.',
-            'name.regex' => 'Name cannot enter special characters.',
+            'name.not_regex' => 'Name cannot enter special characters.',
         ];
     }
 }

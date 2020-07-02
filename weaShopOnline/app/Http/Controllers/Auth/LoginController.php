@@ -7,6 +7,7 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Auth;
 use Illuminate\Http\Request;
+use App\Http\Requests\LoginRequest;
 class LoginController extends Controller
 {
     /*
@@ -36,12 +37,9 @@ class LoginController extends Controller
         return redirect('/home');
     }
 
-    public function webLoginPost(Request $request)
+    public function webLoginPost(LoginRequest $request)
     {
-        $this->validate($request, [
-            'email' => 'required|email',
-            'password' => 'required',
-        ]);
+        $request->validated();
         $data = [
             'email' => $request->email,
             'password' => $request->password,
@@ -50,7 +48,7 @@ class LoginController extends Controller
         {
             return redirect('/home');
         }else{
-            return back()->with('error','your username and password are wrong.');
+            return back()->with('error','Email or Password incorrect.');
         }
     }
     public function webLogout()
