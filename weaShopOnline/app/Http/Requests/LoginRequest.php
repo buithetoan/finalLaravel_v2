@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Request;
 
 class LoginRequest extends FormRequest
 {
@@ -22,21 +23,20 @@ class LoginRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
+    public function rules(Request $request)
     {
         return [
-            'email'           => 'required|max:255|email',
-            'password'           => 'required|confirmed',
+            'email'           => 'required|email|max:100',
+            'password'           => 'required',
         ];
     }
     public function messages()
     {
         return [
-            'email.required' => 'Please enter Email!',
-            'email.max:255' => 'Maximum Email length is 255 characters!',
-            'email.email' => 'Email invalid!',
-            'password.required' => 'Please enter Password!',
-            'password.confirmed' => 'Password confirmation does not match!',
+            'email.required' => 'Please enter Email.',
+            'email.email' => 'Email invalid.',
+            'email.max' => 'Maximum Email length is 100 characters.',
+            'password.required' => 'Please enter Password.',
         ];
     }
 }

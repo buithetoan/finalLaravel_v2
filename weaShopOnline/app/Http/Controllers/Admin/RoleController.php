@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\UserRequest;
+use App\Http\Requests\RoleRequest;
 use App\Repositories\Role\RoleInterface;
 use App\Repositories\Permission\PermissionInterface;
 use App\Repositories\PermissionRole\PermissionRoleInterface;
@@ -49,7 +50,7 @@ class RoleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(RoleRequest $request)
     {
         try {
             $request->validated();

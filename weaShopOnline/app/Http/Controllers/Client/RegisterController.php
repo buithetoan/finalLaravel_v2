@@ -12,6 +12,7 @@ use App\Repositories\RoleUser\RoleUserInterface;
 use App\Repositories\Customer\CustomerInterface;
 use Str;
 use Auth;
+use App\Http\Requests\RegisterRequest;
 class RegisterController extends Controller
 {
     protected $redirectTo = '/home';
@@ -26,9 +27,9 @@ class RegisterController extends Controller
         $this->roleUserRepository = $roleUserRepos;
         $this->customerRepository = $customerRepos;        
     }
-    protected function create(Request $request)
+    protected function create(RegisterRequest $request)
     {
-        
+        $request->validated();        
 
         $user = new User([
                 'name' => $request->name,

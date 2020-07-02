@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Requests\LoginRequest;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Auth;
@@ -21,8 +22,9 @@ class LoginController extends Controller
     	return view('admin.login');
     }
 
-    public function adminLogin(Request $request)
-    {        
+    public function adminLogin(LoginRequest $request)
+    {
+        $request->validated();
     	$data = [
             'email' => $request->email,
             'password' => $request->password,
