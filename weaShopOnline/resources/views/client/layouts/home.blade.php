@@ -3,10 +3,26 @@
 @include('client.layouts.login')
 @include('client.layouts.register')
 <body>
-    <!-- Start Slider -->
+@if(Session::has('message'))
+    <div id="div-alert" class="float-right mt-2 alert alert-success alert-dismissible show" role="alert"
+         style="position: absolute; top: 10px; right: 20px;">
+        <strong>{{ Session::get('message') }}</strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+@elseif(Session::has('err'))
+    <div id="div-alert" style="position:absolute; right: 10px;" class="float-right mt-2 alert alert-success alert-dismissible show" role="alert" style="position: absolute;">
+        <strong>{{ Session::get('err') }}</strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+@endif
+<!-- Start Slider -->
     <div id="slides-shop" class="cover-slides">
         <ul class="slides-container">
-         	@foreach($slides as $key => $slide)
+            @foreach($slides as $key => $slide)
                 <li class="text-left">
                     <img src="{{asset('images/'.$slide->image)}}" alt="">
                     <div class="container">
@@ -27,45 +43,6 @@
         </div>
     </div>
     <!-- End Slider -->
-
-    <!-- Start Categories  -->
-    <div class="categories-shop">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                    <div class="shop-cat-box">
-                        <img class="img-fluid" src="{{asset('front_assets/images/mac-1.jpg')}}" alt="" />
-                        <a class="btn hvr-hover" href="#">MacBook</a>
-                    </div>
-                    <div class="shop-cat-box">
-                        <img class="img-fluid" src="{{asset('front_assets/images/asus-1.jpg')}}" alt="" />
-                        <a class="btn hvr-hover" href="#">Assus</a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                    <div class="shop-cat-box">
-                        <img class="img-fluid" src="{{asset('front_assets/images/dell-2.jpg')}}" alt="" />
-                        <a class="btn hvr-hover" href="#">Dell</a>
-                    </div>
-                    <div class="shop-cat-box">
-                        <img class="img-fluid" src="{{asset('front_assets/images/acer-5.png')}}" alt="" />
-                        <a class="btn hvr-hover" href="#"> Acer</a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                    <div class="shop-cat-box">
-                        <img class="img-fluid" src="{{asset('front_assets/images/msi-3.png')}}" alt="" />
-                        <a class="btn hvr-hover" href="#">MSI</a>
-                    </div>
-                    <div class="shop-cat-box">
-                        <img class="img-fluid" src="{{asset('front_assets/images/lenovo-3.jpg')}}" alt="" />
-                        <a class="btn hvr-hover" href="#">Lenovo</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- End Categories -->
 
     <!-- Start Products  -->
     <div class="products-box">
@@ -92,16 +69,14 @@
                                 <img src="{{asset('/images/'.$topHot->url_image)}}" class="img-fluid" alt="Image">
                                 <div class="mask-icon">
                                     <ul>
-                                        <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
-                                        <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
-                                        <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
+                                        <li><a href="{{url('/product-detail?id='.$topHot->id)}}" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
                                     </ul>
-                                    <a class="cart" href="#">Add to Cart</a>
+                                    <a class="cart" href="{{ url('/add-to-cart?product_id='.$topHot->id.'&quantity=1') }}" }}>Add to Cart</a>
                                 </div>
                             </div>
                             <div class="why-text">
                                 <h4>
-                                    <a href="">{{ Illuminate\Support\Str::limit($topHot->name, 25) }}</a>
+                                    <a href="{{url('/product-detail?id='.$topHot->id)}}">{{ Illuminate\Support\Str::limit($topHot->name, 25) }}</a>
                                 </h4>
                                 @if($topHot->promotion_price != null)
                                     <h5>${{$topHot->promotion_price}}</h5>
@@ -122,16 +97,14 @@
                                 <img src="{{asset('/images/'.$topNew->url_image)}}" class="img-fluid" alt="Image">
                                 <div class="mask-icon">
                                     <ul>
-                                        <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
-                                        <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
-                                        <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
+                                        <li><a href="{{url('/product-detail?id='.$topNew->id)}}" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
                                     </ul>
-                                    <a class="cart" href="#">Add to Cart</a>
+                                    <a class="cart" href="{{ url('/add-to-cart?product_id='.$topNew->id.'&quantity=1') }}" }}>Add to Cart</a>
                                 </div>
                             </div>
                             <div class="why-text">
                                 <h4>
-                                    <a href="">{{ Illuminate\Support\Str::limit($topNew->name, 25) }}</a>
+                                    <a href="{{url('/product-detail?id='.$topNew->id)}}">{{ Illuminate\Support\Str::limit($topNew->name, 25) }}</a>
                                 </h4>
                                 @if($topNew->promotion_price != null)
                                     <h5>${{$topNew->promotion_price}}</h5>
@@ -152,16 +125,14 @@
                                 <img src="{{asset('/images/'.$topSale->url_image)}}" class="img-fluid" alt="Image">
                                 <div class="mask-icon">
                                     <ul>
-                                        <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
-                                        <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
-                                        <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
+                                        <li><a href="{{url('/product-detail?id='.$topSale->id)}}" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
                                     </ul>
-                                    <a class="cart" href="#">Add to Cart</a>
+                                    <a class="cart" href="{{ url('/add-to-cart?product_id='.$topSale->id.'&quantity=1') }}" }}>Add to Cart</a>
                                 </div>
                             </div>
                             <div class="why-text">
                                 <h4>
-                                    <a href="">{{ Illuminate\Support\Str::limit($topSale->name, 25) }}</a>
+                                    <a href="{{url('/product-detail?id='.$topSale->id)}}">{{ Illuminate\Support\Str::limit($topSale->name, 25) }}</a>
                                 </h4>
                                 @if($topSale->promotion_price != null)
                                     <h5>${{$topSale->promotion_price}}</h5>
@@ -177,9 +148,14 @@
         </div>
     </div>
     <!-- End Products  -->
+    <script>
+        setTimeout(function() {
+            var element = document.getElementById("div-alert");
+            element.classList.add("fade");
+        }, 2000)
+    </script>
     <!-- Start Instagram Feed  -->
     @include('client.shared.slider_advertisement')
     <!-- End Instagram Feed  -->
-
 </body>
 @endsection

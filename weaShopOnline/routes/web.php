@@ -17,8 +17,13 @@ Route::group(['namespace'=>'Client','prefix'=>'/'],function (){
 	Route::get('/about-us', 'HomeController@about');
 	Route::get('/register', 'HomeController@register');
 	Route::get('/product-all','ProductController@index');
+    Route::get('/product-detail','ProductController@product_detail');
 	Route::get('/cart-page','CartController@cartpage');
-	Route::get('/payment','CartController@payment');
+    Route::get('/checkout','CartController@checkout');
+    Route::get('/payment','CartController@payment');
+    Route::get('add-to-cart', 'CartController@addToCart');
+    Route::delete('remove-from-cart', 'CartController@removeFromCart');
+    Route::patch('update-cart', 'CartController@updateCart');
 });
 Route::group(['middleware' => ['web']], function () {
 

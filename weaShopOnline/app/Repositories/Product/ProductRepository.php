@@ -36,5 +36,14 @@ class ProductRepository extends EloquentRepository implements ProductInterface
     }
     public function getTotalProduct(){
         return $this->_model::where('is_deleted', 0)->get()->count();
-    }   
+    }
+    public function getByCategoryId($id){
+        return $this->_model::where('is_deleted', 0)->where('category_id', $id)->get();
+    }
+    public function getByBrandId($id){
+        return $this->_model::where('is_deleted', 0)->where('brand_id', $id)->get();
+    }
+    public function getByKeyword($keyword){
+        return $this->_model::where('is_deleted', 0)->where('name', 'like', '%'.$keyword.'%')->get();
+    }
 }
