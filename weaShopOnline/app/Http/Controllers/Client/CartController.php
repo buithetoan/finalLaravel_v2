@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Client;
 use App\Http\Controllers\Controller;
 use App\Models\Order;
 use App\Models\Product;
+use App\Repositories\Customer\CustomerInterface;
 use App\Repositories\Order\OrderInterface;
 use App\Repositories\Product\ProductInterface;
+use App\Repositories\User\UserInterface;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Auth;
@@ -16,11 +18,16 @@ class CartController extends Controller
     private $productRepository;
     private $orderRepository;
     private $orderDetailRepository;
+    private $customerRepository;
+    private $userRepository;
 
-    public function __construct(ProductInterface $productRepos, OrderInterface $orderRepos)
+    public function __construct(ProductInterface $productRepos, OrderInterface $orderRepos, UserInterface $userRepos,
+                                CustomerInterface $customerRepos)
     {
         $this->productRepository = $productRepos;
         $this->orderRepository = $orderRepos;
+        $this->customerRepository = $customerRepos;
+        $this->userRepository = $userRepos;
     }
 
     //Page cart index
@@ -141,6 +148,7 @@ class CartController extends Controller
     public function checkout()
     {
         if (Auth::check()){
+//            $customer = $this->customerRepository->getByUserId(Auth::user()->id);
             return view('client.layouts.payment');
         }else{
             return redirect()->back()->with('err', 'You need to login before checkout!');
@@ -150,13 +158,20 @@ class CartController extends Controller
     //Payment
     public function payment(Request $request)
     {
+        //If is COD payment
+        dd($request);
+        if ($request->payment_method == 1){
+            dd('COD');
+        }else{ //If is Momo payment
+            dd('MOMO');
+        }
         $order = new Order([
             'status' => $request->status,
             'payment' => $request->payment,
             'created_date' => Carbon::now()->toDateTimeString(),
             'user_id' => Auth::user()->id,
         ]);
-        $result = $this->orderRepo->addNew($order);
+        $result = $this->orderRepository->create($order);
         foreach ($request->product_detail_id as $key => $value) {
             $order_detail = new Order_detail([
                 'quantity' => $request->quantity[$key],
@@ -164,8 +179,7 @@ class CartController extends Controller
                 'total_amount' => $request->price[$key]*$request->quantity[$key],
                 'order_id' => $order->id,
                 'product_detail_id' => $value,
-                'isfeedback' => false,
-                'created_by' => Auth::guard('client')->user()->id,
+                'created_by' => Auth::user()->id,
                 'updated_at' => null,
             ]);
             $result = $this->orderdetailRepo->addNew($order_detail);
