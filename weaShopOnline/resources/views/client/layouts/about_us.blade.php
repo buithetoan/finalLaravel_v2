@@ -31,13 +31,13 @@
         	<div class="hover-team">
         		<div class="our-team"> <img src="{{asset('front_assets/images/img-1.jpg')}}" alt="" />
         			<div class="team-content">
-        				<h3 class="title">Nguy?n Ph�c H?i</h3> <span class="post">Web Developer</span> </div>
+        				<h3 class="title">Nguyễn Phúc Hội</h3> <span class="post">Web Developer</span> </div>
         				<ul class="social">
         					<li>
-        						<a href="#" class="fab fa-facebook"></a>
+        						<a href="https://www.facebook.com/Phuchoi1901" class="fab fa-facebook"></a>
         					</li>
         					<li>
-        						<a href="#" class="fab fa-google-plus"></a>
+        						<a href="https://mail.google.com/" class="fab fa-google-plus"></a>
         					</li>
         				</ul>
         				<div class="icon"> <i class="fa fa-plus" aria-hidden="true"></i> </div>

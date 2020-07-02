@@ -29,13 +29,6 @@
                 </div>
             </div>
             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                <div class="custom-select-box">
-                    <select id="basic" class="selectpicker show-tick form-control" data-placeholder="$ USD">
-                        <option>Language</option>
-                        <option>EN</option>
-                        <option>VN</option>
-                    </select>
-                </div>
                 <div class="right-phone-box">
                     <p>Call US : <a href="#"> +(84) 0384443449</a></p>
                 </div>
@@ -44,9 +37,7 @@
                         @if(Auth::check())
                         <button class="btn btn-outline-danger" id="flip"> <a href="#">{{ Auth::user()->name }}</a></button>
                         <div class="logout_button">
-                            <a id="panel" style="display: none;" href="{{ route('client.logout') }}"
-                            onclick="event.preventDefault();
-                            document.getElementById('logout-form').submit();">
+                            <a id="panel" style="display: none;" href="{{ route('client.logout') }}">
                         {{ __('Logout') }}</a>
                         <form id="logout-form" action="{{ route('client.logout') }}" method="POST" style="display: none;">
                             @csrf

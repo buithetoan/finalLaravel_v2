@@ -582,14 +582,14 @@
         $(".navbar-collapse").removeClass("bounceIn");      
     });
     // Active menu
-    $('.menu_head .nav-item').on('click', function() {
-        // e.preventDefault();
-        if( $('.menu_head .nav-item').hasClass('active')){
-            $('.menu_head .nav-item').removeClass('active');
-        } else {
-            $('.menu_head .nav-item').addClass('active');
-        }
+    // $('.menu_head .nav-item').on('click', function() {
+    //     // e.preventDefault();
+    //     if( $('.menu_head .nav-item').hasClass('active')){
+    //         $('.menu_head .nav-item').removeClass('active');
+    //     } else {
+    //         $('.menu_head .nav-item').addClass('active');
+    //     }
         
-    });
+    // });
 }(jQuery));
 
