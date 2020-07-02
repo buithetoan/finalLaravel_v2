@@ -145,7 +145,7 @@ class CartController extends Controller
         }
     }
 
-    //Payment by momo
+    //Payment
     public function payment(Request $request)
     {
         $status = 'unconfimred';

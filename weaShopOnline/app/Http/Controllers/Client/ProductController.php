@@ -36,6 +36,9 @@ class ProductController extends Controller
         if ($request->brand_id){
             $products = $this->productRepository->getByCategoryId($request->brand_id);
         }
+        if($request->keyword){
+            $products = $this->productRepository->getByKeyword($request->keyword);
+        }
         return view('client.layouts.products', compact('products', 'categories', 'brands'));
     }
 

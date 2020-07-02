@@ -25,15 +25,14 @@
             <div class="row">
             	<div class="col-xl-12 col-lg-12 col-sm-12 col-xs-12 sidebar-shop-left">
             		 <div class="search-product">
-                            <form action="#">
-                                <input class="form-control" placeholder="Search here..." type="text">
+                            <form action="{{url('product-all')}}" method="GET">
+                                <input class="form-control" value="{{old('keyword')}}" name="keyword" placeholder="Search here..." type="text">
                                 <button type="submit"> <i class="fa fa-search"></i> </button>
                             </form>
                         </div>
             	</div>
                 <div class="col-xl-3 col-lg-3 col-sm-12 col-xs-12 sidebar-shop-left">
-                    <div class="product-categori">
-                       
+                    <div class="product-categories">
                         <div class="filter-sidebar-left">
                             <div class="title-left">
                                 <h3>Categories</h3>
