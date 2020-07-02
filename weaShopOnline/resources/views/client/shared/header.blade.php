@@ -115,37 +115,40 @@
                             <li>
                                 <div class="row">
                                     <div class="col-menu col-md-3">
-                                        <h6 class="title">Top</h6>
+                                        <h6 class="title">Top Brand</h6>
                                         <div class="content">
                                             <ul class="menu-col">
-                                                <li><a href="{{ url('/product-all') }}">Jackets</a></li>
-                                                <li><a href="{{ url('/product-all') }}">Shirts</a></li>
-                                                <li><a href="{{ url('/product-all') }}">Sweaters & Cardigans</a></li>
-                                                <li><a href="{{ url('/product-all') }}">T-shirts</a></li>
+                                                <li><a href="{{ url('/product-all') }}">MacBook</a></li>
+                                                <li><a href="{{ url('/product-all') }}">Dell</a></li>
+                                                <li><a href="{{ url('/product-all') }}">MSI</a></li>
+                                                <li><a href="{{ url('/product-all') }}">Assus</a></li>
+                                                <li><a href="{{ url('/product-all') }}">Acer</a></li>
+                                                <li><a href="{{ url('/product-all') }}">Lenovo</a></li>
                                             </ul>
                                         </div>
                                     </div>
                                     <!-- end col-3 -->
                                     <div class="col-menu col-md-3">
-                                        <h6 class="title">Bottom</h6>
+                                        <h6 class="title">Laptop</h6>
                                         <div class="content">
                                             <ul class="menu-col">
-                                                <li><a href="">Swimwear</a></li>
-                                                <li><a href="{{ url('/product-all') }}">Skirts</a></li>
-                                                <li><a href="{{ url('/product-all') }}">Jeans</a></li>
-                                                <li><a href="{{ url('/product-all') }}">Trousers</a></li>
+                                                <li><a href="{{ url('/product-all') }}">Macb00k Air 2020</a></li>
+                                                <li><a href="{{ url('/product-all') }}">Dell</a></li>
+                                                <li><a href="{{ url('/product-all') }}">Laptop Gaming MSI</a></li>
+                                                <li><a href="{{ url('/product-all') }}">Asus VivoBook S</a></li>
                                             </ul>
                                         </div>
                                     </div>
                                     <!-- end col-3 -->
                                     <div class="col-menu col-md-3">
-                                        <h6 class="title">Clothing</h6>
+                                        <h6 class="title">Computers</h6>
                                         <div class="content">
                                             <ul class="menu-col">
-                                                <li><a href="{{ url('/product-all') }}">Top Wear</a></li>
-                                                <li><a href="{{ url('/product-all') }}">Party wear</a></li>
-                                                <li><a href="{{ url('/product-all') }}">Bottom Wear</a></li>
-                                                <li><a href="{{ url('/product-all') }}">Indian Wear</a></li>
+                                                <li><a href="{{ url('/product-all') }}">CPU Processors</a></li>
+                                                <li><a href="{{ url('/product-all') }}">External Sound Cards</a></li>
+                                                <li><a href="{{ url('/product-all') }}">Graphics Cards</a></li>
+                                                <li><a href="{{ url('/product-all') }}">External Optical Drives
+</a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -153,10 +156,10 @@
                                         <h6 class="title">Accessories</h6>
                                         <div class="content">
                                             <ul class="menu-col">
-                                                <li><a href="{{ url('/product-all') }}">Bags</a></li>
-                                                <li><a href="{{ url('/product-all') }}">Sunglasses</a></li>
-                                                <li><a href="{{ url('/product-all') }}">Fragrances</a></li>
-                                                <li><a href="{{ url('/product-all') }}">Wallets</a></li>
+                                                <li><a href="{{ url('/product-all') }}">Computer</a></li>
+                                                <li><a href="{{ url('/product-all') }}">Headphones</a></li>
+                                                <li><a href="{{ url('/product-all') }}">Speakers</a></li>
+                                                <li><a href="{{ url('/product-all') }}">Gadgets</a></li>
                                             </ul>
                                         </div>
                                     </div>
