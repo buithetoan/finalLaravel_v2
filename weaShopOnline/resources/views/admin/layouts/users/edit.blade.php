@@ -12,7 +12,7 @@ Edit User
 				{{ Form::label('Name: ','',['class' => 'font-weight-bold']) }}
 				{!! Form::text('name', $user->name, [
 					'class' => 'form-control',
-					'placeholder'=>"Name"
+					'placeholder'=>"Name User"
 				])
 				!!}
 				<span class="text-danger">{{ $errors->first('name')}}</span>

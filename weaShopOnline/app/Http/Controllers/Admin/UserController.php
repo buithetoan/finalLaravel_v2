@@ -10,6 +10,7 @@ use App\Repositories\Role\RoleInterface;
 use App\Repositories\RoleUser\RoleUserInterface;
 use Carbon\Carbon;
 use App\Models\User;
+use App\Models\RoleUser;
 class UserController extends Controller
 {
     protected $userRepository;
@@ -106,16 +107,14 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UserRequest $request, $id)
     {
         try {
-            $data = new User([
-                'name' => $request->name,
-                'email' => $request->email,
-            ]);
-
-            $this->roleUserRepository->deleteRoleOfUser($id);
+            $delete =  $this->roleUserRepository->deleteRoleOfUser($id);
+            
             $userUpdate = $this->userRepository->find($id);
+            $userUpdate->name = $request->name;
+            $userUpdate->email = $request->email;
             $userUpdate->roles()->attach($request->roles);
             $result = $this->userRepository->update($id, $userUpdate->toArray());
             return redirect('admin/user')->with('message','Edit successfully!');
@@ -130,13 +129,16 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
         try {
-            $user = $this->userRepository->find($id);
-            $this->roleUserRepository->deleteRoleOfUser($id);
-            $user = $this->userRepository->delete($user->id);
-            if ($user) return back()->with('message','Delete success!');            
+            $user = $this->userRepository->find($request->id);
+
+            $this->roleUserRepository->deleteRoleOfUser($user->id);
+
+            $userDelete = $this->userRepository->delete($user->id);
+
+            if ($userDelete) return back()->with('message','Delete success!');            
             else return back()->with('err','Delete fail!');
         } catch (Exception $e) {
             
