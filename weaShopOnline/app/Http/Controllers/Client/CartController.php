@@ -169,9 +169,8 @@ class CartController extends Controller
             $partnerCode = "MOMO7VIE20200702";
             $accessKey = "7U6AEtfHmUZhliQr";
             $serectkey = "TEwtQl8iBgGyIgdfucfILdQGPB7VH41b";
-            $orderId = date("YmdHis").$order->id; // M� don h�ng
+            $orderId = $order_result->id.date("YmdHi"); // M� don h�ng
             $orderInfo = "Thanh toán bằng Momo";
-//            $amount = $request->total_amount;
             $amount = $request->total_amount;
             $notifyurl = "http://localhost/finalLaravel_v2/weaShopOnline/public/cart-page";
             $returnUrl = "http://localhost/finalLaravel_v2/weaShopOnline/public/return-payment";
@@ -198,7 +197,7 @@ class CartController extends Controller
             return redirect($jsonResult['payUrl']);
         }
         $request->session()->forget('cart');
-        return redirect('/cart-page')->with('success','Order successfully!');
+        return redirect('/cart-page');
     }
     function execPostRequest($url, $data)
     {
@@ -224,7 +223,7 @@ class CartController extends Controller
         if ($request->errorCode == "0") {
             $id = substr($request->orderId, 0,-12);
             $order = $this->orderRepository->find($id);
-            $order->order_status = 1;//1-unconfirmed, 2-confirmed
+            $order->order_status = 1;//0-unconfirmed, 1-confirmed
             $order->payment_status = 2;//1-COD, 2-MOMO
             $result = $this->orderRepository->update($id, $order->toArray());
             $result->save();
