@@ -68,7 +68,7 @@
                                                         <img src="{{asset('images/'.$item->url_image)}}" class="img-fluid" alt="Image">
                                                         <div class="mask-icon">
                                                             <ul>
-                                                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
+                                                                <li><a href="{{url('/product-detail?id='.$item->id)}}" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
                                                             </ul>
                                                             <a class="cart" href="{{ url('/add-to-cart?product_id='.$item->id.'&quantity=1') }}">Add to Cart</a>
                                                         </div>

@@ -34,11 +34,12 @@ class ProductController extends Controller
             $products = $this->productRepository->getByCategoryId($request->category_id);
         }
         if ($request->brand_id){
-            $products = $this->productRepository->getByCategoryId($request->brand_id);
+            $products = $this->productRepository->getByBrandId($request->brand_id);
         }
         if($request->keyword){
             $products = $this->productRepository->getByKeyword($request->keyword);
         }
+
         return view('client.layouts.products', compact('products', 'categories', 'brands'));
     }
 
@@ -46,7 +47,8 @@ class ProductController extends Controller
     {
         $product = $this->productRepository->find($request->id);
         $category = $this->categoryRepository->find($product->category_id);
-        return view('client.layouts.product_detail', compact('product', 'category'));
+        $brand = $this->brandRepository->find($product->brand_id);
+        return view('client.layouts.product_detail', compact('product', 'category','brand'));
     }
     /**
      * Show the form for creating a new resource.

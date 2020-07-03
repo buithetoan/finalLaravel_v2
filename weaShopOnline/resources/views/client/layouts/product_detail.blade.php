@@ -37,8 +37,14 @@
                         @else
                             <h4>{{$product->price}}</h4>
                         @endif
-                        <p class="available-stock"><span>Categorry <a href="#">{{$category->name}} </a></span>
-                        <p>
+                        
+                        <div class="row ml-0">                           
+                            <a class="btn-sm btn-group btn-group-sm btn-info" data-toggle="tooltip" data-placement="top" title="Categorry Name" href="{{url('product-all?category_id='.$category->id)}}">{{$category->name}}</a>
+
+                            <a class="btn-sm btn-group btn-group-sm btn-success ml-1
+                            " data-toggle="tooltip" data-placement="top" title="Brand Name" href="{{url('product-all?brand_id='.$brand->id)}}">{{$brand->name}}</a>
+                        </div>
+                        
                         <h4>Short Description:</h4>
                         <p>{{$product->detail}}</p>
                         <h4>Detail:</h4>
