@@ -36,15 +36,6 @@ Edit brand
 				<span class="text-danger">{{ $errors->first('phone_no')}}</span>
 			</div>
 			<div class="form-group">
-				{{ Form::label('Slug: ','',['class' => 'font-weight-bold']) }}
-				{!! Form::text('slug', $brand->slug, [
-					'class' => 'form-control',
-					'placeholder'=>"Slug"
-				])
-				!!}
-				<span class="text-danger">{{ $errors->first('slug')}}</span>
-			</div>
-			<div class="form-group">
 				{{ Form::label('Logo: ','',['class' => 'font-weight-bold']) }}
             	{{ Form::file('logo', ['class' => 'form-control' ]) }}
             	<input type="hidden" value="{{$brand->logo}}" name="image"><br>

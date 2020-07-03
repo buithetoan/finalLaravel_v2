@@ -56,7 +56,7 @@ weaShopOnline - Roles
         </tbody>
     </table>
 </div>
-{{-- {{Form::open(['route' => ['user_delete'], 'method' => 'DELETE'])}}
+{{Form::open(['route' => ['role.delete'], 'method' => 'DELETE'])}}
 @include('admin.modal.modaldelete')
 {{ Form::close() }}
 <script>
@@ -65,7 +65,7 @@ weaShopOnline - Roles
         console.log(id);
         $('#id').val(id);
     });
-</script> --}}
+</script>
 <script>
     setTimeout(function() {
         var element = document.getElementById("div-alert");

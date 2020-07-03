@@ -24,15 +24,16 @@ class BrandRequest extends FormRequest
     public function rules()
     {
         if ($this->method()=='PUT'){
+             $brand_id = $this->segment(4);
             return [
-                'name'      => 'required|max:100|min:1',
+                'name'      => 'required|max:100|unique:brands,name,'.$brand_id,
                 'address'   => 'required|max:100|min:10',
                 'phone_no'  => 'required|regex:/^[0][0-9]*$/|size:10',
                 'logo'      => 'mimes:jpeg,jpg,png',
             ];
         }else{
             return [
-                'name'      => 'required|max:100|min:1',
+                'name'      => 'required|max:100|unique:brands,name', 
                 'address'   => 'required|max:100|min:10',
                 'phone_no'  => 'required|regex:/^[0][0-9]*$/|size:10',
                 'logo'      => 'required|mimes:jpeg,jpg,png',
@@ -44,7 +45,7 @@ class BrandRequest extends FormRequest
         return [
             'name.required' => 'Please enter Name.',
             'name.max' => 'Maximum Name length is 100 characters.',
-            'name.min' => 'Minimum Name length is 1 characters.',
+            'name.unique' => 'Name already exists try another name.',
             'address.required' => 'Please enter Address.',
             'address.max' => 'Maximum Address length is 100 characters.',
             'address.min' => 'Minimum Address length is 10 characters.',

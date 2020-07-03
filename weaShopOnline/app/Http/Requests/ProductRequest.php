@@ -24,8 +24,9 @@ class ProductRequest extends FormRequest
     public function rules()
     {
         if ($this->method()=='PUT'){
+            $id = $this->segment(4);
             return [
-                'name' => 'required|max:255|min:5',
+                'name' => 'required|max:255|min:5|unique:products,name,'.$id,
                 'url_image' => 'mimes:jpeg,jpg,png',
                 'price' => 'required|min:1|regex:/^[1-9][0-9.]*$/',
                 'promotion_price' => 'nullable|regex:/^[1-9][0-9.]*$/',
@@ -35,7 +36,7 @@ class ProductRequest extends FormRequest
             ];
         }else{
             return [
-                'name' => 'required|max:255|min:5',
+                'name' => 'required|max:255|min:5|unique:products,name',
                 'url_image' => 'mimes:jpeg,jpg,png',
                 'price' => 'required|min:1|regex:/^[1-9][0-9.]*$/',
                 'promotion_price' => 'nullable|regex:/^[1-9][0-9.]*$/',
@@ -51,6 +52,7 @@ class ProductRequest extends FormRequest
             'name.required' => 'Please enter Name.',
             'name.max' => 'Maximum Name length is 255 characters.',
             'name.min' => 'Minimum Name length is 5 characters.',
+            'name.unique' => 'Name already exists try another name.',
             'url_image.mimes' => 'Image must be a photo (jpeg, png, jpg).',
             'price.required' => 'Please enter Price.',
             'price.min' => 'Price invalid.',

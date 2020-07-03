@@ -101,22 +101,19 @@ class RoleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(RoleRequest $request, $id)
     {
         try {
-            $data = new Role([
-                'name' => $request->name,
-                'display_name' => $request->display_name,
-            ]);
-
-            // update to role_permission table
-            $this->permissionRoleRepository->deletePermissionOfRole($id);
+            $delete =  $this->permissionRoleRepository->deletePermissionOfRole($id);            
             $roleUpdate = $this->roleRepository->find($id);
+            $roleUpdate->name = $request->name;
+            $roleUpdate->display_name = $request->display_name;
             $roleUpdate->permissions()->attach($request->permission);
-            $roleUpdate->update();
+            $result = $this->roleRepository->update($id, $roleUpdate->toArray());
             return redirect('admin/role')->with('message','Edit successfully!');
-        } catch (\Exception $exception) {
-        }
+        } catch (Exception $e) {
+            
+        }        
     }
 
     /**
@@ -125,14 +122,14 @@ class RoleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
         try {
-            $role = $this->roleRepository->find($id);
-            $this->permissionRoleRepository->deletePermissionOfRole($id);
-            $role = $this->roleRepository->delete($role->id);
+            $role = $this->roleRepository->find($request->id);
+            $this->permissionRoleRepository->deletePermissionOfRole($request->id);
+            $roleDelete = $this->roleRepository->delete($role->id);
 
-            if ($role) return back()->with('message','Delete success!');            
+            if ($roleDelete) return back()->with('message','Delete success!');            
             else return back()->with('err','Delete fail!');
         } catch (Exception $e) {
             

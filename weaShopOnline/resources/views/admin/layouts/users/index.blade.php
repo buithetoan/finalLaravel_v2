@@ -56,7 +56,7 @@ weaShopOnline - Users
         </tbody>
     </table>
 </div>
-{{Form::open(['route' => ['user.delete'], 'method' => 'DELETE'])}}
+{{Form::open(['route' => ['user.delete'], 'method' => 'DELETE'])}}  
 @include('admin.modal.modaldelete')
 {{ Form::close() }}
 <script>
