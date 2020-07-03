@@ -50,6 +50,7 @@ class RegisterController extends Controller
         	'email' => $request->email,
         	'slug' => Str::slug($request->full_name),
         	'is_deleted' => false,
+            'user_id' => $userCreate->id,
         ]);
         $createCustomer = $this->customerRepository->create($customer->toArray());
         $createCustomer->save();
