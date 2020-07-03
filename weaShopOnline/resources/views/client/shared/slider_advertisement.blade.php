@@ -3,7 +3,7 @@
         @foreach($brands as $key => $brand)
             <div class="item">
                 <div class="ins-inner-box">
-                    <a href=""><img src="{{asset('/images/'.$brand->logo)}}" alt="" /></a>
+                    <a href="{{url('product-all?brand_id='.$brand->id)}}"><img src="{{asset('/images/'.$brand->logo)}}" alt="" /></a>
                 </div>
             </div>
         @endforeach
