@@ -13,5 +13,9 @@ class Customer extends Model
     public function orders()
     {
     	return $this->hasMany('App\Models\Order');
-    } 
+    }
+    public function users()
+    {
+        return $this->hasOne('App\Models\User','user_id');
+    }
 }

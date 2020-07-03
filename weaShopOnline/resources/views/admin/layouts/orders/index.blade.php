@@ -40,7 +40,7 @@ weaShopOnline - Orders
 			@foreach($orders as $key => $order)
 			<tr>
 				<td class="text-center">{{++$key}}</td>
-				<td></td>
+				<td class="text-center">{{$order->customers->full_name}}</td>
 				<td class="text-center">
 					{{ Form::open(['route'=>['order.update',$order->id],'method'=>'put']) }}
 					<button class="btn btn-sm btn-success btn-confirmation" type="submit">

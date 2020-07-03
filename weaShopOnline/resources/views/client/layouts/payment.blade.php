@@ -10,19 +10,19 @@
                 <div class="coupon-box">
                     <div class="d-flex">
                         <h4 class="font-weight-bold">Full Name:</h4>
-                        <div class="ml-auto ">Nguyễn Phúc Hội</div>
+                        <div class="ml-auto ">{{$customer->full_name}}</div>
                     </div>
                     <div class="d-flex">
                         <h4 class="font-weight-bold">Address:</h4>
-                        <div class="ml-auto "> 05 Hưng Hóa 02,Ðà Nẵng </div>
+                        <div class="ml-auto "> {{$customer->address}} </div>
                     </div>
                     <div class="d-flex">
                         <h4 class="font-weight-bold">Phone No:</h4>
-                        <div class="ml-auto "> 0384443449 </div>
+                        <div class="ml-auto "> {{$customer->phone_no}} </div>
                     </div>
                     <div class="d-flex">
                         <h4 class="font-weight-bold">Email:</h4>
-                        <div class="ml-auto "> winwin260299@gmail.com </div>
+                        <div class="ml-auto "> {{$customer->email}} </div>
                     </div>
                 </div>
             </div>

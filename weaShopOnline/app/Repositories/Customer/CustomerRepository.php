@@ -11,4 +11,8 @@ class CustomerRepository extends EloquentRepository implements CustomerInterface
     {
         return \App\Models\Customer::class;
     }
+
+    public function getCustomerByUserId($id){
+        return $this->_model::where('user_id', $id)->where('is_deleted', 0)->get()->first();
+    }
 }

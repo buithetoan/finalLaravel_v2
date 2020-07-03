@@ -2,28 +2,6 @@
 @section('content')
 @include('client.layouts.login')
 @include('client.layouts.register')
-@if(Session::has('message'))
-    <div id="div-alert" class="float-right mt-2 alert alert-success alert-dismissible show" role="alert"
-         style="position: absolute; top: 10px; right: 20px;">
-        <strong>{{ Session::get('message') }}</strong>
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-@elseif(Session::has('err'))
-    <div id="div-alert" style="position:absolute; right: 10px;" class="float-right mt-2 alert alert-danger alert-dismissible show" role="alert" style="position: absolute;">
-        <strong>{{ Session::get('err') }}</strong>
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-@endif
-<script>
-    setTimeout(function() {
-        var element = document.getElementById("div-alert");
-        element.classList.add("fade");
-    }, 2000)
-</script>
  <div class="cart-box-main">
         <div class="container">
             <div class="row">

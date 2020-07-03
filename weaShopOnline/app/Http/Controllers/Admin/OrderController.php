@@ -30,7 +30,7 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $orders = $this->orderRepository->getAll();
+        $orders = $this->orderRepository->getOrders();
         return view('admin.layouts.orders.index', compact('orders'));
     }
 

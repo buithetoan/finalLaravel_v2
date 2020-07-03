@@ -134,8 +134,8 @@ class CartController extends Controller
     public function checkout()
     {
         if (Auth::check()){
-//            $customer = $this->customerRepository->getByUserId(Auth::user()->id);
-            return view('client.layouts.payment');
+            $customer = $this->customerRepository->getCustomerByUserId(Auth::user()->id);
+            return view('client.layouts.payment', compact('customer'));
         }else{
             return redirect()->back()->with('err', 'You need to login before checkout!');
         }
@@ -145,10 +145,11 @@ class CartController extends Controller
     public function payment(Request $request)
     {
 //        dd($request);
+        $customer = $this->customerRepository->getCustomerByUserId(Auth::user()->id);
         $order = new Order([
             'order_status' => 1, //1-un-confirmed | 2-confirmed
             'payment_status' => $request->payment_method,
-            'customer_id' => 1,
+            'customer_id' => $customer->id,
         ]);
         $order_result = $this->orderRepository->create($order->toArray());
         $order_result->save();

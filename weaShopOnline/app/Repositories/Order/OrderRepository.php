@@ -14,6 +14,10 @@ class OrderRepository extends EloquentRepository implements OrderInterface
         return \App\Models\Order::class;
     }
 
+    public function getOrders(){
+        return $this->_model::where('is_deleted', 0)->with('customers')->get();
+    }
+
     public function getTotalOrder(){
         return $this->_model::where('is_deleted', 0)->get()->count();
     }
