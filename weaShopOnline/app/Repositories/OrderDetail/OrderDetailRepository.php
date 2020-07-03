@@ -13,4 +13,7 @@ class OrderDetailRepository extends EloquentRepository implements OrderDetailInt
     {
         return \App\Models\OrderDetail::class;
     }
+    public function getByOrderId($id){
+        return $this->_model::where('order_id', $id)->where('is_deleted', 0)->with('products')->get();
+    }
 }
