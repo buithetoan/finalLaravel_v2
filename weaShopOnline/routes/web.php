@@ -198,12 +198,17 @@ Route::group(['middleware' => ['web']], function () {
 					'middleware' => 'checkacl:create_order'
 				]);
 				Route::post('/create', 'OrderController@store')->name('order.store');
-				Route::get('/order/{id}', [
+                Route::get('/show/{id}', [
+                    'as' => 'order.show',
+                    'uses' => 'OrderController@show',
+                    'middleware' => 'checkacl:detail_order'
+                ]);
+				Route::get('/edit?id={id}', [
 					'as' => 'order.edit',
 					'uses' => 'OrderController@edit',
 					'middleware' => 'checkacl:edit_order'
 				]);
-				Route::put('/edit/{id}', 'OrderController@update')->name('order.update');
+				Route::put('/update/{id}', 'OrderController@update')->name('order.update');
 				Route::delete('/delete', [
 					'as' => 'order.delete',
 					'uses' =>'OrderController@destroy',

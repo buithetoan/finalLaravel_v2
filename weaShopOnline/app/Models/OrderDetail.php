@@ -11,11 +11,11 @@ class OrderDetail extends Model
     protected $timestrap = true;   
     public function products()
     {
-    	return $this->belongsto('App\Models\Product');
+    	return $this->belongsto('App\Models\Product', 'product_id');
     } 
     // 1 order detail - 1 order
     public function orders()
 	{
-    	return $this->hasOne('App\Models\Order');
+    	return $this->hasOne('App\Models\Order', 'order_id');
 	}
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Repositories\OrderDetail\OrderDetailInterface;
 use App\Repositories\Product\ProductInterface;
 use Illuminate\Http\Request;
 // use App\Http\Requests\OrderRequest;
@@ -14,11 +15,13 @@ class OrderController extends Controller
 {
     private $orderRepository;
     private $productRepository;
+    private $orderDetailRepository;
 
-    public function __construct(OrderInterface $orderRepos, ProductInterface $productRepos)
+    public function __construct(OrderInterface $orderRepos, ProductInterface $productRepos, OrderDetailInterface $orderDetailRepos)
     {
         $this->orderRepository = $orderRepos;
         $this->productRepository = $productRepos;
+        $this->orderDetailRepository = $orderDetailRepos;
     }
     /**
      * Display a listing of the resource.
@@ -57,9 +60,8 @@ class OrderController extends Controller
      */
     public function show($id)
     {
-        $orders = $this->orderRepository->find($id);
-
-        return view('admin.layouts.orders.detail', compact('orders'));
+        $order_details = $this->orderDetailRepository->getByOrderId($id);
+        return view('admin.layouts.orders.detail', compact('order_details'));
     }
 
     /**
@@ -70,9 +72,15 @@ class OrderController extends Controller
      */
     public function edit($id)
     {
-        $orders = $this->orderRepository->find($id);
+    }
 
-        return view('admin.layouts.orders.edit', compact('orders'));
+    public function update($id){
+        var_dump($id);
+        $order = $this->orderRepository->find($id);
+        $order->order_status = !$order->order_status;
+        $result = $this->orderRepository->update($id, $order->toArray());
+        $result->save();
+        return redirect()->back()->with('message', 'Update successful!');
     }
 
     /**
