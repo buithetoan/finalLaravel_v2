@@ -117,18 +117,16 @@
                     <li class="search"><a href="#"><i class="fa fa-search"></i></a></li>
                     <li class="side-menu"><a href="#" id="call_cart_js">
                         <i class="fa fa-shopping-bag"></i>
-                        <span class="badge text-danger">{{-- {{count(session('cart'))}} --}}</span>
+                        <span class="badge text-danger">{{session()->has('cart') ? count(session('cart')) : 0}}</span>
                     </a></li>
                 </ul>
             </div>
             <!-- End Atribute Navigation -->
         </div>
-        
     </nav>
     <!-- End Navigation -->
 </header>
 <!-- End Main Top -->
-
 <!-- Start Top Search -->
 <div class="top-search">
     <div class="container">

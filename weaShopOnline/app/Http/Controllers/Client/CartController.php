@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
 use App\Models\Order;
+use App\Models\OrderDetail;
 use App\Models\Product;
 use App\Repositories\Customer\CustomerInterface;
 use App\Repositories\Order\OrderInterface;
+use App\Repositories\OrderDetail\OrderDetailInterface;
 use App\Repositories\Product\ProductInterface;
 use App\Repositories\User\UserInterface;
 use Illuminate\Http\Request;
@@ -22,12 +24,13 @@ class CartController extends Controller
     private $userRepository;
 
     public function __construct(ProductInterface $productRepos, OrderInterface $orderRepos, UserInterface $userRepos,
-                                CustomerInterface $customerRepos)
+                                CustomerInterface $customerRepos, OrderDetailInterface $orderDetailRepos)
     {
         $this->productRepository = $productRepos;
         $this->orderRepository = $orderRepos;
         $this->customerRepository = $customerRepos;
         $this->userRepository = $userRepos;
+        $this->orderDetailRepository = $orderDetailRepos;
     }
 
     //Page cart index
@@ -93,23 +96,6 @@ class CartController extends Controller
         }
     }
 
-    public function update(Request $request)
-    {
-        if($request->id and $request->quantity)
-        {
-            $product_id = Product_detail::select('product_id')->where('id',$request->id)->first();
-            $product = Product::find($product_id->product_id);
-            if (intval($request->quantity) > $product->quantity) {
-                session()->flash('err', 'Quantity less than '.$product->quantity);
-            }else{
-                $cart = session()->get('cart');
-                $cart[$request->id]["quantity"] = intval($request->quantity);
-                session()->put('cart', $cart);
-                session()->flash('success', 'Cart updated successfully');
-            }
-        }
-    }
-
     //Update cart
     public function updateCart(Request $request)
     {
@@ -158,43 +144,36 @@ class CartController extends Controller
     //Payment
     public function payment(Request $request)
     {
-        //If is COD payment
-        dd($request);
-        if ($request->payment_method == 1){
-            dd('COD');
-        }else{ //If is Momo payment
-            dd('MOMO');
-        }
+//        dd($request);
         $order = new Order([
-            'status' => $request->status,
-            'payment' => $request->payment,
-            'created_date' => Carbon::now()->toDateTimeString(),
-            'user_id' => Auth::user()->id,
+            'order_status' => 1, //1-un-confirmed | 2-confirmed
+            'payment_status' => $request->payment_method,
+            'customer_id' => 1,
         ]);
-        $result = $this->orderRepository->create($order);
-        foreach ($request->product_detail_id as $key => $value) {
-            $order_detail = new Order_detail([
+        $order_result = $this->orderRepository->create($order->toArray());
+        $order_result->save();
+        foreach ($request->product_id as $key => $value) {
+            $order_detail = new OrderDetail([
                 'quantity' => $request->quantity[$key],
-                'price' => $request->price[$key],
-                'total_amount' => $request->price[$key]*$request->quantity[$key],
-                'order_id' => $order->id,
-                'product_detail_id' => $value,
-                'created_by' => Auth::user()->id,
-                'updated_at' => null,
+                'order_id' => $order_result->id,
+                'product_id' => $value,
+                'created_at' => Carbon::now()->toDateTimeString(),
             ]);
-            $result = $this->orderdetailRepo->addNew($order_detail);
+            $result = $this->orderDetailRepository->create($order_detail->toArray());
+            $result->save();
         }
-        if ($request->payment == 'momo') {
+        if ($request->payment_method == 2) {// 1-Cod, 2-Momo
             //MoMo
             $endpoint = "https://test-payment.momo.vn/gw_payment/transactionProcessor";
-            $partnerCode = "MOMOBKUN20180529";
-            $accessKey = "klm05TvNBzhg7h7j";
-            $serectkey = "at67qH6mk8w5Y1nAyMoYKMWACiEi2bsa";
-            $orderId = date("YmdHis").$order->id; // Mã don hàng
-            $orderInfo = "Thanh toán qua MoMo";
+            $partnerCode = "MOMO7VIE20200702";
+            $accessKey = "7U6AEtfHmUZhliQr";
+            $serectkey = "TEwtQl8iBgGyIgdfucfILdQGPB7VH41b";
+            $orderId = date("YmdHis").$order->id; // Mï¿½ don hï¿½ng
+            $orderInfo = "Thanh toaÌn bÄƒÌ€ng Momo";
+//            $amount = $request->total_amount;
             $amount = $request->total_amount;
-            $notifyurl = "http://localhost:8000/cart";
-            $returnUrl = "http://localhost:8000/returnpayment";
+            $notifyurl = "http://localhost/finalLaravel_v2/weaShopOnline/public/cart-page";
+            $returnUrl = "http://localhost/finalLaravel_v2/weaShopOnline/public/return-payment";
             $extraData = "merchantName=MoMo Partner";
             $requestId = time() . "";
             $requestType = "captureMoMoWallet";
@@ -218,7 +197,7 @@ class CartController extends Controller
             return redirect($jsonResult['payUrl']);
         }
         $request->session()->forget('cart');
-        return redirect('/cart')->with('success','Order successfully!');
+        return redirect('/cart-page')->with('success','Order successfully!');
     }
     function execPostRequest($url, $data)
     {
@@ -240,13 +219,16 @@ class CartController extends Controller
     }
     public function returnpayment(Request $request)
     {
+//        dd($request);
         if ($request->errorCode == "0") {
-            $id = substr($request->orderId, (14-strlen($request->orderId)));
-            $order = Order::findOrFail($id);
-            $order->status = "unconfimred";
-            $order->update();
+            $id = substr($request->orderId, 0,-12);
+            $order = $this->orderRepository->find($id);
+            $order->order_status = 1;//1-unconfirmed, 2-confirmed
+            $order->payment_status = 2;//1-COD, 2-MOMO
+            $result = $this->orderRepository->update($id, $order->toArray());
+            $result->save();
             $request->session()->forget('cart');
         }
-        return redirect('/cart')->with('success' ,'Payment success. Thanks you!');
+        return redirect('/cart-page')->with('message' ,'Payment by momo successful!');
     }
 }

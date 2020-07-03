@@ -21,6 +21,7 @@ Route::group(['namespace'=>'Client','prefix'=>'/'],function (){
 	Route::get('/cart-page','CartController@cartpage');
     Route::get('/checkout','CartController@checkout');
     Route::get('/payment','CartController@payment');
+    Route::get('/return-payment','CartController@returnpayment');
     Route::get('add-to-cart', 'CartController@addToCart');
     Route::delete('remove-from-cart', 'CartController@removeFromCart');
     Route::patch('update-cart', 'CartController@updateCart');

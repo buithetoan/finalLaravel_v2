@@ -76,8 +76,10 @@
                                                     <div class="why-text">
                                                         <h4>{{Illuminate\Support\Str::limit($item->name, 28)}}</h4>
                                                         @if($item->promotion_price != null)
-                                                            <h5>${{$item->promotion_price}}</h5>
-                                                            <h5 class="text-secondary">$<strike>{{$item->price}}</strike></h5>
+                                                            <div>
+                                                                <h5 style="float: left;padding-right: 10px;">${{$item->promotion_price}} </h5>
+                                                                <h5 class="text-secondary"> $<strike>{{$item->price}}</strike></h5>
+                                                            </div>
                                                         @else
                                                             <h5>${{$item->price}}</h5>
                                                         @endif

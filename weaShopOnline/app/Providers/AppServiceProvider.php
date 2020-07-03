@@ -36,6 +36,10 @@ use App\Repositories\Order\OrderRepository;
 //customer
 use App\Repositories\Customer\CustomerInterface;
 use App\Repositories\Customer\CustomerRepository;
+//order detail
+use App\Repositories\OrderDetail\OrderDetailInterface;
+use App\Repositories\OrderDetail\OrderDetailRepository;
+
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -88,6 +92,10 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(
             CustomerInterface::class,
             CustomerRepository::class
+        );
+        $this->app->bind(
+            OrderDetailInterface::class,
+            OrderDetailRepository::class
         );
     }
 

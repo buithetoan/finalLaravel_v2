@@ -3,18 +3,22 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Repositories\Product\ProductInterface;
 use Illuminate\Http\Request;
 // use App\Http\Requests\OrderRequest;
 use App\Repositories\Order\OrderInterface;
 use Carbon\Carbon;
 use App\Models\Order;
+
 class OrderController extends Controller
 {
-    protected $orderRepository;
+    private $orderRepository;
+    private $productRepository;
 
-    public function __construct(OrderInterface $orderRepos)
+    public function __construct(OrderInterface $orderRepos, ProductInterface $productRepos)
     {
         $this->orderRepository = $orderRepos;
+        $this->productRepository = $productRepos;
     }
     /**
      * Display a listing of the resource.
@@ -24,7 +28,6 @@ class OrderController extends Controller
     public function index()
     {
         $orders = $this->orderRepository->getAll();
-
         return view('admin.layouts.orders.index', compact('orders'));
     }
 
@@ -89,13 +92,13 @@ class OrderController extends Controller
      */
     public function destroy(Request $request)
     {        
-        $orders = $this->orderRepository->find($request->id);
+        $order = $this->orderRepository->find($request->id);
         $order->is_deleted = true;
         $orders = $this->orderRepository->update($order->id, $order->toArray());
 
         if ($orders) { 
             $orders->update();
             return back()->with('message','Delete success!');
-        } else return back()->with('err','Delete failse!');
+        } else return back()->with('err','Delete false!');
     }
 }

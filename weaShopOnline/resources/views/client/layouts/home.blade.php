@@ -5,14 +5,14 @@
 <body>
 @if(Session::has('message'))
     <div id="div-alert" class="float-right mt-2 alert alert-success alert-dismissible show" role="alert"
-         style="position: absolute; top: 10px; right: 20px;">
+         style="position: fixed; top: 10px; right: 20px;">
         <strong>{{ Session::get('message') }}</strong>
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
     </div>
 @elseif(Session::has('err'))
-    <div id="div-alert" style="position:absolute; right: 10px;" class="float-right mt-2 alert alert-success alert-dismissible show" role="alert" style="position: absolute;">
+    <div id="div-alert" style="position:fixed; right: 10px;" class="float-right mt-2 alert alert-success alert-dismissible show" role="alert" style="position: absolute;">
         <strong>{{ Session::get('err') }}</strong>
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
@@ -79,8 +79,10 @@
                                     <a href="{{url('/product-detail?id='.$topHot->id)}}">{{ Illuminate\Support\Str::limit($topHot->name, 25) }}</a>
                                 </h4>
                                 @if($topHot->promotion_price != null)
-                                    <h5>${{$topHot->promotion_price}}</h5>
-                                    <h5 class="text-secondary">$<strike>{{$topHot->price}}</strike></h5>
+                                    <div>
+                                        <h5 style="float: left;padding-right: 10px;">${{$topHot->promotion_price}} </h5>
+                                        <h5 class="text-secondary"> $<strike>{{$topHot->price}}</strike></h5>
+                                    </div>
                                 @else
                                     <h5>${{$topHot->price}}</h5>
                                 @endif
@@ -107,8 +109,10 @@
                                     <a href="{{url('/product-detail?id='.$topNew->id)}}">{{ Illuminate\Support\Str::limit($topNew->name, 25) }}</a>
                                 </h4>
                                 @if($topNew->promotion_price != null)
-                                    <h5>${{$topNew->promotion_price}}</h5>
-                                    <h5 class="text-secondary">$<strike>{{$topHot->price}}</strike></h5>
+                                    <div>
+                                        <h5 style="float: left;padding-right: 10px;">${{$topNew->promotion_price}} </h5>
+                                        <h5 class="text-secondary"> $<strike>{{$topHot->price}}</strike></h5>
+                                    </div>
                                 @else
                                     <h5>${{$topNew->price}}</h5>
                                 @endif
@@ -135,8 +139,10 @@
                                     <a href="{{url('/product-detail?id='.$topSale->id)}}">{{ Illuminate\Support\Str::limit($topSale->name, 25) }}</a>
                                 </h4>
                                 @if($topSale->promotion_price != null)
-                                    <h5>${{$topSale->promotion_price}}</h5>
-                                    <h5 class="text-secondary">$<strike>{{$topSale->price}}</strike></h5>
+                                    <div>
+                                        <h5 style="float: left;padding-right: 10px;">${{$topSale->promotion_price}} </h5>
+                                        <h5 class="text-secondary"> $<strike>{{$topSale->price}}</strike></h5>
+                                    </div>
                                 @else
                                     <h5>${{$topSale->price}}</h5>
                                 @endif
@@ -148,6 +154,7 @@
         </div>
     </div>
     <!-- End Products  -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
         setTimeout(function() {
             var element = document.getElementById("div-alert");

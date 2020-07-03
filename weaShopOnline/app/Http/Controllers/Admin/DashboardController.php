@@ -29,6 +29,7 @@ class DashboardController extends Controller
     {
         $total_product = $this->productRepository->getTotalProduct();
         $total_customer = $this->userRepository->getTotalUser();
-        return view('admin.layouts.dashboards.index', compact('total_product', 'total_customer'));
+        $total_order = $this->orderRepository->getTotalOrder();
+        return view('admin.layouts.dashboards.index', compact('total_product', 'total_customer', 'total_order'));
     }
 }

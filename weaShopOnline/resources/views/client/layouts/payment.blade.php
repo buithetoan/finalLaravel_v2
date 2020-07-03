@@ -47,6 +47,7 @@
                                 <input type="hidden" name="quantity[]" value="{{$item['quantity']}}">
                                 <input type="hidden" name="price[]" value="{{$item['price']}}">
                                 <p style="display: none">{{$totalAmount += $item['quantity'] * $item['price']}}</p>
+                                <input type="hidden" name="total_amount" value="{{$totalAmount}}">
                                 <tr>
                                     <td class="thumbnail-img">
                                         <a href="#">

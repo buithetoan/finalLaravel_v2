@@ -8,7 +8,7 @@ weaShopOnline - Dashboard
 		<div class="col-xs-12 col-sm-4">
 			<div class="total product_total">
 				<div class="icon">
-					<i class="fa fa-calendar-plus"></i>
+					<i class="fa fa-list"></i>
 				</div>
 				<div class="info">
 					<h6>Total product</h6>
@@ -19,7 +19,7 @@ weaShopOnline - Dashboard
 		<div class="col-xs-12 col-sm-4">
 			<div class="total customer_total">
 				<div class="icon">
-					<i class="fa fa-laugh"></i>
+					<i class="fa fa-user"></i>
 				</div>
 				<div class="info">
 					<h6>Total customer</h6>
@@ -30,11 +30,11 @@ weaShopOnline - Dashboard
 		<div class="col-xs-12 col-sm-4">
 			<div class="total revenue_total">
 				<div class="icon">
-					<i class="fa fa-dollar-sign"></i>
+					<i class="fa fa-cart-plus"></i>
 				</div>
 				<div class="info">
-					<h6>Total revenue</h6>
-					<h3>100000 $</h3>
+					<h6>Total order</h6>
+					<h3>{{$total_order}}</h3>
 				</div>
 			</div>
 		</div>
