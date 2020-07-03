@@ -196,7 +196,11 @@
                 $(".side").removeClass("on");
                 $("body").removeClass("on-side");
             });  
-            
+            // login
+            $("#myModal_lg,#myModal_rg").modal({
+            show:false,
+            backdrop:'static',
+            });
             
             
             // ------------------------------------------------------------------------------ //

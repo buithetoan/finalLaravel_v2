@@ -15,7 +15,7 @@
  					<div class="row">
  						<div class="col-md-6">
  							<div class="form-group">
- 								<input id="name" type="text" placeholder="User Name" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" autocomplete="name" autofocus>
+ 								<input id="name" type="text" placeholder="User Name" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" autocomplete="name" autofocus required>
 
  								@error('name')
  								<span class="invalid-feedback" role="alert">
@@ -25,7 +25,7 @@
  							</div>
 
  							<div class="form-group">
- 								<input id="email" type="" placeholder="Email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" autocomplete="email">
+ 								<input id="email" type="" placeholder="Email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" autocomplete="email"required>
 
  								@error('email')
  								<span class="invalid-feedback" role="alert">
@@ -35,7 +35,7 @@
  							</div>
 
  							<div class="form-group">
- 								<input id="password" type="password" placeholder="Password" class="form-control @error('password') is-invalid @enderror" name="password" autocomplete="new-password">
+ 								<input id="password" type="password" placeholder="Password" class="form-control @error('password') is-invalid @enderror" name="password" autocomplete="new-password"required>
 
  								@error('password')
  								<span class="invalid-feedback" role="alert">
@@ -45,7 +45,7 @@
  							</div>
 
  							<div class="form-group">
- 								<input id="password-confirm" placeholder="Confirm Password" type="password" class="form-control" name="password_confirmation" autocomplete="new-password">
+ 								<input id="password-confirm" placeholder="Confirm Password" type="password" class="form-control" name="password_confirmation" autocomplete="new-password"required>
  								@error('password')
  								<span class="invalid-feedback" role="alert">
  									<strong>{{ $message }}</strong>
@@ -55,7 +55,7 @@
  						</div>
  						<div class="col-md-6">
  							<div class="form-group">
- 								<input id="full_name" type="text" placeholder="Full Name" class="form-control @error('full_name') is-invalid @enderror" name="full_name" value="{{ old('full_name') }}" autocomplete="full_name" autofocus>
+ 								<input id="full_name" type="text" placeholder="Full Name" class="form-control @error('full_name') is-invalid @enderror" name="full_name" value="{{ old('full_name') }}" autocomplete="full_name" autofocus required>
 
  								@error('full_name')
  								<span class="invalid-feedback" role="alert">
@@ -64,7 +64,7 @@
  								@enderror
  							</div>
  							<div class="form-group">
- 								<input id="address" type="text" placeholder="Address" class="form-control @error('address') is-invalid @enderror" name="address" value="{{ old('address') }}" autocomplete="address" autofocus>
+ 								<input id="address" type="text" placeholder="Address" class="form-control @error('address') is-invalid @enderror" name="address" value="{{ old('address') }}" autocomplete="address" autofocus required>
 
  								@error('address')
  								<span class="invalid-feedback" role="alert">
@@ -73,7 +73,7 @@
  								@enderror
  							</div>
  							<div class="form-group">
- 								<input id="phone_no" type="text" placeholder="Phone No" class="form-control @error('phone_no') is-invalid @enderror" name="phone_no" onKeyPress = "return isNumberKey(event)" value="{{ old('phone_no') }}" autocomplete="phone_no" autofocus>
+ 								<input id="phone_no" type="text" placeholder="Phone No" class="form-control @error('phone_no') is-invalid @enderror" name="phone_no" onKeyPress = "return isNumberKey(event)" value="{{ old('phone_no') }}" autocomplete="phone_no" autofocus required>
 
  								@error('phone_no')
  								<span class="invalid-feedback" role="alert">

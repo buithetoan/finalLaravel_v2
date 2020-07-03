@@ -47,8 +47,8 @@
                                 @csrf
                             </form>
                         @else
-                            <li><a href="#myModal_lg" class="trigger-btn" data-toggle="modal">Login</a></li>
-                            <li><a href="#myModal_rg" class="trigger-btn" data-toggle="modal">Register</a></li>
+                            <li><a href="#" class="btn btn-sm btn-success" id="stop" data-toggle="modal" data-target="#myModal_lg">Login</a></li>
+                            <li><a href="#" class="btn btn-sm btn-success" data-toggle="modal" data-target="#myModal_rg">Register</a></li>
                         @endif
                     </ul>
             </div>
@@ -117,16 +117,18 @@
                     <li class="search"><a href="#"><i class="fa fa-search"></i></a></li>
                     <li class="side-menu"><a href="#" id="call_cart_js">
                         <i class="fa fa-shopping-bag"></i>
-                        <span class="badge text-danger">{{session()->has('cart') ? count(session('cart')) : 0}}</span>
+                        <span class="badge text-danger">{{-- {{count(session('cart'))}} --}}</span>
                     </a></li>
                 </ul>
             </div>
             <!-- End Atribute Navigation -->
         </div>
+        
     </nav>
     <!-- End Navigation -->
 </header>
 <!-- End Main Top -->
+
 <!-- Start Top Search -->
 <div class="top-search">
     <div class="container">
