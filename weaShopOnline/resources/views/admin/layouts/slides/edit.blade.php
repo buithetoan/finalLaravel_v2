@@ -42,8 +42,8 @@
                     <span class="text-danger">{{ $errors->first('image')}}</span>
                 </div>
                 <div class="form-group text-right">
-                    <a class="btn btn-info mt-3" href="{{ route('slide.index') }}" title="List"><i class="far fa-eye">List</i></a>
-                    {{ Form::submit('Save',['class' => 'font-weight-bold text-white btn btn-warning mt-3']) }}
+                    <a class="btn btn-info mt-3" href="{{ route('slide.index') }}" title="List"><i class="fas fa-arrow-left"> Back to list</i></a>
+                    {{ Form::submit('Save',['class' => 'font-weight-bold text-white btn bg-color-green mt-3']) }}
                 </div>
             </div>
         </div>

@@ -38,7 +38,7 @@
                     </div>
                 </div>
                 <div class="form-group text-right">
-                    <a class="btn btn-info mt-3" href="{{ route('user.index') }}" title="back">Back to list</a>
+                    <a class="btn btn-info mt-3" href="{{ route('role.index') }}" title="back"><i class="fas fa-arrow-left"> Back to list</i></a>
                     {{ Form::submit('Save',['class' => 'font-weight-bold text-white btn bg-color-green mt-3']) }}
                 </div>
             </div>
